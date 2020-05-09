@@ -269,6 +269,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/FBI%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lucas">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/12/FBI%E6%A0%91/" itemprop="url">FBI树</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T21:58:05+08:00">
+                2020-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>原题链接：</strong><a href="https://www.luogu.com.cn/problem/P1087" target="_blank" rel="noopener">传送门</a></p>
+<p><strong>思路：</strong><br>递归回溯<br>如果l &lt; r，那么用二分，返回左子树和右子树的值，处理后输出<br>如果l == r，根据数字0或1输出并返回字母</p>
+<p><strong>代码：</strong></p>
+<p>```c++<br>    #include<cstdio><br>    const int maxn = 1&lt;&lt;10 + 2;<br>    char arr[maxn];<br>    char ef(int l,int r){<br>        if(l&lt;r){<br>            int t = l + (r - l)/2;<br>            char a = ef(l,t);//左子树的返回值<br>            char b = ef(t+1,r);//右子树的返回值<br>            if(a == ‘B’&amp;&amp; b==’B’){<br>                putchar(‘B’);<br>                return ‘B’;<br>            }else if(a == ‘I’ &amp;&amp; b ==’I’){<br>                putchar(‘I’);<br>                return ‘I’;<br>            }else {<br>                putchar(‘F’);<br>                return ‘F’;<br>            }<br>        }<br>        //l == r时的处理<br>        if(arr[l] == ‘0’){<br>            putchar(‘B’);<br>            return ‘B’;<br>        }else{<br>        putchar(‘I’);<br>        return ‘I’;<br>        }<br>    }<br>    int main(){<br>        int n;<br>        scanf(“%d”,&amp;n);<br>        scanf(“%s”,arr);<br>        ef(0,(1&lt;&lt;n) - 1);<br>        return 0;<br>    }</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1722,174 +1867,6 @@ ll ans = <span class="number">0</span>;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/Frogger/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lucas">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/06/Frogger/" itemprop="url">Frogger</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T22:15:28+08:00">
-                2020-02-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>原题链接：</strong><a href="https://vjudge.net/problem/POJ-2253" target="_blank" rel="noopener">传送门</a><br><strong>思路：</strong>由于数据量较小，直接采用Floyd的改进算法，O(n<em>n</em>n)</p>
-<pre><code class="c++"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span>
-<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>; 
-<span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">205</span>;
-<span class="keyword">int</span> x[maxn],y[maxn],id = <span class="number">1</span>,n,a,b;
-<span class="keyword">double</span> s[maxn][maxn];
-<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{
-    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n) &amp;&amp; n){
-        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;x[i],&amp;y[i]);
-        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i){
-            s[i][i] = <span class="number">0</span>;
-            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>;j &lt;= n;++j){
-                s[j][i] = s[i][j] = <span class="built_in">sqrt</span>(<span class="built_in">pow</span>(<span class="built_in">abs</span>(x[i]-x[j])*<span class="number">1.0</span>,<span class="number">2</span>)+<span class="built_in">pow</span>(<span class="built_in">abs</span>(y[i] - y[j])*<span class="number">1.0</span>,<span class="number">2</span>));
-            }
-        }
-        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>;k &lt;= n;++k){
-            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i){
-                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= n;++j){
-                    s[i][j] = <span class="built_in">min</span>(s[i][j],<span class="built_in">max</span>(s[i][k],s[k][j]));
-                }
-            }
-        }
-        <span class="built_in">printf</span>(<span class="string">"Scenario #%d\nFrog Distance = %.3lf\n\n"</span>,id++,s[<span class="number">1</span>][<span class="number">2</span>]);;
-    }
-}</code></pre>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1940,7 +1917,7 @@ ll ans = <span class="number">0</span>;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">63</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

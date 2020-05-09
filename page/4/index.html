@@ -269,6 +269,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/%E6%95%B0%E6%A5%BC%E6%A2%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lucas">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/16/%E6%95%B0%E6%A5%BC%E6%A2%AF/" itemprop="url">数楼梯</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-16T17:38:19+08:00">
+                2020-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>走楼梯要么走一步，要么走两步，n个台阶，有多少种可能？</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,len=<span class="number">1</span>,f[<span class="number">5003</span>][<span class="number">5003</span>];<span class="comment">//f[k][i]--第k阶台阶所对应的走法数 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hp</span><span class="params">(<span class="keyword">int</span> k)</span><span class="comment">//高精度加法，k来存阶数 </span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=len;i++)</span><br><span class="line">     f[k][i]=f[k<span class="number">-1</span>][i]+f[k<span class="number">-2</span>][i];<span class="comment">//套用公式 </span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=len;i++)             <span class="comment">//进位 </span></span><br><span class="line">     <span class="keyword">if</span>(f[k][i]&gt;=<span class="number">10</span>)</span><br><span class="line">     &#123;</span><br><span class="line">         f[k][i+<span class="number">1</span>]+=f[k][i]/<span class="number">10</span>;</span><br><span class="line">         f[k][i]=f[k][i]%<span class="number">10</span>;</span><br><span class="line">         <span class="keyword">if</span>(f[k][len+<span class="number">1</span>])len++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    f[<span class="number">1</span>][<span class="number">1</span>]=<span class="number">1</span>; f[<span class="number">2</span>][<span class="number">1</span>]=<span class="number">2</span>;         <span class="comment">//初始化 </span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">3</span>;i&lt;=n;i++)              <span class="comment">//从3开始避免越界 </span></span><br><span class="line">     hp(i);                         </span><br><span class="line">    <span class="keyword">for</span>(i=len;i&gt;=<span class="number">1</span>;i--)             <span class="comment">//逆序输出 </span></span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">"%d"</span>,f[n][i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1734,151 +1876,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/FBI%E6%A0%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lucas">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/12/FBI%E6%A0%91/" itemprop="url">FBI树</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T21:58:05+08:00">
-                2020-02-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>原题链接：</strong><a href="https://www.luogu.com.cn/problem/P1087" target="_blank" rel="noopener">传送门</a></p>
-<p><strong>思路：</strong><br>递归回溯<br>如果l &lt; r，那么用二分，返回左子树和右子树的值，处理后输出<br>如果l == r，根据数字0或1输出并返回字母</p>
-<p><strong>代码：</strong></p>
-<p>```c++<br>    #include<cstdio><br>    const int maxn = 1&lt;&lt;10 + 2;<br>    char arr[maxn];<br>    char ef(int l,int r){<br>        if(l&lt;r){<br>            int t = l + (r - l)/2;<br>            char a = ef(l,t);//左子树的返回值<br>            char b = ef(t+1,r);//右子树的返回值<br>            if(a == ‘B’&amp;&amp; b==’B’){<br>                putchar(‘B’);<br>                return ‘B’;<br>            }else if(a == ‘I’ &amp;&amp; b ==’I’){<br>                putchar(‘I’);<br>                return ‘I’;<br>            }else {<br>                putchar(‘F’);<br>                return ‘F’;<br>            }<br>        }<br>        //l == r时的处理<br>        if(arr[l] == ‘0’){<br>            putchar(‘B’);<br>            return ‘B’;<br>        }else{<br>        putchar(‘I’);<br>        return ‘I’;<br>        }<br>    }<br>    int main(){<br>        int n;<br>        scanf(“%d”,&amp;n);<br>        scanf(“%s”,arr);<br>        ef(0,(1&lt;&lt;n) - 1);<br>        return 0;<br>    }</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1929,7 +1926,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">63</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
