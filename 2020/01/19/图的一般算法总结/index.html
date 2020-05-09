@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zn-CH">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="图,基础知识," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="最短路问题无负边的单源最短路问题Dijstra算法  核心思想：使用贪婪算法，每次都选取一个未更新的距离最小的点更新这个点的邻接点的距离值，每次选取剩下点的最小距离值  12345678910111213141516171819202122232425262728Graph[V][V];&#x2F;&#x2F;获取未被计算进距离的点中距离最小的点int min_dis(int dist[],bool vis[])&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图的一般算法总结">
+<meta property="og:url" content="http://yoursite.com/2020/01/19/%E5%9B%BE%E7%9A%84%E4%B8%80%E8%88%AC%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最短路问题无负边的单源最短路问题Dijstra算法  核心思想：使用贪婪算法，每次都选取一个未更新的距离最小的点更新这个点的邻接点的距离值，每次选取剩下点的最小距离值  12345678910111213141516171819202122232425262728Graph[V][V];&#x2F;&#x2F;获取未被计算进距离的点中距离最小的点int min_dis(int dist[],bool vis[])&amp;#">
+<meta property="og:locale" content="zn_CH">
+<meta property="article:published_time" content="2020-01-19T12:01:06.000Z">
+<meta property="article:modified_time" content="2020-02-14T13:50:50.731Z">
+<meta property="article:author" content="Lucas">
+<meta property="article:tag" content="图">
+<meta property="article:tag" content="基础知识">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/19/图的一般算法总结/"/>
+
+
+
+
+
+  <title>图的一般算法总结 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zn-CH">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/19/%E5%9B%BE%E7%9A%84%E4%B8%80%E8%88%AC%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lucas">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">图的一般算法总结</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-19T20:01:06+08:00">
+                2020-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="最短路问题"><a href="#最短路问题" class="headerlink" title="最短路问题"></a>最短路问题</h1><h2 id="无负边的单源最短路问题"><a href="#无负边的单源最短路问题" class="headerlink" title="无负边的单源最短路问题"></a>无负边的单源最短路问题</h2><p><strong><em>Dijstra算法</em></strong></p>
+<blockquote>
+<p>核心思想：使用贪婪算法，每次都选取一个未更新的距离最小的点<br>更新这个点的邻接点的距离值，每次选取剩下点的最小距离值</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Graph[V][V];</span><br><span class="line"><span class="comment">//获取未被计算进距离的点中距离最小的点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">min_dis</span><span class="params">(<span class="keyword">int</span> dist[],<span class="keyword">bool</span> vis[])</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> min_val = INT_MAX,min_index;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>;v &lt; V;++v)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[v] &amp;&amp; dist[v] &lt;= min_val)</span><br><span class="line">			min_val = dist[v],min_index = v;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> min_index;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijstra</span><span class="params">(<span class="keyword">int</span> src)</span></span>&#123;</span><br><span class="line">	<span class="comment">//初始化dist和vis</span></span><br><span class="line">	<span class="keyword">int</span> dist[V];</span><br><span class="line">	<span class="keyword">bool</span> vis[V];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; V;++i)</span><br><span class="line">		dis[i] = INT_MAX,vis[i] = <span class="literal">false</span>;</span><br><span class="line">	<span class="comment">//src到src的距离为0</span></span><br><span class="line">	dist[src] = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//更新V-1次,也可以用while(true)替代，但要添加跳出条件</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; V - <span class="number">1</span>;++i)&#123;</span><br><span class="line">		<span class="keyword">int</span> u = min_dis(dist,vis);</span><br><span class="line">		vis[u] = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; V;++j)</span><br><span class="line">		<span class="comment">//如果j点是u的邻接点，并且未被选中，并且uj的距离+dist[u]&lt;dist[j]，那么更新dist[j] = dist[u] + graph[u][j]</span></span><br><span class="line">			<span class="keyword">if</span>(!vis[j] &amp;&amp; graph[u][j] &amp;&amp; dist[u] != INT_MAX &amp;&amp; dist[u] + graph[u][j] &lt; dist[j])</span><br><span class="line">				dist[j] = dist[u] + graph[u][j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="含负边的单源最短路问题"><a href="#含负边的单源最短路问题" class="headerlink" title="含负边的单源最短路问题"></a>含负边的单源最短路问题</h2><p><strong><em>Bellman-Ford算法</em></strong></p>
+<blockquote>
+<p>求可能含负路径的两点间的最短距离</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> from,to,cost;&#125;</span><br><span class="line"><span class="keyword">void</span> Bellman-Ford(<span class="keyword">int</span> src)&#123;</span><br><span class="line">	<span class="keyword">int</span> d[V];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; V;++i)</span><br><span class="line">		d[i] = INF;</span><br><span class="line">	d[src] = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//如果更新了V次，那么含负圈</span></span><br><span class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">		<span class="keyword">bool</span> update = <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; E;++j)&#123;</span><br><span class="line">			edge e = es[i];</span><br><span class="line">			<span class="keyword">if</span>(d[e.from] != INF &amp;&amp; d[e.to] &gt; d[e.from] + e.cost)&#123;</span><br><span class="line">				d[e.to] = d[e.from] + e.cost;</span><br><span class="line">				update = <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(!update)<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><em>Floyd-Warshall算法</em></strong></p>
+<blockquote>
+<p>求任意两点间的最短距离</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> Floyd-Warshall()&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>;k &lt; V;++k)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; V;++i)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; V;++j)&#123;</span><br><span class="line">				d[i][j] = <span class="built_in">min</span>(d[i][j],d[i][k]+d[k][j]);<span class="comment">//dp思路，i-&gt;j = min(i-&gt;j,i-&gt;k-&gt;j);</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="最小生成树问题"><a href="#最小生成树问题" class="headerlink" title="最小生成树问题"></a>最小生成树问题</h1><blockquote>
+<p>给定一个无向图，如果它的某个子图的任意两个顶点都相互连通并且是一棵树，那么这棵树就叫做生成树<br>如果边上有权值，那么使得权值和最小的生成树叫做最小生成树。</p>
+</blockquote>
+<p><strong><em>Kruskal算法</em></strong></p>
+<ol>
+<li>根据权重对所有的边进行非递减排序</li>
+<li>挑出权重最小的边，看是否成环，如果成，那么不要，如果不成，那么加入</li>
+<li>重复步骤二，直到边数达到V-1。<br>时间复杂度: O(ElogE) or O(ElogV). 点的排序花费 O(ELogE) time. 排序过后，我们遍历所有节点，并采用连通图算法，查看要加入边的两个点是否连通，不连通就加入图。连通图算法最少花费 O(1). 因此总体上是O(ELogE + ELogV). <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> from,to,weight;&#125;Edge;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">myComp</span><span class="params">(<span class="keyword">const</span>&amp; edge a,<span class="keyword">const</span>&amp; edge b)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> a1-&gt;weight &gt; b1-&gt;weight;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Kruskal</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	sort(Edge,Edge+E,myComp);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; E;++i)&#123;</span><br><span class="line">		<span class="keyword">int</span> u = Edge[i];</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">find</span>(u.from) != <span class="built_in">find</span>(u.to))&#123;	<span class="comment">//用到了下[连通图算法]();</span></span><br><span class="line">			<span class="keyword">union</span>(u.from,u.to);</span><br><span class="line">			ans += u.weight;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong><em>Prim算法</em></strong></p>
+<ol>
+<li>创造一个点集记录已经包含的点<br>2) 分配所有点的key值为INF，源点为0<br>3) While(点集未满)<br>….a) 选取一个未包含的值最小的点u<br>….b) 包含进去<br>….c) 更新u的所有邻接点，如果graph[u][v] &lt; key[v],那么更新key[v] = graph[u][v];<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> cost[V][V];</span><br><span class="line"><span class="keyword">int</span> mincost[V];</span><br><span class="line"><span class="keyword">bool</span> used[V];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">prim</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">fill</span>(mincost,mincost+V,INF);</span><br><span class="line">	<span class="built_in">fill</span>(used,used + V,<span class="literal">false</span>);</span><br><span class="line">	mincost[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">		<span class="keyword">int</span> v = <span class="number">-1</span>;</span><br><span class="line">		<span class="comment">//从不属于x的顶点中选取从x到其权值最小的点</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> u = <span class="number">0</span>;u &lt; V;++u)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!used[u] &amp;&amp; (v == <span class="number">-1</span> || mincost[u] &lt; mincost[v]))v = u;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(v == <span class="number">-1</span>)<span class="keyword">break</span>;</span><br><span class="line">		used[v] = <span class="literal">true</span>;</span><br><span class="line">		ans += mincost[v];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> u = <span class="number">0</span>;u &lt; V;++u)&#123;</span><br><span class="line">		mincost[u] = <span class="built_in">min</span>(mincost[u],mincost[v] + cost[u][v]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%9B%BE/" rel="tag"># 图</a>
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># 基础知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/19/markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" rel="next" title="markdown常用语法">
+                <i class="fa fa-chevron-left"></i> markdown常用语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/29/Maya%20Calendar/" rel="prev" title="POJ1008">
+                POJ1008 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Lucas" />
+          <p class="site-author-name" itemprop="name">Lucas</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最短路问题"><span class="nav-number">1.</span> <span class="nav-text">最短路问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无负边的单源最短路问题"><span class="nav-number">1.1.</span> <span class="nav-text">无负边的单源最短路问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#含负边的单源最短路问题"><span class="nav-number">1.2.</span> <span class="nav-text">含负边的单源最短路问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最小生成树问题"><span class="nav-number">2.</span> <span class="nav-text">最小生成树问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lucas</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
