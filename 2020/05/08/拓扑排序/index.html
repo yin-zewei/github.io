@@ -94,12 +94,12 @@
 
 
 
-<meta name="description" content="介绍：拓扑排序是指在一个有向无环图中求一条线性路径，使得任意一条边&lt;u,v&gt;在路径上都有u在v前面 步骤： 根据入度放入队列中 pop出入度为0的点，并将它的相邻点的入度减一 直到所有的边都出来1234567891011121314151617vector&lt;int&gt;v[N];int ins[N],ans[N],cnt &#x3D; 0;void toposort()&amp;#123;">
+<meta name="description" content="介绍：拓扑排序是指在一个有向无环图中求一条线性路径，使得任意一条边在路径上都有u在v前面 步骤： 根据入度放入队列中 pop出入度为0的点，并将它的相邻点的入度减一 直到所有的边都出来1234567891011121314151617vector&lt;int&gt;v[N];int ins[N],ans[N],cnt &#x3D; 0;void toposort()&amp;#123;    queue&lt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拓扑排序">
 <meta property="og:url" content="http://yoursite.com/2020/05/08/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="泽伟的博客">
-<meta property="og:description" content="介绍：拓扑排序是指在一个有向无环图中求一条线性路径，使得任意一条边&lt;u,v&gt;在路径上都有u在v前面 步骤： 根据入度放入队列中 pop出入度为0的点，并将它的相邻点的入度减一 直到所有的边都出来1234567891011121314151617vector&lt;int&gt;v[N];int ins[N],ans[N],cnt &#x3D; 0;void toposort()&amp;#123;">
+<meta property="og:description" content="介绍：拓扑排序是指在一个有向无环图中求一条线性路径，使得任意一条边在路径上都有u在v前面 步骤： 根据入度放入队列中 pop出入度为0的点，并将它的相邻点的入度减一 直到所有的边都出来1234567891011121314151617vector&lt;int&gt;v[N];int ins[N],ans[N],cnt &#x3D; 0;void toposort()&amp;#123;    queue&lt;">
 <meta property="article:published_time" content="2020-05-08T05:03:10.000Z">
 <meta property="article:modified_time" content="2020-05-08T05:22:39.526Z">
 <meta property="article:author" content="Lucas">
@@ -340,7 +340,7 @@
 
       
         <ul>
-<li>介绍：拓扑排序是指在一个有向无环图中求一条线性路径，使得任意一条边&lt;u,v&gt;在路径上都有u在v前面</li>
+<li>介绍：拓扑排序是指在一个有向无环图中求一条线性路径，使得任意一条边<u,v>在路径上都有u在v前面</li>
 <li>步骤：<ul>
 <li>根据入度放入队列中</li>
 <li>pop出入度为0的点，并将它的相邻点的入度减一</li>
@@ -671,6 +671,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

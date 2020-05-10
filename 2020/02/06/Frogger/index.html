@@ -94,12 +94,12 @@
 
 
 
-<meta name="description" content="原题链接：传送门思路：由于数据量较小，直接采用Floyd的改进算法，O(nnn) #include&lt;cstdio&gt; #include&lt;algorithm&gt; #include&lt;cmath&gt; using namespace std;  const int maxn &#x3D; 205; int x[maxn],y[maxn],id &#x3D; 1,n,a,b; double s[m">
+<meta name="description" content="原题链接：传送门思路：由于数据量较小，直接采用Floyd的改进算法，O(nnn) &#96;&#96;&#96;c++     #include&lt;cstdio&gt;     #include&lt;algorithm&gt;     #include&lt;cmath&gt;     using namespace std;      const int maxn &#x3D; 205;     int x[maxn],y">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Frogger">
 <meta property="og:url" content="http://yoursite.com/2020/02/06/Frogger/index.html">
 <meta property="og:site_name" content="泽伟的博客">
-<meta property="og:description" content="原题链接：传送门思路：由于数据量较小，直接采用Floyd的改进算法，O(nnn) #include&lt;cstdio&gt; #include&lt;algorithm&gt; #include&lt;cmath&gt; using namespace std;  const int maxn &#x3D; 205; int x[maxn],y[maxn],id &#x3D; 1,n,a,b; double s[m">
+<meta property="og:description" content="原题链接：传送门思路：由于数据量较小，直接采用Floyd的改进算法，O(nnn) &#96;&#96;&#96;c++     #include&lt;cstdio&gt;     #include&lt;algorithm&gt;     #include&lt;cmath&gt;     using namespace std;      const int maxn &#x3D; 205;     int x[maxn],y">
 <meta property="article:published_time" content="2020-02-06T14:15:28.000Z">
 <meta property="article:modified_time" content="2020-02-14T13:49:32.791Z">
 <meta property="article:author" content="Lucas">
@@ -363,33 +363,34 @@
 
       
         <p><strong>原题链接：</strong><a href="https://vjudge.net/problem/POJ-2253" target="_blank" rel="noopener">传送门</a><br><strong>思路：</strong>由于数据量较小，直接采用Floyd的改进算法，O(n<em>n</em>n)</p>
-<pre><code class="c++"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span>
-<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>; 
-<span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">205</span>;
-<span class="keyword">int</span> x[maxn],y[maxn],id = <span class="number">1</span>,n,a,b;
-<span class="keyword">double</span> s[maxn][maxn];
-<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{
-    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n) &amp;&amp; n){
-        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;x[i],&amp;y[i]);
-        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i){
-            s[i][i] = <span class="number">0</span>;
-            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>;j &lt;= n;++j){
-                s[j][i] = s[i][j] = <span class="built_in">sqrt</span>(<span class="built_in">pow</span>(<span class="built_in">abs</span>(x[i]-x[j])*<span class="number">1.0</span>,<span class="number">2</span>)+<span class="built_in">pow</span>(<span class="built_in">abs</span>(y[i] - y[j])*<span class="number">1.0</span>,<span class="number">2</span>));
-            }
-        }
-        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>;k &lt;= n;++k){
-            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i){
-                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= n;++j){
-                    s[i][j] = <span class="built_in">min</span>(s[i][j],<span class="built_in">max</span>(s[i][k],s[k][j]));
+<p>```c++</p>
+<pre><code>    #include&lt;cstdio&gt;
+    #include&lt;algorithm&gt;
+    #include&lt;cmath&gt;
+    using namespace std; 
+    const int maxn = 205;
+    int x[maxn],y[maxn],id = 1,n,a,b;
+    double s[maxn][maxn];
+    int main(){
+        while(scanf(&quot;%d&quot;,&amp;n) &amp;&amp; n){
+            for(int i = 1;i &lt;= n;++i)scanf(&quot;%d %d&quot;,&amp;x[i],&amp;y[i]);
+            for(int i = 1;i &lt;= n;++i){
+                s[i][i] = 0;
+                for(int j = i + 1;j &lt;= n;++j){
+                    s[j][i] = s[i][j] = sqrt(pow(abs(x[i]-x[j])*1.0,2)+pow(abs(y[i] - y[j])*1.0,2));
                 }
             }
+            for(int k = 1;k &lt;= n;++k){
+                for(int i = 1;i &lt;= n;++i){
+                    for(int j = 1;j &lt;= n;++j){
+                        s[i][j] = min(s[i][j],max(s[i][k],s[k][j]));
+                    }
+                }
+            }
+            printf(&quot;Scenario #%d\nFrog Distance = %.3lf\n\n&quot;,id++,s[1][2]);;
         }
-        <span class="built_in">printf</span>(<span class="string">"Scenario #%d\nFrog Distance = %.3lf\n\n"</span>,id++,s[<span class="number">1</span>][<span class="number">2</span>]);;
     }
-}</code></pre>
-
+</code></pre>
       
     </div>
     
@@ -713,6 +714,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

@@ -94,12 +94,12 @@
 
 
 
-<meta name="description" content="链式向前星是一种极其节省空间的存图的方法，而且易访问 123456789101112131415int to[N],nxt[N],head[N];&#x2F;&#x2F;如代码所示&#x2F;&#x2F;to[i]代表第i条边的末端点，nxt[i]代表连接源点a的下一条边，head[i]代表i为源点的最后一条边的poivoid addEdge(int a,int b)&amp;#123;    to[++cur]&#x3D;b;    nxt[cur]&#x3D;">
+<meta name="description" content="链式向前星是一种极其节省空间的存图的方法，而且易访问123456789101112131415int to[N],nxt[N],head[N];&#x2F;&#x2F;如代码所示&#x2F;&#x2F;to[i]代表第i条边的末端点，nxt[i]代表连接源点a的下一条边，head[i]代表i为源点的最后一条边的poivoid addEdge(int a,int b)&amp;#123;    to[++cur]&#x3D;b;    nxt[cur]&#x3D;h">
 <meta property="og:type" content="article">
 <meta property="og:title" content="链式向前星">
 <meta property="og:url" content="http://yoursite.com/2020/05/01/%E9%93%BE%E5%BC%8F%E5%90%91%E5%89%8D%E6%98%9F/index.html">
 <meta property="og:site_name" content="泽伟的博客">
-<meta property="og:description" content="链式向前星是一种极其节省空间的存图的方法，而且易访问 123456789101112131415int to[N],nxt[N],head[N];&#x2F;&#x2F;如代码所示&#x2F;&#x2F;to[i]代表第i条边的末端点，nxt[i]代表连接源点a的下一条边，head[i]代表i为源点的最后一条边的poivoid addEdge(int a,int b)&amp;#123;    to[++cur]&#x3D;b;    nxt[cur]&#x3D;">
+<meta property="og:description" content="链式向前星是一种极其节省空间的存图的方法，而且易访问123456789101112131415int to[N],nxt[N],head[N];&#x2F;&#x2F;如代码所示&#x2F;&#x2F;to[i]代表第i条边的末端点，nxt[i]代表连接源点a的下一条边，head[i]代表i为源点的最后一条边的poivoid addEdge(int a,int b)&amp;#123;    to[++cur]&#x3D;b;    nxt[cur]&#x3D;h">
 <meta property="article:published_time" content="2020-05-01T09:48:09.000Z">
 <meta property="article:modified_time" content="2020-05-02T07:02:39.859Z">
 <meta property="article:author" content="Lucas">
@@ -339,8 +339,7 @@
       
 
       
-        <p>链式向前星是一种极其节省空间的存图的方法，而且易访问</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> to[N],nxt[N],head[N];</span><br><span class="line"><span class="comment">//如代码所示</span></span><br><span class="line"><span class="comment">//to[i]代表第i条边的末端点，nxt[i]代表连接源点a的下一条边，head[i]代表i为源点的最后一条边的poi</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    to[++cur]=b;</span><br><span class="line">    nxt[cur]=head[a];</span><br><span class="line">    head[a]=cur;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    e[++cnt].to = v;</span><br><span class="line">    nxt[cnt] = head[u];</span><br><span class="line">    head[u] = cnt;</span><br><span class="line">    e[cnt].w = w;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>链式向前星是一种极其节省空间的存图的方法，而且易访问<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> to[N],nxt[N],head[N];</span><br><span class="line"><span class="comment">//如代码所示</span></span><br><span class="line"><span class="comment">//to[i]代表第i条边的末端点，nxt[i]代表连接源点a的下一条边，head[i]代表i为源点的最后一条边的poi</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    to[++cur]=b;</span><br><span class="line">    nxt[cur]=head[a];</span><br><span class="line">    head[a]=cur;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    e[++cnt].to = v;</span><br><span class="line">    nxt[cnt] = head[u];</span><br><span class="line">    head[u] = cnt;</span><br><span class="line">    e[cnt].w = w;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -663,6 +662,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

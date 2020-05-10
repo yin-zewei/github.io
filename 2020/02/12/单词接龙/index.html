@@ -364,27 +364,27 @@
         <p>原题链接：<a href="https://www.luogu.com.cn/problem/P1019" target="_blank" rel="noopener">传送门</a></p>
 <p>描述：单词接龙是一个与我们经常玩的成语接龙相类似的游戏，现在我们已知一组单词，且给定一个开头的字母，要求出以这个字母开头的最长的“龙”（每个单词都最多在“龙”中出现两次），在两个单词相连时，其重合部分合为一部分，例如 beastbeast和astonishastonish，如果接成一条龙则变为beastonishbeastonish，另外相邻的两部分不能存在包含关系，例如atat 和 atideatide 间不能相连。</p>
 <p>思路：直接搜索</p>
-<p>代码：</p>
-<pre><code class="c++"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span>
-<span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>{<span class="keyword">return</span> a &lt; b ? b :a;}
-<span class="function"><span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>{<span class="keyword">return</span> a &lt; b ? a :b;}
-<span class="keyword">int</span> n,vis[<span class="number">25</span>] = {<span class="number">0</span>},ans = <span class="number">0</span>,len[<span class="number">25</span>];
-<span class="built_in">std</span>::<span class="built_in">string</span> s[<span class="number">25</span>];
-<span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span> str)</span></span>{
-    ans = <span class="built_in">max</span>(ans,str.length());
-    <span class="keyword">int</span> tt = str.length();
-    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i){
-        <span class="keyword">if</span>(vis[i] &lt; <span class="number">2</span>){
-            <span class="keyword">int</span> t = <span class="built_in">min</span>(tt,len[i]) - <span class="number">1</span>,flag = <span class="number">0</span>,j = <span class="number">1</span>;
-            <span class="keyword">for</span>(;j &lt;= t;++j){
-                <span class="keyword">if</span>(s[i].substr(<span class="number">0</span>,j)==str.substr(tt - j)){
-                    flag = <span class="number">1</span>;
-                    <span class="keyword">break</span>;
+<p>代码：<br>```c++</p>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;iostream&gt;
+int max(int a,int b){return a &lt; b ? b :a;}
+int min(int a,int b){return a &lt; b ? a :b;}
+int n,vis[25] = {0},ans = 0,len[25];
+std::string s[25];
+void dfs(std::string str){
+    ans = max(ans,str.length());
+    int tt = str.length();
+    for(int i = 0;i &lt; n;++i){
+        if(vis[i] &lt; 2){
+            int t = min(tt,len[i]) - 1,flag = 0,j = 1;
+            for(;j &lt;= t;++j){
+                if(s[i].substr(0,j)==str.substr(tt - j)){
+                    flag = 1;
+                    break;
                 }
             }
-            <span class="keyword">if</span>(flag){
+            if(flag){
                 ++vis[i];
                 dfs(str + s[i].substr(j));
                 --vis[i];
@@ -392,25 +392,25 @@
         }
     }
 }
-<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{
-    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);
-    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i){
-        <span class="built_in">std</span>::<span class="built_in">cin</span>&gt;&gt;s[i];
+int main(){
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i = 0;i &lt; n;++i){
+        std::cin&gt;&gt;s[i];
         len[i] = s[i].length();
     }
-    <span class="keyword">char</span> start;
-    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; start;
-    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i){
-        <span class="keyword">if</span>(s[i][<span class="number">0</span>] == start){
+    char start;
+    std::cin &gt;&gt; start;
+    for(int i = 0;i &lt; n;++i){
+        if(s[i][0] == start){
             ++vis[i];
             dfs(s[i]);
             --vis[i];
         }
     }
-    <span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);
-    <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
-
+    printf(&quot;%d&quot;,ans);
+    return 0;
+}
+</code></pre>
       
     </div>
     
@@ -732,6 +732,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

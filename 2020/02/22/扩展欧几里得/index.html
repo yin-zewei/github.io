@@ -94,12 +94,12 @@
 
 
 
-<meta name="description" content="欧几里得算法可以求a,b的最大公因数gcd(a,b)原理：铺瓷砖问题，假设a &lt; b,先铺a边长的瓷砖，直到铺不下去，然后换一边接着铺，直到铺满，最小正方形边长即是最大公约数。 123int gcd(int a,int b)&amp;#123;	return b ? gcd(b,a % b) : a;&amp;#125;  扩展欧几里得既可以求得最大公因数，还可以求得x,y满足ax+by&#x3D;gcd(a,b)">
+<meta name="description" content="欧几里得算法可以求a,b的最大公因数gcd(a,b)原理：铺瓷砖问题，假设a &lt; b,先铺a边长的瓷砖，直到铺不下去，然后换一边接着铺，直到铺满，最小正方形边长即是最大公约数。 123int gcd(int a,int b)&amp;#123;	return b ? gcd(b,a % b) : a;&amp;#125; 扩展欧几里得既可以求得最大公因数，还可以求得x,y满足ax+by&#x3D;gcd(a,b) 原">
 <meta property="og:type" content="article">
 <meta property="og:title" content="扩展欧几里得">
 <meta property="og:url" content="http://yoursite.com/2020/02/22/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/index.html">
 <meta property="og:site_name" content="泽伟的博客">
-<meta property="og:description" content="欧几里得算法可以求a,b的最大公因数gcd(a,b)原理：铺瓷砖问题，假设a &lt; b,先铺a边长的瓷砖，直到铺不下去，然后换一边接着铺，直到铺满，最小正方形边长即是最大公约数。 123int gcd(int a,int b)&amp;#123;	return b ? gcd(b,a % b) : a;&amp;#125;  扩展欧几里得既可以求得最大公因数，还可以求得x,y满足ax+by&#x3D;gcd(a,b)">
+<meta property="og:description" content="欧几里得算法可以求a,b的最大公因数gcd(a,b)原理：铺瓷砖问题，假设a &lt; b,先铺a边长的瓷砖，直到铺不下去，然后换一边接着铺，直到铺满，最小正方形边长即是最大公约数。 123int gcd(int a,int b)&amp;#123;	return b ? gcd(b,a % b) : a;&amp;#125; 扩展欧几里得既可以求得最大公因数，还可以求得x,y满足ax+by&#x3D;gcd(a,b) 原">
 <meta property="og:image" content="http://yoursite.com/2020/02/22/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/%E6%89%A9%E5%B1%95gcd.jpg">
 <meta property="article:published_time" content="2020-02-22T01:09:48.000Z">
 <meta property="article:modified_time" content="2020-02-27T01:22:15.029Z">
@@ -365,11 +365,8 @@
       
         <h2 id="欧几里得算法可以求a-b的最大公因数gcd-a-b"><a href="#欧几里得算法可以求a-b的最大公因数gcd-a-b" class="headerlink" title="欧几里得算法可以求a,b的最大公因数gcd(a,b)"></a>欧几里得算法可以求a,b的最大公因数gcd(a,b)</h2><p>原理：铺瓷砖问题，假设a &lt; b,先铺a边长的瓷砖，直到铺不下去，然后换一边接着铺，直到铺满，最小正方形边长即是最大公约数。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> b ? gcd(b,a % b) : a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="扩展欧几里得既可以求得最大公因数，还可以求得x-y"><a href="#扩展欧几里得既可以求得最大公因数，还可以求得x-y" class="headerlink" title="扩展欧几里得既可以求得最大公因数，还可以求得x,y"></a>扩展欧几里得既可以求得最大公因数，还可以求得x,y</h2><p>满足ax+by=gcd(a,b)</p>
-<p>原理：由<strong>贝祖定理</strong>给出，给定二个整数a、b，必存在整数x、y使得ax + by = gcd(a,b)<br><img src="%E6%89%A9%E5%B1%95gcd.jpg" alt=""></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcdExtended</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> *x, <span class="keyword">int</span> *y)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="comment">// Base Case  </span></span><br><span class="line">    <span class="keyword">if</span> (a == <span class="number">0</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        *x = <span class="number">0</span>;  </span><br><span class="line">        *y = <span class="number">1</span>;  </span><br><span class="line">        <span class="keyword">return</span> b;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">int</span> x1, y1; <span class="comment">// To store results of recursive call  </span></span><br><span class="line">    <span class="keyword">int</span> gcd = gcdExtended(b%a, a, &amp;x1, &amp;y1);  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// Update x and y using results of  </span></span><br><span class="line">    <span class="comment">// recursive call  </span></span><br><span class="line">    *x = y1 - (b/a) * x1;  </span><br><span class="line">    *y = x1;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> gcd;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>扩展欧几里得在gcd==1时特别有用，尤其在RSA加密算法中使用很多。</p>
+<p>原理：由<strong>贝祖定理</strong>给出，给定二个整数a、b，必存在整数x、y使得ax + by = gcd(a,b)<br><img src="扩展gcd.jpg" alt=""><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcdExtended</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> *x, <span class="keyword">int</span> *y)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="comment">// Base Case  </span></span><br><span class="line">    <span class="keyword">if</span> (a == <span class="number">0</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        *x = <span class="number">0</span>;  </span><br><span class="line">        *y = <span class="number">1</span>;  </span><br><span class="line">        <span class="keyword">return</span> b;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">int</span> x1, y1; <span class="comment">// To store results of recursive call  </span></span><br><span class="line">    <span class="keyword">int</span> gcd = gcdExtended(b%a, a, &amp;x1, &amp;y1);  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// Update x and y using results of  </span></span><br><span class="line">    <span class="comment">// recursive call  </span></span><br><span class="line">    *x = y1 - (b/a) * x1;  </span><br><span class="line">    *y = x1;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> gcd;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>扩展欧几里得在gcd==1时特别有用，尤其在RSA加密算法中使用很多。</p>
 
       
     </div>
@@ -717,6 +714,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

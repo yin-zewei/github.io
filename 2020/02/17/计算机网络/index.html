@@ -592,10 +592,8 @@
 </li>
 </ul>
 <h4 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h4><ul>
-<li><p>介绍：开放系统互连 (OSI)参考模型是由国际标准化组织 (ISO) 于1984年提出的分层网络体系结构模型，有7层，理论成功，实践失败</p>
-</li>
-<li><p>参考模型解释的通信过程<br><img src="OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B.png" alt=""></p>
-</li>
+<li>介绍：开放系统互连 (OSI)参考模型是由国际标准化组织 (ISO) 于1984年提出的分层网络体系结构模型，有7层，理论成功，实践失败</li>
+<li>参考模型解释的通信过程<br><img src="OSI参考模型.png" alt=""></li>
 <li><p>为什么要数据封装</p>
 <ul>
 <li>增加控制信息<ul>
@@ -612,8 +610,7 @@
 </li>
 <li><p>物理层功能：传输比特级的编码</p>
 </li>
-<li><p>数据链路层：</p>
-<ul>
+<li>数据链路层：<ul>
 <li>负责结点-结点（node-to-node）数据传输</li>
 <li>组帧（Framing）</li>
 <li>物理寻址（Physical addressing）<ul>
@@ -634,8 +631,7 @@
 </li>
 </ul>
 </li>
-<li><p>网络层功能</p>
-<ul>
+<li>网络层功能<ul>
 <li>负责源主机到目的主机数据分组（packet）交付<ul>
 <li>可能穿越多个网络</li>
 </ul>
@@ -652,12 +648,10 @@
 <li>分组转发</li>
 </ul>
 </li>
-<li><p>传输层功能：进程-进程的数据传输</p>
-</li>
-<li><p>应用层: 支持各种网络应用</p>
-</li>
+<li>传输层功能：进程-进程的数据传输</li>
+<li>应用层: 支持各种网络应用</li>
 </ul>
-<h2 id="网络应用"><a href="#网络应用" class="headerlink" title="网络应用"></a>网络应用</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><img src="%E5%BA%94%E7%94%A8%E5%B1%82%E5%A4%A7%E7%BA%B2.png" alt=""></p>
+<h2 id="网络应用"><a href="#网络应用" class="headerlink" title="网络应用"></a>网络应用</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><img src="应用层大纲.png" alt=""></p>
 <h3 id="网络应用的基本原理"><a href="#网络应用的基本原理" class="headerlink" title="网络应用的基本原理"></a>网络应用的基本原理</h3><h4 id="网络应用的体系结构"><a href="#网络应用的体系结构" class="headerlink" title="网络应用的体系结构"></a>网络应用的体系结构</h4><ul>
 <li>客户机/服务器结构(Client-Server, C/S)</li>
 <li>点对点结构(Peer-to-peer, P2P)</li>
@@ -1097,6 +1091,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

@@ -94,12 +94,12 @@
 
 
 
-<meta name="description" content="定义：ax+by&#x3D;c成立的充要条件是gcd(a,b)|c,其中，a,b,x,y,c都是整数令s&#x3D;gcd(a,b)充分条件的证明：$$\because a &#x3D; sp,b &#x3D; sq\\therefore s|ax,s|by\\therefore s|(ax+by)\\therefore s|c$$必要条件的证明：$$\because gcd(a,b)|c\\because a&#x3D;sp,b&#x3D;sq,c&#x3D;sk">
+<meta name="description" content="定义：ax+by&#x3D;c成立的充要条件是gcd(a,b)|c,其中，a,b,x,y,c都是整数令s&#x3D;gcd(a,b)充分条件的证明：  \because a &#x3D; sp,b &#x3D; sq\\   \therefore s|ax,s|by\\ \therefore s|(ax+by)\\ \therefore s|c必要条件的证明：  \because gcd(a,b)|c\\ \because a&#x3D;sp,b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="裴蜀定理">
 <meta property="og:url" content="http://yoursite.com/2020/05/09/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/index.html">
 <meta property="og:site_name" content="泽伟的博客">
-<meta property="og:description" content="定义：ax+by&#x3D;c成立的充要条件是gcd(a,b)|c,其中，a,b,x,y,c都是整数令s&#x3D;gcd(a,b)充分条件的证明：$$\because a &#x3D; sp,b &#x3D; sq\\therefore s|ax,s|by\\therefore s|(ax+by)\\therefore s|c$$必要条件的证明：$$\because gcd(a,b)|c\\because a&#x3D;sp,b&#x3D;sq,c&#x3D;sk">
+<meta property="og:description" content="定义：ax+by&#x3D;c成立的充要条件是gcd(a,b)|c,其中，a,b,x,y,c都是整数令s&#x3D;gcd(a,b)充分条件的证明：  \because a &#x3D; sp,b &#x3D; sq\\   \therefore s|ax,s|by\\ \therefore s|(ax+by)\\ \therefore s|c必要条件的证明：  \because gcd(a,b)|c\\ \because a&#x3D;sp,b">
 <meta property="article:published_time" content="2020-05-09T13:31:38.000Z">
 <meta property="article:modified_time" content="2020-05-09T14:25:38.881Z">
 <meta property="article:author" content="Lucas">
@@ -338,8 +338,18 @@
       
 
       
-        <p>定义：ax+by=c成立的充要条件是gcd(a,b)|c,其中，a,b,x,y,c都是整数<br>令s=gcd(a,b)<br>充分条件的证明：<br>$$<br>\because a = sp,b = sq\<br>\therefore s|ax,s|by\<br>\therefore s|(ax+by)\<br>\therefore s|c<br>$$<br>必要条件的证明：<br>$$<br>\because gcd(a,b)|c\<br>\because a=sp,b=sq,c=sk\<br>\therefore 易得spx+sqy=s(px+qy)\<br>\because p,q,x,y \in N \therefore px+qy \in N\<br>\therefore 必然存在x,y使得px+qy=k存在\<br>$$</p>
-
+        <p>定义：ax+by=c成立的充要条件是gcd(a,b)|c,其中，a,b,x,y,c都是整数<br>令s=gcd(a,b)<br>充分条件的证明：</p>
+<script type="math/tex; mode=display">
+\because a = sp,b = sq\\  
+\therefore s|ax,s|by\\
+\therefore s|(ax+by)\\
+\therefore s|c</script><p>必要条件的证明：</p>
+<script type="math/tex; mode=display">
+\because gcd(a,b)|c\\
+\because a=sp,b=sq,c=sk\\
+\therefore 易得spx+sqy=s(px+qy)\\
+\because p,q,x,y \in N \therefore px+qy \in N\\
+\therefore 必然存在x,y使得px+qy=k存在\\</script>
       
     </div>
     
@@ -651,6 +661,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

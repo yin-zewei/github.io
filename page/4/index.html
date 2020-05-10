@@ -645,48 +645,49 @@
       
         
           
-            <pre><code class="c++"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span>
-<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
-<span class="comment">//高精度加法</span>
-<span class="comment">//只能是两个正数相加</span>
-<span class="function"><span class="built_in">string</span> <span class="title">add</span><span class="params">(<span class="built_in">string</span> str1,<span class="built_in">string</span> str2)</span><span class="comment">//高精度加法</span></span>
-<span class="function"></span>{
-    <span class="built_in">string</span> str=<span class="string">""</span>;
-    <span class="keyword">int</span> len1=str1.length();
-    <span class="keyword">int</span> len2=str2.length();
-    <span class="comment">//前面补0，弄成长度相同</span>
-    <span class="keyword">if</span>(len1&lt;len2)
+            <p>```c++</p>
+<pre><code>    #include&lt;stdio.h&gt;
+    #include&lt;string&gt;
+    #include&lt;string.h&gt;
+    #include&lt;iostream&gt;
+    using namespace std;
+    //高精度加法
+    //只能是两个正数相加
+    string add(string str1,string str2)//高精度加法
     {
-        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len2-len1;i++)
-           str1=<span class="string">"0"</span>+str1;
+        string str=&quot;&quot;;
+        int len1=str1.length();
+        int len2=str2.length();
+        //前面补0，弄成长度相同
+        if(len1&lt;len2)
+        {
+            for(int i=1;i&lt;=len2-len1;i++)
+               str1=&quot;0&quot;+str1;
+        }
+        else
+        {
+            for(int i=1;i&lt;=len1-len2;i++)
+               str2=&quot;0&quot;+str2;
+        }
+        len1=str1.length();
+        int cf=0;
+        int temp;
+        for(int i=len1-1;i&gt;=0;i--)
+        {
+            temp=str1[i]-&#39;0&#39;+str2[i]-&#39;0&#39;+cf;
+            cf=temp/10;
+            temp%=10;
+            str=char(temp+&#39;0&#39;)+str;
+        }
+        if(cf!=0)  str=char(cf+&#39;0&#39;)+str;
+        return str;
     }
-    <span class="keyword">else</span>
-    {
-        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len1-len2;i++)
-           str2=<span class="string">"0"</span>+str2;
+    int main(){
+        string a,b;
+        cin &gt;&gt; a &gt;&gt; b;
+        cout &lt;&lt; add(a,b);
     }
-    len1=str1.length();
-    <span class="keyword">int</span> cf=<span class="number">0</span>;
-    <span class="keyword">int</span> temp;
-    <span class="keyword">for</span>(<span class="keyword">int</span> i=len1<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)
-    {
-        temp=str1[i]-<span class="string">'0'</span>+str2[i]-<span class="string">'0'</span>+cf;
-        cf=temp/<span class="number">10</span>;
-        temp%=<span class="number">10</span>;
-        str=<span class="keyword">char</span>(temp+<span class="string">'0'</span>)+str;
-    }
-    <span class="keyword">if</span>(cf!=<span class="number">0</span>)  str=<span class="keyword">char</span>(cf+<span class="string">'0'</span>)+str;
-    <span class="keyword">return</span> str;
-}
-<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{
-    <span class="built_in">string</span> a,b;
-    <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;
-    <span class="built_in">cout</span> &lt;&lt; add(a,b);
-}</code></pre>
-
+</code></pre>
           
         
       
@@ -830,96 +831,97 @@
             <p>原题链接：<a href="http://poj.org/problem?id=3669" target="_blank" rel="noopener">传送门</a></p>
 <p>题意：贝西在（0，0）点出发，路上有流星雨，给出流星雨的地点和降落时间，并且流星雨会摧毁该点及上下左右四个方块，每次贝西只能在1s内水平或垂直移动一个距离，求贝西是否移动到安全地点。</p>
 <p>思路：建一个数组map[][]为图的点，记录降落时间，mark[][]为是否访问过的点，bfs遍历即可。</p>
-<pre><code class="c++"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span>
-<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
-<span class="keyword">int</span> <span class="built_in">map</span>[<span class="number">310</span>][<span class="number">310</span>];
-<span class="keyword">int</span> dir[<span class="number">4</span>][<span class="number">2</span>]=&lt;!--￼<span class="number">0</span>--&gt;;
-<span class="keyword">int</span> mark[<span class="number">310</span>][<span class="number">310</span>];
-<span class="class"><span class="keyword">struct</span> <span class="title">node</span></span>
-<span class="class">{</span>
-    <span class="keyword">int</span> x,y,<span class="built_in">step</span>;
-}temp,a;
-<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;a,<span class="keyword">const</span> node &amp;b)
+<p>```c++</p>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+using namespace std;
+int map[310][310];
+int dir[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
+int mark[310][310];
+struct node
 {
-    <span class="keyword">return</span> a.<span class="built_in">step</span>&gt;b.<span class="built_in">step</span>;
+    int x,y,step;
+}temp,a;
+bool operator &lt; (const node &amp;a,const node &amp;b)
+{
+    return a.step&gt;b.step;
 } 
 
-<span class="function"><span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>
-<span class="function"></span>{
-    <span class="keyword">return</span> a&gt;b?b:a;
+int min(int a,int b)
+{
+    return a&gt;b?b:a;
 }
 
-<span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span></span>
-<span class="function"></span>{
-    <span class="keyword">int</span> i;
-    <span class="built_in">memset</span>(mark,<span class="number">0</span>,<span class="keyword">sizeof</span>(mark));
+void bfs()
+{
+    int i;
+    memset(mark,0,sizeof(mark));
     priority_queue&lt;node&gt;q;
-    a.x=<span class="number">0</span>;
-    a.y=<span class="number">0</span>;
-    a.<span class="built_in">step</span>=<span class="number">0</span>;
+    a.x=0;
+    a.y=0;
+    a.step=0;
     q.push(a);
-    mark[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;
-    <span class="keyword">while</span>(!q.empty())
+    mark[0][0]=1;
+    while(!q.empty())
     {
         a=q.top();
         q.pop();
-        <span class="keyword">if</span>(<span class="built_in">map</span>[a.x][a.y]==<span class="number">-1</span>)
+        if(map[a.x][a.y]==-1)
         {
-            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a.<span class="built_in">step</span>);
-            <span class="keyword">return</span> ;
+            printf(&quot;%d\n&quot;,a.step);
+            return ;
         }
-        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">4</span>;++i)
+        for(i=0;i&lt;4;++i)
         {
-            temp.x=a.x+dir[i][<span class="number">0</span>];
-            temp.y=a.y+dir[i][<span class="number">1</span>];
-            temp.<span class="built_in">step</span>=a.<span class="built_in">step</span>+<span class="number">1</span>;
-            <span class="keyword">if</span>(temp.x&gt;=<span class="number">0</span>&amp;&amp;temp.y&gt;=<span class="number">0</span>&amp;&amp;(<span class="built_in">map</span>[temp.x][temp.y]==<span class="number">-1</span>||<span class="built_in">map</span>[temp.x][temp.y]&gt;temp.<span class="built_in">step</span>))
+            temp.x=a.x+dir[i][0];
+            temp.y=a.y+dir[i][1];
+            temp.step=a.step+1;
+            if(temp.x&gt;=0&amp;&amp;temp.y&gt;=0&amp;&amp;(map[temp.x][temp.y]==-1||map[temp.x][temp.y]&gt;temp.step))
             {
-                <span class="keyword">if</span>(!mark[temp.x][temp.y])
+                if(!mark[temp.x][temp.y])
                 q.push(temp);
-                mark[temp.x][temp.y]=<span class="number">1</span>;
+                mark[temp.x][temp.y]=1;
             }
         }
     }
-    <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);
+    printf(&quot;-1\n&quot;);
 }
 
 
 
-<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>
-<span class="function"></span>{
-    <span class="keyword">int</span> n,x,y,t,i,j;
-    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)!=EOF)
+int main()
+{
+    int n,x,y,t,i,j;
+    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)
     {
-        <span class="built_in">memset</span>(<span class="built_in">map</span>,<span class="number">-1</span>,<span class="keyword">sizeof</span>(<span class="built_in">map</span>));
-        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;++i)
+        memset(map,-1,sizeof(map));
+        for(i=0;i&lt;n;++i)
         {
-            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;t);
-            <span class="keyword">if</span>(<span class="built_in">map</span>[x][y]==<span class="number">-1</span>)<span class="comment">//判断是否受过撞击时间的更新 </span>
-                <span class="built_in">map</span>[x][y]=t;
-            <span class="keyword">else</span>
-                <span class="built_in">map</span>[x][y]=<span class="built_in">min</span>(<span class="built_in">map</span>[x][y],t);<span class="comment">//受过撞击后的点不能再走了 </span>
-            <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">4</span>;++j)
+            scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;t);
+            if(map[x][y]==-1)//判断是否受过撞击时间的更新 
+                map[x][y]=t;
+            else
+                map[x][y]=min(map[x][y],t);//受过撞击后的点不能再走了 
+            for(j=0;j&lt;4;++j)
             {
-                <span class="keyword">int</span> nx=x+dir[j][<span class="number">0</span>];
-                <span class="keyword">int</span> ny=y+dir[j][<span class="number">1</span>];
-                <span class="keyword">if</span>(nx&gt;=<span class="number">0</span>&amp;&amp;ny&gt;=<span class="number">0</span>)
+                int nx=x+dir[j][0];
+                int ny=y+dir[j][1];
+                if(nx&gt;=0&amp;&amp;ny&gt;=0)
                 {
-                    <span class="keyword">if</span>(<span class="built_in">map</span>[nx][ny]==<span class="number">-1</span>)
-                        <span class="built_in">map</span>[nx][ny]=t;
-                    <span class="keyword">else</span>
-                        <span class="built_in">map</span>[nx][ny]=<span class="built_in">min</span>(t,<span class="built_in">map</span>[nx][ny]); 
+                    if(map[nx][ny]==-1)
+                        map[nx][ny]=t;
+                    else
+                        map[nx][ny]=min(t,map[nx][ny]); 
                 }
             }
         }
         bfs();
     }
-    <span class="keyword">return</span> <span class="number">0</span>;
+    return 0;
 
-}</code></pre>
-
+}
+</code></pre>
           
         
       
@@ -1202,8 +1204,8 @@
       
         
           
-            <p>当最短路不是求和的时候，而是求积，或许还会让你取模，因为数据太大，那么这个时候不能死带，而是要用log边权求和，但数据肯定有误差，所以应该记下来最短路径经过的点，然后返回即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e3</span>+<span class="number">5</span>,mod = <span class="number">9987</span>,inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; ipair;</span><br><span class="line"><span class="built_in">vector</span>&lt;ipair&gt;v[maxn];</span><br><span class="line">priority_queue&lt;ipair,<span class="built_in">vector</span>&lt;ipair&gt;,greater&lt;ipair&gt; &gt;pq;</span><br><span class="line"><span class="keyword">int</span> n,m,t1,t2,t3,vis[maxn],po[maxn][<span class="number">2</span>];</span><br><span class="line"><span class="keyword">double</span> dist[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;t1,&amp;t2,&amp;t3);</span><br><span class="line">        v[t1].push_back(make_pair(t2,t3));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)dist[i] = inf;</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    pq.push(make_pair(<span class="number">0</span>,<span class="number">1</span>));</span><br><span class="line">    po[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">-1</span>,po[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(!pq.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> u = pq.top().second;</span><br><span class="line">        <span class="keyword">int</span> weight = pq.top().first;</span><br><span class="line">        vis[u] = <span class="number">1</span>;</span><br><span class="line">        pq.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; v[u].<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">            ipair x = v[u][i];</span><br><span class="line">            <span class="keyword">if</span>(dist[x.first] &gt;  weight +<span class="built_in">log</span>(x.second))&#123;    </span><br><span class="line">                dist[x.first] =  weight +<span class="built_in">log</span>(x.second);</span><br><span class="line">                po[x.first][<span class="number">0</span>] = u,po[x.first][<span class="number">1</span>] = x.second;</span><br><span class="line">                <span class="keyword">if</span>(!vis[x.first])&#123;</span><br><span class="line">                    pq.push(make_pair(dist[x.first],x.first));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> poi = n,ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(poi &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">        ans *= po[poi][<span class="number">1</span>];</span><br><span class="line">        ans %= mod;</span><br><span class="line">        poi = po[poi][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>当最短路不是求和的时候，而是求积，或许还会让你取模，因为数据太大，那么这个时候不能死带，而是要用log边权求和，但数据肯定有误差，所以应该记下来最短路径经过的点，然后返回即可。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e3</span>+<span class="number">5</span>,mod = <span class="number">9987</span>,inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; ipair;</span><br><span class="line"><span class="built_in">vector</span>&lt;ipair&gt;v[maxn];</span><br><span class="line">priority_queue&lt;ipair,<span class="built_in">vector</span>&lt;ipair&gt;,greater&lt;ipair&gt; &gt;pq;</span><br><span class="line"><span class="keyword">int</span> n,m,t1,t2,t3,vis[maxn],po[maxn][<span class="number">2</span>];</span><br><span class="line"><span class="keyword">double</span> dist[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;t1,&amp;t2,&amp;t3);</span><br><span class="line">        v[t1].push_back(make_pair(t2,t3));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)dist[i] = inf;</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    pq.push(make_pair(<span class="number">0</span>,<span class="number">1</span>));</span><br><span class="line">    po[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">-1</span>,po[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(!pq.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> u = pq.top().second;</span><br><span class="line">        <span class="keyword">int</span> weight = pq.top().first;</span><br><span class="line">        vis[u] = <span class="number">1</span>;</span><br><span class="line">        pq.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; v[u].<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">            ipair x = v[u][i];</span><br><span class="line">            <span class="keyword">if</span>(dist[x.first] &gt;  weight +<span class="built_in">log</span>(x.second))&#123;    </span><br><span class="line">                dist[x.first] =  weight +<span class="built_in">log</span>(x.second);</span><br><span class="line">                po[x.first][<span class="number">0</span>] = u,po[x.first][<span class="number">1</span>] = x.second;</span><br><span class="line">                <span class="keyword">if</span>(!vis[x.first])&#123;</span><br><span class="line">                    pq.push(make_pair(dist[x.first],x.first));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> poi = n,ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(poi &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">        ans *= po[poi][<span class="number">1</span>];</span><br><span class="line">        ans %= mod;</span><br><span class="line">        poi = po[poi][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
           
         
       
@@ -1344,47 +1346,46 @@
       
         
           
-            <p>原题链接：<a href="https://www.luogu.com.cn/problem/P3371" target="_blank" rel="noopener">传送门</a></p>
-<pre><code class="c++"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span>
-<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
-<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; ipair; <span class="comment">//第一个是点，第二个是权重，</span>
-<span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">5e5</span> + <span class="number">5</span>,inf = <span class="number">0x3f3f3f3f</span>;
-<span class="built_in">vector</span>&lt;ipair&gt; adj[maxn];
-<span class="keyword">int</span> dist[maxn];
-<span class="keyword">int</span> n,m,s,t1,t2,t3;
-<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{
-    priority_queue&lt;ipair,<span class="built_in">vector</span>&lt;ipair&gt;,greater&lt;ipair&gt; &gt; pq;
-    <span class="built_in">fill</span>(dist,dist+maxn,inf);
-    <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;n,&amp;m,&amp;s);
-    dist[s] = <span class="number">0</span>;
-    pq.push(make_pair(<span class="number">0</span>,s));
-    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;++i){
-        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;t1,&amp;t2,&amp;t3);
+            <p>原题链接：<a href="https://www.luogu.com.cn/problem/P3371" target="_blank" rel="noopener">传送门</a><br>```c++</p>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+typedef pair&lt;int,int&gt; ipair; //第一个是点，第二个是权重，
+const int maxn = 5e5 + 5,inf = 0x3f3f3f3f;
+vector&lt;ipair&gt; adj[maxn];
+int dist[maxn];
+int n,m,s,t1,t2,t3;
+int main(){
+    priority_queue&lt;ipair,vector&lt;ipair&gt;,greater&lt;ipair&gt; &gt; pq;
+    fill(dist,dist+maxn,inf);
+    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;s);
+    dist[s] = 0;
+    pq.push(make_pair(0,s));
+    for(int i = 0;i &lt; m;++i){
+        scanf(&quot;%d %d %d&quot;,&amp;t1,&amp;t2,&amp;t3);
         adj[t1].push_back(make_pair(t2,t3));
     }
-    <span class="keyword">while</span>(!pq.empty()){
-        <span class="keyword">int</span> u = pq.top().second;
+    while(!pq.empty()){
+        int u = pq.top().second;
         pq.pop();
-        <span class="keyword">for</span>(<span class="keyword">auto</span> x:adj[u]){
-            <span class="keyword">int</span> v = x.first;
-            <span class="keyword">int</span> w = x.second;
-            <span class="keyword">if</span>(dist[v] &gt; dist[u] + w){
+        for(auto x:adj[u]){
+            int v = x.first;
+            int w = x.second;
+            if(dist[v] &gt; dist[u] + w){
                 dist[v] = dist[u] + w;
                 pq.push(make_pair(dist[v],v));
             }
         }
     }
-    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i){
-        <span class="keyword">if</span>(dist[i] != inf){
-        <span class="built_in">printf</span>(<span class="string">"%d "</span>,dist[i]);
-        }<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d "</span>,<span class="number">0x7fffffff</span>);
+    for(int i = 1;i &lt;= n;++i){
+        if(dist[i] != inf){
+        printf(&quot;%d &quot;,dist[i]);
+        }else printf(&quot;%d &quot;,0x7fffffff);
     }
-    <span class="keyword">return</span> <span class="number">0</span>;
+    return 0;
 }
 </code></pre>
-
           
         
       
@@ -1528,45 +1529,45 @@
             <p>原题链接：<a href="https://www.luogu.com.cn/problem/P1378" target="_blank" rel="noopener">传送门</a></p>
 <p>描述：n个油滴扩展，碰到边界或者其他油滴即停止</p>
 <p>思路：利用c++ STL自带的枚举函数，对所有点出现的顺序一一枚举，然后每次计算累加油滴的面积，即可AC</p>
-<p>代码：</p>
-<pre><code class="c++"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">define</span> PI 3.14159265358979323846</span>
-<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
-<span class="comment">//枚举N个点，对每个点累加面积</span>
-<span class="class"><span class="keyword">struct</span> <span class="title">point</span>{</span><span class="keyword">int</span> id,x,y;<span class="keyword">double</span> r;}p[<span class="number">6</span>];
-<span class="keyword">int</span> n,m,t[<span class="number">4</span>];
-<span class="keyword">double</span> ans = <span class="number">0</span>,all;
-<span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="built_in">point</span> p1,<span class="built_in">point</span> p2)</span></span>{<span class="keyword">return</span> p1.id &lt; p2.id;}
-<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{
-    <span class="comment">//初始化</span>
-    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);
-    <span class="built_in">scanf</span>(<span class="string">"%d %d %d %d"</span>,&amp;t[<span class="number">0</span>],&amp;t[<span class="number">1</span>],&amp;t[<span class="number">2</span>],&amp;t[<span class="number">3</span>]);
-    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;p[i].x,&amp;p[i].y),p[i].id = i;
-    all = <span class="built_in">abs</span>((t[<span class="number">0</span>] - t[<span class="number">2</span>]) * (t[<span class="number">1</span>] - t[<span class="number">3</span>]));
-    <span class="comment">//枚举</span>
-    <span class="keyword">do</span>{
-        <span class="comment">//一个个的计算</span>
-        <span class="keyword">double</span> st = <span class="number">0</span>,r = __INT_MAX__;
-        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i){
-            r = <span class="built_in">min</span>(<span class="built_in">min</span>(<span class="built_in">abs</span>(p[i].x - t[<span class="number">0</span>]),<span class="built_in">abs</span>(p[i].x - t[<span class="number">2</span>])),<span class="built_in">min</span>(<span class="built_in">abs</span>(p[i].y - t[<span class="number">1</span>]),<span class="built_in">abs</span>(p[i].y - t[<span class="number">3</span>])));<span class="comment">//获取由边界得到的当前点i的最小r</span>
-            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; i;++j){       <span class="comment">//更新r</span>
-                r = <span class="built_in">min</span>(r,<span class="built_in">sqrt</span>(<span class="built_in">pow</span>(p[i].x - p[j].x,<span class="number">2</span>) + <span class="built_in">pow</span>(p[i].y - p[j].y,<span class="number">2</span>)) - p[j].r);
-                <span class="keyword">if</span>(r &lt;= <span class="number">0</span>){r = <span class="number">0</span>;<span class="keyword">break</span>;}
+<p>代码：<br>```c++</p>
+<pre><code>    #include&lt;cstdio&gt;
+    #include&lt;algorithm&gt;
+    #include&lt;cctype&gt;
+    #include&lt;cstring&gt;
+    #include&lt;cmath&gt;
+    #define PI 3.14159265358979323846
+    using namespace std;
+    //枚举N个点，对每个点累加面积
+    struct point{int id,x,y;double r;}p[6];
+    int n,m,t[4];
+    double ans = 0,all;
+    bool cmp(point p1,point p2){return p1.id &lt; p2.id;}
+    int main(){
+        //初始化
+        scanf(&quot;%d&quot;,&amp;n);
+        scanf(&quot;%d %d %d %d&quot;,&amp;t[0],&amp;t[1],&amp;t[2],&amp;t[3]);
+        for(int i = 0;i &lt; n;++i)scanf(&quot;%d %d&quot;,&amp;p[i].x,&amp;p[i].y),p[i].id = i;
+        all = abs((t[0] - t[2]) * (t[1] - t[3]));
+        //枚举
+        do{
+            //一个个的计算
+            double st = 0,r = __INT_MAX__;
+            for(int i = 0;i &lt; n;++i){
+                r = min(min(abs(p[i].x - t[0]),abs(p[i].x - t[2])),min(abs(p[i].y - t[1]),abs(p[i].y - t[3])));//获取由边界得到的当前点i的最小r
+                for(int j = 0;j &lt; i;++j){       //更新r
+                    r = min(r,sqrt(pow(p[i].x - p[j].x,2) + pow(p[i].y - p[j].y,2)) - p[j].r);
+                    if(r &lt;= 0){r = 0;break;}
+                }
+                p[i].r = r;
+                st += r*r;
             }
-            p[i].r = r;
-            st += r*r;
-        }
-        ans = <span class="built_in">max</span>(ans,st);
-    }<span class="keyword">while</span>(next_permutation(p,p+n,cmp));
-    ans = ans * PI;
-    <span class="built_in">printf</span>(<span class="string">"%d"</span>,(<span class="keyword">int</span>)(all - ans + <span class="number">0.5</span>));
-    <span class="keyword">return</span> <span class="number">0</span>;
-}  </code></pre>
-
+            ans = max(ans,st);
+        }while(next_permutation(p,p+n,cmp));
+        ans = ans * PI;
+        printf(&quot;%d&quot;,(int)(all - ans + 0.5));
+        return 0;
+    }  
+</code></pre>
           
         
       
@@ -1707,22 +1708,22 @@
       
         
           
-            <p>台阶问题是指到达第n个台阶，每部最多走k步的问题，如果dfs必然超标，只能dp<br>规律发现，k个以内的台阶，每次都是上面一步的两倍<br>k个以外的台阶，每次都是上次的两倍减去f[i-k-1]</p>
-<pre><code class="c++"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span>
-<span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">100003</span>;
-<span class="keyword">int</span> ans = <span class="number">0</span>,f[<span class="number">100001</span>],n,k;
-<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{
-    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);
-    <span class="built_in">std</span>::<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;
-    f[<span class="number">0</span>] = f[<span class="number">1</span>]  = <span class="number">1</span>;
-    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i &lt;= n;++i){
-        <span class="keyword">if</span>(i &lt;= k)f[i] = <span class="number">2</span>*f[i - <span class="number">1</span>] %mod;
-        <span class="keyword">else</span> f[i] = (<span class="number">2</span>*f[i<span class="number">-1</span>]-f[i-k<span class="number">-1</span>])%mod;
+            <p>台阶问题是指到达第n个台阶，每部最多走k步的问题，如果dfs必然超标，只能dp<br>规律发现，k个以内的台阶，每次都是上面一步的两倍<br>k个以外的台阶，每次都是上次的两倍减去f[i-k-1]<br>```c++</p>
+<pre><code>    #include&lt;iostream&gt;
+    const int mod = 100003;
+    int ans = 0,f[100001],n,k;
+    int main(){
+        std::ios::sync_with_stdio(false);
+        std::cin&gt;&gt;n&gt;&gt;k;
+        f[0] = f[1]  = 1;
+        for(int i = 2;i &lt;= n;++i){
+            if(i &lt;= k)f[i] = 2*f[i - 1] %mod;
+            else f[i] = (2*f[i-1]-f[i-k-1])%mod;
+        }
+        std::cout &lt;&lt; (f[n]+mod)%mod &lt;&lt; std::endl;
+        return 0;
     }
-    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; (f[n]+mod)%mod &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;
-    <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
-
+</code></pre>
           
         
       

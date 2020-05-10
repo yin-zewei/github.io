@@ -370,8 +370,11 @@
 </li>
 </ul>
 <h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p>对于素数p，对任意整数都有<br>x^p=x(mod p),其中，如果x无法被p整除(即x%p!=0)<br>得到pow(x,p-1)=1(mod p)<br>两边同时*pow(a,-1)<br>得到pow(a,-1)=pow(a,m-2) (mod m)<br>然后使用快速幂算法得到a的逆</p>
-<h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>欧拉函数φ(n) ：表示小于等于 n 的正整数中与 n 互质的数的个数。<br>性质：<br>    * 积性函数，φ(mn)=φ(n)φ(m)<br>    * 推论：φ(2n)=φ(n)<br>    * 求解：φ(n)=n*(1-pi)(i=1-&gt;k,pi为n的因数)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Euler</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> re = n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i * i &lt;= n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">			re=(re-re/i);</span><br><span class="line">			<span class="keyword">while</span>(n%i==<span class="number">0</span>)</span><br><span class="line">				n/=i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(n&gt;<span class="number">1</span>)re = re-re/n;</span><br><span class="line">	<span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>欧拉函数φ(n) ：表示小于等于 n 的正整数中与 n 互质的数的个数。<br>性质：</p>
+<pre><code>* 积性函数，φ(mn)=φ(n)φ(m)
+* 推论：φ(2n)=φ(n)
+* 求解：φ(n)=n\*(1-pi)(i=1-&gt;k,pi为n的因数)
+</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Euler</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> re = n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i * i &lt;= n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">			re=(re-re/i);</span><br><span class="line">			<span class="keyword">while</span>(n%i==<span class="number">0</span>)</span><br><span class="line">				n/=i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(n&gt;<span class="number">1</span>)re = re-re/n;</span><br><span class="line">	<span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>欧拉定理：a 与 m 互质时，pow(a,φ(m))=1(mod m)<br>扩展欧拉定理：无需a,m互质，b &gt;= φ(m)时，pow(a,b)=pow(a,b % φ(m)+φ(m)) % m</p>
 
       
@@ -720,6 +723,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

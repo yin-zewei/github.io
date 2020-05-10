@@ -364,11 +364,8 @@
           
             <h2 id="欧几里得算法可以求a-b的最大公因数gcd-a-b"><a href="#欧几里得算法可以求a-b的最大公因数gcd-a-b" class="headerlink" title="欧几里得算法可以求a,b的最大公因数gcd(a,b)"></a>欧几里得算法可以求a,b的最大公因数gcd(a,b)</h2><p>原理：铺瓷砖问题，假设a &lt; b,先铺a边长的瓷砖，直到铺不下去，然后换一边接着铺，直到铺满，最小正方形边长即是最大公约数。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> b ? gcd(b,a % b) : a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="扩展欧几里得既可以求得最大公因数，还可以求得x-y"><a href="#扩展欧几里得既可以求得最大公因数，还可以求得x-y" class="headerlink" title="扩展欧几里得既可以求得最大公因数，还可以求得x,y"></a>扩展欧几里得既可以求得最大公因数，还可以求得x,y</h2><p>满足ax+by=gcd(a,b)</p>
-<p>原理：由<strong>贝祖定理</strong>给出，给定二个整数a、b，必存在整数x、y使得ax + by = gcd(a,b)<br><img src="%E6%89%A9%E5%B1%95gcd.jpg" alt=""></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcdExtended</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> *x, <span class="keyword">int</span> *y)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="comment">// Base Case  </span></span><br><span class="line">    <span class="keyword">if</span> (a == <span class="number">0</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        *x = <span class="number">0</span>;  </span><br><span class="line">        *y = <span class="number">1</span>;  </span><br><span class="line">        <span class="keyword">return</span> b;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">int</span> x1, y1; <span class="comment">// To store results of recursive call  </span></span><br><span class="line">    <span class="keyword">int</span> gcd = gcdExtended(b%a, a, &amp;x1, &amp;y1);  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// Update x and y using results of  </span></span><br><span class="line">    <span class="comment">// recursive call  </span></span><br><span class="line">    *x = y1 - (b/a) * x1;  </span><br><span class="line">    *y = x1;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> gcd;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>扩展欧几里得在gcd==1时特别有用，尤其在RSA加密算法中使用很多。</p>
+<p>原理：由<strong>贝祖定理</strong>给出，给定二个整数a、b，必存在整数x、y使得ax + by = gcd(a,b)<br><img src="扩展gcd.jpg" alt=""><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcdExtended</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> *x, <span class="keyword">int</span> *y)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="comment">// Base Case  </span></span><br><span class="line">    <span class="keyword">if</span> (a == <span class="number">0</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        *x = <span class="number">0</span>;  </span><br><span class="line">        *y = <span class="number">1</span>;  </span><br><span class="line">        <span class="keyword">return</span> b;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">int</span> x1, y1; <span class="comment">// To store results of recursive call  </span></span><br><span class="line">    <span class="keyword">int</span> gcd = gcdExtended(b%a, a, &amp;x1, &amp;y1);  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// Update x and y using results of  </span></span><br><span class="line">    <span class="comment">// recursive call  </span></span><br><span class="line">    *x = y1 - (b/a) * x1;  </span><br><span class="line">    *y = x1;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> gcd;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>扩展欧几里得在gcd==1时特别有用，尤其在RSA加密算法中使用很多。</p>
 
           
         
@@ -659,7 +656,7 @@
           
             <h2 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h2><h3 id="计算机的概念与类型"><a href="#计算机的概念与类型" class="headerlink" title="计算机的概念与类型"></a>计算机的概念与类型</h3><ul>
 <li>定义：是一种可以存储程序，并且通过执行程序指令，可以自动、高速、精确地对数字信息进行各种复杂处理，然后输出运算结果的高科技智能电子设备。</li>
-<li>五个逻辑模块：输入设备，存储器，输出设备，运算器，控制器<br><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%90%E8%A1%8C%E9%80%BB%E8%BE%91%E5%9B%BE.png" alt=""></li>
+<li>五个逻辑模块：输入设备，存储器，输出设备，运算器，控制器<br><img src="计算机运行逻辑图.png" alt=""></li>
 <li>信息的数字化表示<ul>
 <li>在计算机中用数字代码表示各种信息</li>
 <li>在物理机制上用数字信号表示数字代码</li>
@@ -969,13 +966,9 @@
         
           
             <h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><p><strong>问题描述：</strong>有n件物品和容量为m的背包，给出i件物品的重量以及价值，求解让装入背包的物品重量不超过背包容量且价值最大。</p>
-<p><strong>无优化思路</strong><br>f[i][j]为前i件物品在j的背包的最大价值</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">0</span>;c&lt;=m;c++)</span><br><span class="line">    &#123;</span><br><span class="line">        f[i][c]=f[i<span class="number">-1</span>][c];</span><br><span class="line">        <span class="keyword">if</span>(c&gt;=w[i])</span><br><span class="line">        f[i][c]=<span class="built_in">max</span>(f[i][c],f[i<span class="number">-1</span>][c-w[i]]+v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>一维数组优化</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> c=m;c&gt;=w[i];c--)</span><br><span class="line">    <span class="comment">//之所以要从后面开始遍历，是因为更新f[c]要用到f[c-w[i]]</span></span><br><span class="line">    <span class="comment">//也就是说，如果从前面开始遍历，可能后面用到f[c-w[i]]的时候，也用到了</span></span><br><span class="line">   	<span class="comment">//更新后的值，也就是说失去了更新的机会，造成误差。</span></span><br><span class="line">    &#123;</span><br><span class="line">        f[c]=<span class="built_in">max</span>(f[c],f[c-w[i]]+v[i]);	</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>无优化思路</strong><br>f[i][j]为前i件物品在j的背包的最大价值<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">0</span>;c&lt;=m;c++)</span><br><span class="line">    &#123;</span><br><span class="line">        f[i][c]=f[i<span class="number">-1</span>][c];</span><br><span class="line">        <span class="keyword">if</span>(c&gt;=w[i])</span><br><span class="line">        f[i][c]=<span class="built_in">max</span>(f[i][c],f[i<span class="number">-1</span>][c-w[i]]+v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><strong>一维数组优化</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> c=m;c&gt;=w[i];c--)</span><br><span class="line">    <span class="comment">//之所以要从后面开始遍历，是因为更新f[c]要用到f[c-w[i]]</span></span><br><span class="line">    <span class="comment">//也就是说，如果从前面开始遍历，可能后面用到f[c-w[i]]的时候，也用到了</span></span><br><span class="line">   	<span class="comment">//更新后的值，也就是说失去了更新的机会，造成误差。</span></span><br><span class="line">    &#123;</span><br><span class="line">        f[c]=<span class="built_in">max</span>(f[c],f[c-w[i]]+v[i]);	</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>与0-1背包不同，完全背包代表每种物品可以取无限次，但也是0-1背包的变种,正好是一维数组优化的正序。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=w[i];j&lt;=m;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        f[j]=<span class="built_in">max</span>(f[j],f[j-w[i]]+v[j]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a[i]为第i件物品的数量</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(w[i]*a[i]&gt;m)<span class="comment">//完全背包的情形，可以无限取用</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">0</span>;c&lt;=m;c++)</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="keyword">if</span>(c&gt;=w[i])</span><br><span class="line">        f[c]=<span class="built_in">max</span>(f[c],f[c-w[i]]+v[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">         k=<span class="number">1</span>;amount=a[i];</span><br><span class="line">         <span class="keyword">while</span>(k&lt;amount)</span><br><span class="line">         &#123;</span><br><span class="line">             <span class="keyword">for</span>(<span class="keyword">int</span> c=k*w[i];c&gt;=<span class="number">0</span>;c--)</span><br><span class="line">             &#123;</span><br><span class="line">                 <span class="keyword">if</span>(c&gt;=w[i])</span><br><span class="line">                 f[c]=<span class="built_in">max</span>(f[c],f[c-w[i]]+k*v[i]);</span><br><span class="line">             &#125;</span><br><span class="line">             amount-=k;</span><br><span class="line">             k&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">         &#125;  </span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">int</span> c=amount*w[i];c&gt;=<span class="number">0</span>;c--)</span><br><span class="line">         &#123;</span><br><span class="line">             f[c]=<span class="built_in">max</span>(f[c],f[c-w[i]]+amount*v[i]);</span><br><span class="line">         &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="有依赖的背包问题"><a href="#有依赖的背包问题" class="headerlink" title="有依赖的背包问题"></a>有依赖的背包问题</h2><p>转变为0-1背包问题即可解决。</p>
 
@@ -1547,7 +1540,7 @@
 </li>
 </ul>
 </li>
-<li>完整的七状态进程模型<br>  <img src="%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81.png" alt=""></li>
+<li>完整的七状态进程模型<br>  <img src="进程状态.png" alt=""></li>
 <li>为什么要有“挂起”状态?<ul>
 <li>进程的不断创建，系统资源已不能满足进程运行的要求</li>
 <li>某些进程挂起，对换到磁盘镜像区中，暂时不参与进程调度，平滑系统操作的负荷</li>
@@ -1597,7 +1590,7 @@
 </ul>
 <h4 id="进程要素"><a href="#进程要素" class="headerlink" title="进程要素"></a>进程要素</h4><ul>
 <li>组成<ul>
-<li>进程控制块<br>  <img src="%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97.png" alt=""></li>
+<li>进程控制块<br>  <img src="进程控制块.png" alt=""></li>
 <li>进程程序</li>
 <li>进程数据</li>
 <li>栈</li>
@@ -1696,7 +1689,7 @@
 </li>
 </ul>
 <h3 id="处理器调度"><a href="#处理器调度" class="headerlink" title="处理器调度"></a>处理器调度</h3><h4 id="处理器调度的层次"><a href="#处理器调度的层次" class="headerlink" title="处理器调度的层次"></a>处理器调度的层次</h4><ul>
-<li>调度层次<br><img src="%E8%B0%83%E5%BA%A6%E5%B1%82%E6%AC%A1.png" alt=""></li>
+<li>调度层次<br><img src="调度层次.png" alt=""></li>
 <li>作业与进程<ul>
 <li>作业是用户向计算机提交的任务实体，而进程则是完成任务的执行实体，是系统分配资源的基本单位</li>
 <li>一个作业可由多个进程组成，且必须至少由一个进程组成，反过来不成立</li>
@@ -1711,8 +1704,8 @@
 </ul>
 </li>
 <li>性能衡量主要指标<ul>
-<li>作业平均周转时间<br><img src="%E4%BD%9C%E4%B8%9A%E5%B9%B3%E5%9D%87%E5%91%A8%E8%BD%AC%E6%97%B6%E9%97%B4.png" alt=""></li>
-<li>平均带权周转时间<br><img src="%E5%B9%B3%E5%9D%87%E5%B8%A6%E6%9D%83%E5%91%A8%E8%BD%AC%E6%97%B6%E9%97%B4.png" alt=""></li>
+<li>作业平均周转时间<br><img src="作业平均周转时间.png" alt=""></li>
+<li>平均带权周转时间<br><img src="平均带权周转时间.png" alt=""></li>
 </ul>
 </li>
 <li>典型算法<ul>
@@ -1783,12 +1776,12 @@
 </li>
 </ul>
 <h4 id="进程同步与进程互斥"><a href="#进程同步与进程互斥" class="headerlink" title="进程同步与进程互斥"></a>进程同步与进程互斥</h4><ul>
-<li>进程的同步（直接作用）<br>  –根据一定的时序关系合作完成一项任务<ul>
+<li>进程的同步（直接作用）<br>  —根据一定的时序关系合作完成一项任务<ul>
 <li>并发进程因直接制约而互相等待，彼此相互发送消息进行合作，使得各进程按一定的速度执行</li>
 <li>进程间的相互联系是有意识的安排的，直接作用只发生在相交进程间</li>
 </ul>
 </li>
-<li>进程互斥（间接作用）<br>  –各进程竞争使用临界资源<ul>
+<li>进程互斥（间接作用）<br>  —各进程竞争使用临界资源<ul>
 <li>临界资源：一次只允许一个进程使用的系统资源</li>
 <li>进程间通过中介发生联系，是无意识安排的</li>
 <li>可发生在相交进程间，也可发生在无关进程间</li>
@@ -2127,7 +2120,7 @@
             <h2 id="嵌入式系统概述"><a href="#嵌入式系统概述" class="headerlink" title="嵌入式系统概述"></a>嵌入式系统概述</h2><ul>
 <li>定义：应用为中心，以计算机技术为基础，软硬件可按照需求进行定制，从而满足 特 定 功能、性能、成本、体积和功耗等设计指标。</li>
 </ul>
-<h3 id="体系架构"><a href="#体系架构" class="headerlink" title="体系架构"></a>体系架构</h3><p><img src="%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%9E%B6%E6%9E%84.png" alt=""><br><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84.png" alt=""></p>
+<h3 id="体系架构"><a href="#体系架构" class="headerlink" title="体系架构"></a>体系架构</h3><p><img src="嵌入式架构.png" alt=""><br><img src="计算机体系架构.png" alt=""></p>
 <h3 id="嵌入式微处理器"><a href="#嵌入式微处理器" class="headerlink" title="嵌入式微处理器"></a>嵌入式微处理器</h3><p>• 嵌入式硬件系统的核心是嵌入式处理器，它的选择取决于具体应用的领域，处理能力和接口要求，以及成本、功耗等限制。<br>• 嵌入式处理器可分为嵌入式微控制器（EmbeddedMicro Controller Unit，EMCU）和高度集成的嵌入式片上系统（System On Chip，SOC）。</p>
 <h3 id="通用处理器与微控制器的不同"><a href="#通用处理器与微控制器的不同" class="headerlink" title="通用处理器与微控制器的不同"></a>通用处理器与微控制器的不同</h3><ul>
 <li>微处理器更多指处理器的部分，即CPU，而微控制器还包含了内存，存储单元（flash),定时器，DMA，和其他一些接口，可以视为一个片上计算机，也被称为单片机。</li>
@@ -2504,10 +2497,8 @@
 </li>
 </ul>
 <h4 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h4><ul>
-<li><p>介绍：开放系统互连 (OSI)参考模型是由国际标准化组织 (ISO) 于1984年提出的分层网络体系结构模型，有7层，理论成功，实践失败</p>
-</li>
-<li><p>参考模型解释的通信过程<br><img src="OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B.png" alt=""></p>
-</li>
+<li>介绍：开放系统互连 (OSI)参考模型是由国际标准化组织 (ISO) 于1984年提出的分层网络体系结构模型，有7层，理论成功，实践失败</li>
+<li>参考模型解释的通信过程<br><img src="OSI参考模型.png" alt=""></li>
 <li><p>为什么要数据封装</p>
 <ul>
 <li>增加控制信息<ul>
@@ -2524,8 +2515,7 @@
 </li>
 <li><p>物理层功能：传输比特级的编码</p>
 </li>
-<li><p>数据链路层：</p>
-<ul>
+<li>数据链路层：<ul>
 <li>负责结点-结点（node-to-node）数据传输</li>
 <li>组帧（Framing）</li>
 <li>物理寻址（Physical addressing）<ul>
@@ -2546,8 +2536,7 @@
 </li>
 </ul>
 </li>
-<li><p>网络层功能</p>
-<ul>
+<li>网络层功能<ul>
 <li>负责源主机到目的主机数据分组（packet）交付<ul>
 <li>可能穿越多个网络</li>
 </ul>
@@ -2564,12 +2553,10 @@
 <li>分组转发</li>
 </ul>
 </li>
-<li><p>传输层功能：进程-进程的数据传输</p>
-</li>
-<li><p>应用层: 支持各种网络应用</p>
-</li>
+<li>传输层功能：进程-进程的数据传输</li>
+<li>应用层: 支持各种网络应用</li>
 </ul>
-<h2 id="网络应用"><a href="#网络应用" class="headerlink" title="网络应用"></a>网络应用</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><img src="%E5%BA%94%E7%94%A8%E5%B1%82%E5%A4%A7%E7%BA%B2.png" alt=""></p>
+<h2 id="网络应用"><a href="#网络应用" class="headerlink" title="网络应用"></a>网络应用</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><img src="应用层大纲.png" alt=""></p>
 <h3 id="网络应用的基本原理"><a href="#网络应用的基本原理" class="headerlink" title="网络应用的基本原理"></a>网络应用的基本原理</h3><h4 id="网络应用的体系结构"><a href="#网络应用的体系结构" class="headerlink" title="网络应用的体系结构"></a>网络应用的体系结构</h4><ul>
 <li>客户机/服务器结构(Client-Server, C/S)</li>
 <li>点对点结构(Peer-to-peer, P2P)</li>

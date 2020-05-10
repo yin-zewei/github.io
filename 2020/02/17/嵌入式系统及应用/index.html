@@ -367,7 +367,7 @@
         <h2 id="嵌入式系统概述"><a href="#嵌入式系统概述" class="headerlink" title="嵌入式系统概述"></a>嵌入式系统概述</h2><ul>
 <li>定义：应用为中心，以计算机技术为基础，软硬件可按照需求进行定制，从而满足 特 定 功能、性能、成本、体积和功耗等设计指标。</li>
 </ul>
-<h3 id="体系架构"><a href="#体系架构" class="headerlink" title="体系架构"></a>体系架构</h3><p><img src="%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%9E%B6%E6%9E%84.png" alt=""><br><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84.png" alt=""></p>
+<h3 id="体系架构"><a href="#体系架构" class="headerlink" title="体系架构"></a>体系架构</h3><p><img src="嵌入式架构.png" alt=""><br><img src="计算机体系架构.png" alt=""></p>
 <h3 id="嵌入式微处理器"><a href="#嵌入式微处理器" class="headerlink" title="嵌入式微处理器"></a>嵌入式微处理器</h3><p>• 嵌入式硬件系统的核心是嵌入式处理器，它的选择取决于具体应用的领域，处理能力和接口要求，以及成本、功耗等限制。<br>• 嵌入式处理器可分为嵌入式微控制器（EmbeddedMicro Controller Unit，EMCU）和高度集成的嵌入式片上系统（System On Chip，SOC）。</p>
 <h3 id="通用处理器与微控制器的不同"><a href="#通用处理器与微控制器的不同" class="headerlink" title="通用处理器与微控制器的不同"></a>通用处理器与微控制器的不同</h3><ul>
 <li>微处理器更多指处理器的部分，即CPU，而微控制器还包含了内存，存储单元（flash),定时器，DMA，和其他一些接口，可以视为一个片上计算机，也被称为单片机。</li>
@@ -722,6 +722,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
