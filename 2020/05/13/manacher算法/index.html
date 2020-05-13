@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Algorithm,算法" />
+  <meta name="keywords" content="字符串," />
 
 
 
@@ -94,15 +94,16 @@
 
 
 
-<meta name="description" content="root(a):找到a点的根joint(a,b):联合a、b点 双重优化  整合了树的高度 联合时把小树连到大树上1234567891011121314151617int root(int a)&amp;#123;    while(id[a] !&#x3D; a)&amp;#123;        id[a] &#x3D; id[id[a]];        a &#x3D; id[a];    &amp;#125;    return a;&amp;#1">
+<meta name="description" content="介绍：manacher俗称马拉车算法，可以在O(n)时间内解决求n长度的字符串每个位置的最长回文串长度 思路： 先预处理插入特殊字符，使得所有奇偶串都成为奇串 再根据回文串对称的特性，假设i再mid位的回文串里面，根据对称特性可以减少运算    123456789101112131415161718192021222324252627282930313233343536#include &lt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="并查集">
-<meta property="og:url" content="http://yoursite.com/2020/04/27/%E5%B9%B6%E6%9F%A5%E9%9B%86/index.html">
+<meta property="og:title" content="manacher算法">
+<meta property="og:url" content="http://yoursite.com/2020/05/13/manacher%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="泽伟的博客">
-<meta property="og:description" content="root(a):找到a点的根joint(a,b):联合a、b点 双重优化  整合了树的高度 联合时把小树连到大树上1234567891011121314151617int root(int a)&amp;#123;    while(id[a] !&#x3D; a)&amp;#123;        id[a] &#x3D; id[id[a]];        a &#x3D; id[a];    &amp;#125;    return a;&amp;#1">
-<meta property="article:published_time" content="2020-04-26T22:47:28.000Z">
-<meta property="article:modified_time" content="2020-05-02T11:51:13.398Z">
+<meta property="og:description" content="介绍：manacher俗称马拉车算法，可以在O(n)时间内解决求n长度的字符串每个位置的最长回文串长度 思路： 先预处理插入特殊字符，使得所有奇偶串都成为奇串 再根据回文串对称的特性，假设i再mid位的回文串里面，根据对称特性可以减少运算    123456789101112131415161718192021222324252627282930313233343536#include &lt;">
+<meta property="article:published_time" content="2020-05-13T09:22:38.000Z">
+<meta property="article:modified_time" content="2020-05-13T09:30:21.245Z">
 <meta property="article:author" content="Lucas">
+<meta property="article:tag" content="字符串">
 <meta name="twitter:card" content="summary">
 
 
@@ -132,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/27/并查集/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/13/manacher算法/"/>
 
 
 
 
 
-  <title>并查集 | 泽伟的博客</title>
+  <title>manacher算法 | 泽伟的博客</title>
   
 
 
@@ -271,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/27/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/13/manacher%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lucas">
@@ -288,7 +289,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">并查集</h2>
+          <h2 class="post-title" itemprop="name headline">manacher算法</h2>
         
 
         <div class="post-meta">
@@ -300,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-27T06:47:28+08:00">
-                2020-04-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-13T17:22:38+08:00">
+                2020-05-13
               </time>
             
 
@@ -310,6 +311,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -338,12 +361,15 @@
       
 
       
-        <p><strong>root(a):找到a点的根</strong><br><strong>joint(a,b):联合a、b点</strong></p>
-<p><strong>双重优化</strong></p>
-<ul>
-<li>整合了树的高度</li>
-<li>联合时把小树连到大树上<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">root</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(id[a] != a)&#123;</span><br><span class="line">        id[a] = id[id[a]];</span><br><span class="line">        a = id[a];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">joint</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ra = root(a),rb = root(b);</span><br><span class="line">    <span class="keyword">if</span>(sz[ra]&lt;sz[rb])&#123;</span><br><span class="line">        id[ra] = rb;</span><br><span class="line">        sz[rb] += sz[ra];</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        id[rb] = ra;</span><br><span class="line">        sz[ra] += sz[rb];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+        <ul>
+<li>介绍：manacher俗称马拉车算法，可以在O(n)时间内解决求n长度的字符串每个位置的最长回文串长度</li>
+<li>思路：<ul>
+<li>先预处理插入特殊字符，使得所有奇偶串都成为奇串</li>
+<li>再根据回文串对称的特性，假设i再mid位的回文串里面，根据对称特性可以减少运算</li>
 </ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MIN(A,B)(A&lt;B?A:B)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">32000005</span>;</span><br><span class="line"><span class="keyword">char</span> s[N],st[N];</span><br><span class="line"><span class="keyword">int</span> p[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,st);</span><br><span class="line">    s[<span class="number">0</span>]=<span class="string">'~'</span>;</span><br><span class="line">    reg <span class="keyword">int</span> i = <span class="number">0</span>,j = <span class="number">1</span>,len = <span class="built_in">strlen</span>(st);</span><br><span class="line">    <span class="keyword">for</span>(;i &lt; len;++i)&#123;</span><br><span class="line">        s[j++]=<span class="string">'#'</span>;</span><br><span class="line">        s[j++]=st[i];</span><br><span class="line">    &#125;</span><br><span class="line">    s[j++]=<span class="string">'#'</span>;</span><br><span class="line">    s[j]=<span class="string">'$'</span>;</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//freopen("in.txt","r",stdin);</span></span><br><span class="line">    reg <span class="keyword">int</span> len = init(),r = <span class="number">1</span>,mid = <span class="number">1</span>,ans = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(reg <span class="keyword">int</span> i = <span class="number">1</span>;i &lt; len;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; r)p[i] = MIN(p[mid*<span class="number">2</span>-i],r-i+<span class="number">1</span>);  <span class="comment">//如果小于已知最长回文串的右端点</span></span><br><span class="line">        <span class="keyword">else</span> p[i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(s[i+p[i]]==s[i-p[i]])++p[i];  <span class="comment">//笨便利，由这个知道是O(n)复杂度</span></span><br><span class="line">        <span class="keyword">if</span>(r &lt; p[i]+i<span class="number">-1</span>)&#123;               <span class="comment">//更新右端点</span></span><br><span class="line">            r = p[i]+i<span class="number">-1</span>;</span><br><span class="line">            mid = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(ans &lt; p[i])ans = p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -359,6 +385,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"># 字符串</a>
+          
+        </div>
+      
 
       
       
@@ -368,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/26/%E6%A0%91%E5%BD%A2dp%E6%A8%A1%E7%89%88/" rel="next" title="树形dp模版">
-                <i class="fa fa-chevron-left"></i> 树形dp模版
+              <a href="/2020/05/09/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/" rel="next" title="裴蜀定理">
+                <i class="fa fa-chevron-left"></i> 裴蜀定理
               </a>
             
           </div>
@@ -377,10 +409,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/27/%E5%90%84%E7%A7%8D%E5%B8%B8%E6%95%B0%E4%BC%98%E5%8C%96/" rel="prev" title="各种常数优化">
-                各种常数优化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
