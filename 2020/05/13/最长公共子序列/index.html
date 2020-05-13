@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="差分," />
+  <meta name="keywords" content="字符串,动态规划," />
 
 
 
@@ -94,16 +94,17 @@
 
 
 
-<meta name="description" content="差分就是类似于d &#x3D; a[i] - a[i-1]可以解决区间和的问题传送门12345678910111213141516171819202122232425262728293031#include&lt;bits&#x2F;stdc++.h&gt;#define md(a,b) make_pair(a,b)#define reg register#define rep(x, a, b) for (reg i">
+<meta name="description" content="介绍：求字符串s1,s2的公共子序列(LIS) 思路： dp[i][j],s1前i个的和s2的前j个的公共最长序列 所以遍历一次，复杂度O(nm),详情见代码    123456789101112131415161718192021222324252627282930#include &lt;bits&#x2F;stdc++.h&gt;#define reg register#define rep(x,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="差分">
-<meta property="og:url" content="http://yoursite.com/2020/05/07/%E5%B7%AE%E5%88%86/index.html">
+<meta property="og:title" content="最长公共子序列">
+<meta property="og:url" content="http://yoursite.com/2020/05/13/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/index.html">
 <meta property="og:site_name" content="泽伟的博客">
-<meta property="og:description" content="差分就是类似于d &#x3D; a[i] - a[i-1]可以解决区间和的问题传送门12345678910111213141516171819202122232425262728293031#include&lt;bits&#x2F;stdc++.h&gt;#define md(a,b) make_pair(a,b)#define reg register#define rep(x, a, b) for (reg i">
-<meta property="article:published_time" content="2020-05-07T11:53:08.000Z">
-<meta property="article:modified_time" content="2020-05-13T09:36:34.805Z">
+<meta property="og:description" content="介绍：求字符串s1,s2的公共子序列(LIS) 思路： dp[i][j],s1前i个的和s2的前j个的公共最长序列 所以遍历一次，复杂度O(nm),详情见代码    123456789101112131415161718192021222324252627282930#include &lt;bits&#x2F;stdc++.h&gt;#define reg register#define rep(x,">
+<meta property="article:published_time" content="2020-05-13T11:34:26.000Z">
+<meta property="article:modified_time" content="2020-05-13T12:09:04.172Z">
 <meta property="article:author" content="Lucas">
-<meta property="article:tag" content="差分">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/05/07/差分/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/13/最长公共子序列/"/>
 
 
 
 
 
-  <title>差分 | 泽伟的博客</title>
+  <title>最长公共子序列 | 泽伟的博客</title>
   
 
 
@@ -272,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E5%B7%AE%E5%88%86/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/13/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lucas">
@@ -289,7 +290,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">差分</h2>
+          <h2 class="post-title" itemprop="name headline">最长公共子序列</h2>
         
 
         <div class="post-meta">
@@ -301,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T19:53:08+08:00">
-                2020-05-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-13T19:34:26+08:00">
+                2020-05-13
               </time>
             
 
@@ -361,7 +362,15 @@
       
 
       
-        <p>差分就是类似于d = a[i] - a[i-1]<br>可以解决区间和的问题<br><a href="https://www.luogu.com.cn/problem/P3397" target="_blank" rel="noopener">传送门</a><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> md(a,b) make_pair(a,b)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(x, a, b) for (reg int x = a; x &lt;= b; ++x)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e3</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,p[N][N][<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">// freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">while</span>(m--)&#123;</span><br><span class="line">		<span class="keyword">int</span> x1,x2,y1,y2;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d %d %d"</span>,&amp;x1,&amp;y1,&amp;x2,&amp;y2);</span><br><span class="line">        <span class="comment">//核心代码，前面加一，后面减一，累计相加达到目的</span></span><br><span class="line">		rep(i,x1,x2)&#123;</span><br><span class="line">			p[i][y1][<span class="number">0</span>] += <span class="number">1</span>,p[i][y2][<span class="number">1</span>] -= <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//输出</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= n;++j)&#123;</span><br><span class="line">			sum += p[i][j][<span class="number">0</span>];</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d"</span>,sum);</span><br><span class="line">			<span class="keyword">if</span>(j!=n)<span class="built_in">putchar</span>(<span class="string">' '</span>);</span><br><span class="line">			sum += p[i][j][<span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <ul>
+<li>介绍：求字符串s1,s2的公共子序列(LIS)</li>
+<li>思路：<ul>
+<li>dp[i][j],s1前i个的和s2的前j个的公共最长序列</li>
+<li>所以遍历一次，复杂度O(nm),详情见代码</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(x, a, b) for (reg int x = a; x &lt;= b; ++x)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LIS</span><span class="params">(<span class="built_in">string</span> a,<span class="built_in">string</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> la = a.length(),lb = b.length(),ans=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt; <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; <span class="title">dp</span><span class="params">(la+<span class="number">5</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(lb+<span class="number">5</span>,<span class="number">0</span>))</span></span>;</span><br><span class="line">    rep(i,<span class="number">0</span>,la<span class="number">-1</span>)&#123;</span><br><span class="line">        rep(j,<span class="number">0</span>,lb<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i]==b[j])&#123;</span><br><span class="line">                <span class="keyword">if</span>(i&amp;&amp;j)dp[i][j]=dp[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> dp[i][j]=<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(i&amp;&amp;j)dp[i][j]=<span class="built_in">max</span>(dp[i<span class="number">-1</span>][j],dp[i][j<span class="number">-1</span>]);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(i)dp[i][j]=<span class="built_in">max</span>(<span class="number">0</span>,dp[i<span class="number">-1</span>][j]);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(j)dp[i][j]=<span class="built_in">max</span>(<span class="number">0</span>,dp[i][j<span class="number">-1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans,dp[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> a,b;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; LIS(a,b) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -379,7 +388,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E5%B7%AE%E5%88%86/" rel="tag"># 差分</a>
+            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"># 字符串</a>
+          
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
           
         </div>
       
@@ -392,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/05/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="next" title="单调栈">
-                <i class="fa fa-chevron-left"></i> 单调栈
+              <a href="/2020/05/13/KMP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="next" title="KMP字符串匹配">
+                <i class="fa fa-chevron-left"></i> KMP字符串匹配
               </a>
             
           </div>
@@ -401,10 +412,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/07/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%A8%A1%E7%89%88/" rel="prev" title="线段树模版">
-                线段树模版 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
