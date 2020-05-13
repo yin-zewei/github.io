@@ -269,6 +269,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/Maya%20Calendar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lucas">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/29/Maya%20Calendar/" itemprop="url">POJ1008</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-29T20:51:36+08:00">
+                2020-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://poj.org/problem?id=1008" target="_blank" rel="noopener">Description</a><br>解题思路：<br>1.先把固有的数据放入char数组中并预定义其他要用的变量<br>2.用scanf和printf规范的输入，大大减小复杂度<br>3.注意每月和每年的最后一天，除余为0，那么实际上应该是最大值，如果是年份除余为0，还得减一。<br>下面是代码，16ms。<br>```c++</p>
+<pre><code>    #include&lt;cstring&gt;
+    #include&lt;cstdio&gt;
+    using namespace std;
+    //预定义
+    char hname[19][10] = {&quot;pop&quot;, &quot;no&quot;, &quot;zip&quot;, &quot;zotz&quot;, &quot;tzec&quot;, &quot;xul&quot;, &quot;yoxkin&quot;, &quot;mol&quot;, &quot;chen&quot;
+    , &quot;yax&quot;, &quot;zac&quot;, &quot;ceh&quot;, &quot;mac&quot;,&quot;kankin&quot;, &quot;muan&quot;,&quot;pax&quot;,&quot;koyab&quot;, &quot;cumhu&quot;,&quot;uayet&quot;};//月 
+    char tname[20][10] = {&quot;imix&quot;, &quot;ik&quot;, &quot;akbal&quot;, &quot;kan&quot;, &quot;chicchan&quot;, &quot;cimi&quot;, &quot;manik&quot;, &quot;lamat&quot;, &quot;muluk&quot;,
+     &quot;ok&quot;, &quot;chuen&quot;, &quot;eb&quot;, &quot;ben&quot;, &quot;ix&quot;, &quot;mem&quot;, &quot;cib&quot;, &quot;caban&quot;, &quot;eznab&quot;, &quot;canac&quot;, &quot;ahau&quot; };//日 
+    int yy,dd,n,pos,days,mon;
+    char mm[10];
+    int main(){
+        scanf(&quot;%d&quot;,&amp;n);
+        printf(&quot;%d\n&quot;,n);
+        for(int i = 0;i &lt; n;++i){
+            scanf(&quot;%d. %s %d&quot;,&amp;dd,mm,&amp;yy);
+            for(int j = 0;j &lt; 19;++j){
+                if(strcmp(mm,hname[j]) == 0){
+                    mon = j;
+                    break;
+                }
+            }
+            days = dd + 1 + yy*365 + mon * 20;
+            yy = days / 260;
+            days %= 260;
+            if(days == 0){
+                yy--;
+                days = 260;
+            }
+            dd = days % 13;
+            if(dd == 0)dd = 13;
+            mon = days % 20;
+            if(mon == 0)mon = 20;
+            printf(&quot;%d %s %d\n&quot;,dd,tname[mon - 1],yy);
+        }
+    }
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/19/%E5%9B%BE%E7%9A%84%E4%B8%80%E8%88%AC%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -643,7 +820,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">63</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
