@@ -101,14 +101,14 @@
 
 
 
-<meta name="description" content="原题链接：传送门 描述：n个油滴扩展，碰到边界或者其他油滴即停止 思路：利用c++ STL自带的枚举函数，对所有点出现的顺序一一枚举，然后每次计算累加油滴的面积，即可AC 代码：&#96;&#96;&#96;c++     #include&lt;cstdio&gt;     #include&lt;algorithm&gt;     #include&lt;cctype&gt;     #include&lt;cstr">
+<meta name="description" content="原题链接：传送门 描述：n个油滴扩展，碰到边界或者其他油滴即停止 思路：利用c++ STL自带的枚举函数，对所有点出现的顺序一一枚举，然后每次计算累加油滴的面积，即可AC 代码：12345678910111213141516171819202122232425262728293031323334353637#include&lt;cstdio&gt;#include&lt;algorithm&amp;gt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="P1378 油滴扩展">
 <meta property="og:url" content="http://yoursite.com/2020/02/14/P1378-%E6%B2%B9%E6%BB%B4%E6%89%A9%E5%B1%95/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="原题链接：传送门 描述：n个油滴扩展，碰到边界或者其他油滴即停止 思路：利用c++ STL自带的枚举函数，对所有点出现的顺序一一枚举，然后每次计算累加油滴的面积，即可AC 代码：&#96;&#96;&#96;c++     #include&lt;cstdio&gt;     #include&lt;algorithm&gt;     #include&lt;cctype&gt;     #include&lt;cstr">
+<meta property="og:description" content="原题链接：传送门 描述：n个油滴扩展，碰到边界或者其他油滴即停止 思路：利用c++ STL自带的枚举函数，对所有点出现的顺序一一枚举，然后每次计算累加油滴的面积，即可AC 代码：12345678910111213141516171819202122232425262728293031323334353637#include&lt;cstdio&gt;#include&lt;algorithm&amp;gt">
 <meta property="article:published_time" content="2020-02-14T05:04:41.000Z">
-<meta property="article:modified_time" content="2020-02-14T13:45:39.439Z">
+<meta property="article:modified_time" content="2020-05-14T11:12:36.398Z">
 <meta property="article:author" content="殷泽伟">
 <meta property="article:tag" content="全排列">
 <meta name="twitter:card" content="summary">
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  346
+                  351
                 </span>
               
 
@@ -423,45 +423,8 @@
         <p>原题链接：<a href="https://www.luogu.com.cn/problem/P1378" target="_blank" rel="noopener">传送门</a></p>
 <p>描述：n个油滴扩展，碰到边界或者其他油滴即停止</p>
 <p>思路：利用c++ STL自带的枚举函数，对所有点出现的顺序一一枚举，然后每次计算累加油滴的面积，即可AC</p>
-<p>代码：<br>```c++</p>
-<pre><code>    #include&lt;cstdio&gt;
-    #include&lt;algorithm&gt;
-    #include&lt;cctype&gt;
-    #include&lt;cstring&gt;
-    #include&lt;cmath&gt;
-    #define PI 3.14159265358979323846
-    using namespace std;
-    //枚举N个点，对每个点累加面积
-    struct point{int id,x,y;double r;}p[6];
-    int n,m,t[4];
-    double ans = 0,all;
-    bool cmp(point p1,point p2){return p1.id &lt; p2.id;}
-    int main(){
-        //初始化
-        scanf(&quot;%d&quot;,&amp;n);
-        scanf(&quot;%d %d %d %d&quot;,&amp;t[0],&amp;t[1],&amp;t[2],&amp;t[3]);
-        for(int i = 0;i &lt; n;++i)scanf(&quot;%d %d&quot;,&amp;p[i].x,&amp;p[i].y),p[i].id = i;
-        all = abs((t[0] - t[2]) * (t[1] - t[3]));
-        //枚举
-        do{
-            //一个个的计算
-            double st = 0,r = __INT_MAX__;
-            for(int i = 0;i &lt; n;++i){
-                r = min(min(abs(p[i].x - t[0]),abs(p[i].x - t[2])),min(abs(p[i].y - t[1]),abs(p[i].y - t[3])));//获取由边界得到的当前点i的最小r
-                for(int j = 0;j &lt; i;++j){       //更新r
-                    r = min(r,sqrt(pow(p[i].x - p[j].x,2) + pow(p[i].y - p[j].y,2)) - p[j].r);
-                    if(r &lt;= 0){r = 0;break;}
-                }
-                p[i].r = r;
-                st += r*r;
-            }
-            ans = max(ans,st);
-        }while(next_permutation(p,p+n,cmp));
-        ans = ans * PI;
-        printf(&quot;%d&quot;,(int)(all - ans + 0.5));
-        return 0;
-    }  
-</code></pre>
+<p>代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PI 3.14159265358979323846</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//枚举N个点，对每个点累加面积</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span>&#123;</span><span class="keyword">int</span> id,x,y;<span class="keyword">double</span> r;&#125;p[<span class="number">6</span>];</span><br><span class="line"><span class="keyword">int</span> n,m,t[<span class="number">4</span>];</span><br><span class="line"><span class="keyword">double</span> ans = <span class="number">0</span>,all;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="built_in">point</span> p1,<span class="built_in">point</span> p2)</span></span>&#123;<span class="keyword">return</span> p1.id &lt; p2.id;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d %d %d"</span>,&amp;t[<span class="number">0</span>],&amp;t[<span class="number">1</span>],&amp;t[<span class="number">2</span>],&amp;t[<span class="number">3</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;p[i].x,&amp;p[i].y),p[i].id = i;</span><br><span class="line">    all = <span class="built_in">abs</span>((t[<span class="number">0</span>] - t[<span class="number">2</span>]) * (t[<span class="number">1</span>] - t[<span class="number">3</span>]));</span><br><span class="line">    <span class="comment">//枚举</span></span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="comment">//一个个的计算</span></span><br><span class="line">        <span class="keyword">double</span> st = <span class="number">0</span>,r = __INT_MAX__;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)&#123;</span><br><span class="line">            r = <span class="built_in">min</span>(<span class="built_in">min</span>(<span class="built_in">abs</span>(p[i].x - t[<span class="number">0</span>]),<span class="built_in">abs</span>(p[i].x - t[<span class="number">2</span>])),<span class="built_in">min</span>(<span class="built_in">abs</span>(p[i].y - t[<span class="number">1</span>]),<span class="built_in">abs</span>(p[i].y - t[<span class="number">3</span>])));<span class="comment">//获取由边界得到的当前点i的最小r</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; i;++j)&#123;       <span class="comment">//更新r</span></span><br><span class="line">                r = <span class="built_in">min</span>(r,<span class="built_in">sqrt</span>(<span class="built_in">pow</span>(p[i].x - p[j].x,<span class="number">2</span>) + <span class="built_in">pow</span>(p[i].y - p[j].y,<span class="number">2</span>)) - p[j].r);</span><br><span class="line">                <span class="keyword">if</span>(r &lt;= <span class="number">0</span>)&#123;r = <span class="number">0</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">            p[i].r = r;</span><br><span class="line">            st += r*r;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans,st);</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(p,p+n,cmp));</span><br><span class="line">    ans = ans * PI;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,(<span class="keyword">int</span>)(all - ans + <span class="number">0.5</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     

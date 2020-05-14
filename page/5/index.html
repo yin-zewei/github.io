@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  346
+                  351
                 </span>
               
 
@@ -424,45 +424,8 @@
             <p>原题链接：<a href="https://www.luogu.com.cn/problem/P1378" target="_blank" rel="noopener">传送门</a></p>
 <p>描述：n个油滴扩展，碰到边界或者其他油滴即停止</p>
 <p>思路：利用c++ STL自带的枚举函数，对所有点出现的顺序一一枚举，然后每次计算累加油滴的面积，即可AC</p>
-<p>代码：<br>```c++</p>
-<pre><code>    #include&lt;cstdio&gt;
-    #include&lt;algorithm&gt;
-    #include&lt;cctype&gt;
-    #include&lt;cstring&gt;
-    #include&lt;cmath&gt;
-    #define PI 3.14159265358979323846
-    using namespace std;
-    //枚举N个点，对每个点累加面积
-    struct point{int id,x,y;double r;}p[6];
-    int n,m,t[4];
-    double ans = 0,all;
-    bool cmp(point p1,point p2){return p1.id &lt; p2.id;}
-    int main(){
-        //初始化
-        scanf(&quot;%d&quot;,&amp;n);
-        scanf(&quot;%d %d %d %d&quot;,&amp;t[0],&amp;t[1],&amp;t[2],&amp;t[3]);
-        for(int i = 0;i &lt; n;++i)scanf(&quot;%d %d&quot;,&amp;p[i].x,&amp;p[i].y),p[i].id = i;
-        all = abs((t[0] - t[2]) * (t[1] - t[3]));
-        //枚举
-        do{
-            //一个个的计算
-            double st = 0,r = __INT_MAX__;
-            for(int i = 0;i &lt; n;++i){
-                r = min(min(abs(p[i].x - t[0]),abs(p[i].x - t[2])),min(abs(p[i].y - t[1]),abs(p[i].y - t[3])));//获取由边界得到的当前点i的最小r
-                for(int j = 0;j &lt; i;++j){       //更新r
-                    r = min(r,sqrt(pow(p[i].x - p[j].x,2) + pow(p[i].y - p[j].y,2)) - p[j].r);
-                    if(r &lt;= 0){r = 0;break;}
-                }
-                p[i].r = r;
-                st += r*r;
-            }
-            ans = max(ans,st);
-        }while(next_permutation(p,p+n,cmp));
-        ans = ans * PI;
-        printf(&quot;%d&quot;,(int)(all - ans + 0.5));
-        return 0;
-    }  
-</code></pre>
+<p>代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PI 3.14159265358979323846</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//枚举N个点，对每个点累加面积</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span>&#123;</span><span class="keyword">int</span> id,x,y;<span class="keyword">double</span> r;&#125;p[<span class="number">6</span>];</span><br><span class="line"><span class="keyword">int</span> n,m,t[<span class="number">4</span>];</span><br><span class="line"><span class="keyword">double</span> ans = <span class="number">0</span>,all;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="built_in">point</span> p1,<span class="built_in">point</span> p2)</span></span>&#123;<span class="keyword">return</span> p1.id &lt; p2.id;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d %d %d"</span>,&amp;t[<span class="number">0</span>],&amp;t[<span class="number">1</span>],&amp;t[<span class="number">2</span>],&amp;t[<span class="number">3</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;p[i].x,&amp;p[i].y),p[i].id = i;</span><br><span class="line">    all = <span class="built_in">abs</span>((t[<span class="number">0</span>] - t[<span class="number">2</span>]) * (t[<span class="number">1</span>] - t[<span class="number">3</span>]));</span><br><span class="line">    <span class="comment">//枚举</span></span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="comment">//一个个的计算</span></span><br><span class="line">        <span class="keyword">double</span> st = <span class="number">0</span>,r = __INT_MAX__;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)&#123;</span><br><span class="line">            r = <span class="built_in">min</span>(<span class="built_in">min</span>(<span class="built_in">abs</span>(p[i].x - t[<span class="number">0</span>]),<span class="built_in">abs</span>(p[i].x - t[<span class="number">2</span>])),<span class="built_in">min</span>(<span class="built_in">abs</span>(p[i].y - t[<span class="number">1</span>]),<span class="built_in">abs</span>(p[i].y - t[<span class="number">3</span>])));<span class="comment">//获取由边界得到的当前点i的最小r</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; i;++j)&#123;       <span class="comment">//更新r</span></span><br><span class="line">                r = <span class="built_in">min</span>(r,<span class="built_in">sqrt</span>(<span class="built_in">pow</span>(p[i].x - p[j].x,<span class="number">2</span>) + <span class="built_in">pow</span>(p[i].y - p[j].y,<span class="number">2</span>)) - p[j].r);</span><br><span class="line">                <span class="keyword">if</span>(r &lt;= <span class="number">0</span>)&#123;r = <span class="number">0</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">            p[i].r = r;</span><br><span class="line">            st += r*r;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans,st);</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(p,p+n,cmp));</span><br><span class="line">    ans = ans * PI;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,(<span class="keyword">int</span>)(all - ans + <span class="number">0.5</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
           
         
       
@@ -606,7 +569,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  157
+                  161
                 </span>
               
 
@@ -645,22 +608,8 @@
       
         
           
-            <p>台阶问题是指到达第n个台阶，每部最多走k步的问题，如果dfs必然超标，只能dp<br>规律发现，k个以内的台阶，每次都是上面一步的两倍<br>k个以外的台阶，每次都是上次的两倍减去f[i-k-1]<br>```c++</p>
-<pre><code>    #include&lt;iostream&gt;
-    const int mod = 100003;
-    int ans = 0,f[100001],n,k;
-    int main(){
-        std::ios::sync_with_stdio(false);
-        std::cin&gt;&gt;n&gt;&gt;k;
-        f[0] = f[1]  = 1;
-        for(int i = 2;i &lt;= n;++i){
-            if(i &lt;= k)f[i] = 2*f[i - 1] %mod;
-            else f[i] = (2*f[i-1]-f[i-k-1])%mod;
-        }
-        std::cout &lt;&lt; (f[n]+mod)%mod &lt;&lt; std::endl;
-        return 0;
-    }
-</code></pre>
+            <p>台阶问题是指到达第n个台阶，每部最多走k步的问题，如果dfs必然超标，只能dp<br>规律发现，k个以内的台阶，每次都是上面一步的两倍<br>k个以外的台阶，每次都是上次的两倍减去f[i-k-1]<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">100003</span>;</span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>,f[<span class="number">100001</span>],n,k;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    f[<span class="number">0</span>] = f[<span class="number">1</span>]  = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i &lt;= n;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &lt;= k)f[i] = <span class="number">2</span>*f[i - <span class="number">1</span>] %mod;</span><br><span class="line">        <span class="keyword">else</span> f[i] = (<span class="number">2</span>*f[i<span class="number">-1</span>]-f[i-k<span class="number">-1</span>])%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; (f[n]+mod)%mod &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
           
         
       
@@ -1026,7 +975,7 @@ int main(){
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  328
+                  350
                 </span>
               
 
@@ -1068,53 +1017,8 @@ int main(){
             <p>原题链接：<a href="https://www.luogu.com.cn/problem/P1019" target="_blank" rel="noopener">传送门</a></p>
 <p>描述：单词接龙是一个与我们经常玩的成语接龙相类似的游戏，现在我们已知一组单词，且给定一个开头的字母，要求出以这个字母开头的最长的“龙”（每个单词都最多在“龙”中出现两次），在两个单词相连时，其重合部分合为一部分，例如 beastbeast和astonishastonish，如果接成一条龙则变为beastonishbeastonish，另外相邻的两部分不能存在包含关系，例如atat 和 atideatide 间不能相连。</p>
 <p>思路：直接搜索</p>
-<p>代码：<br>```c++</p>
-<pre><code>#include&lt;cstdio&gt;
-#include&lt;string&gt;
-#include&lt;iostream&gt;
-int max(int a,int b){return a &lt; b ? b :a;}
-int min(int a,int b){return a &lt; b ? a :b;}
-int n,vis[25] = {0},ans = 0,len[25];
-std::string s[25];
-void dfs(std::string str){
-    ans = max(ans,str.length());
-    int tt = str.length();
-    for(int i = 0;i &lt; n;++i){
-        if(vis[i] &lt; 2){
-            int t = min(tt,len[i]) - 1,flag = 0,j = 1;
-            for(;j &lt;= t;++j){
-                if(s[i].substr(0,j)==str.substr(tt - j)){
-                    flag = 1;
-                    break;
-                }
-            }
-            if(flag){
-                ++vis[i];
-                dfs(str + s[i].substr(j));
-                --vis[i];
-            }
-        }
-    }
-}
-int main(){
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i = 0;i &lt; n;++i){
-        std::cin&gt;&gt;s[i];
-        len[i] = s[i].length();
-    }
-    char start;
-    std::cin &gt;&gt; start;
-    for(int i = 0;i &lt; n;++i){
-        if(s[i][0] == start){
-            ++vis[i];
-            dfs(s[i]);
-            --vis[i];
-        }
-    }
-    printf(&quot;%d&quot;,ans);
-    return 0;
-}
-</code></pre>
+<p>代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> a &lt; b ? b :a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> a &lt; b ? a :b;&#125;</span><br><span class="line"><span class="keyword">int</span> n,vis[<span class="number">25</span>] = &#123;<span class="number">0</span>&#125;,ans = <span class="number">0</span>,len[<span class="number">25</span>];</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> s[<span class="number">25</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span> str)</span></span>&#123;</span><br><span class="line">    ans = <span class="built_in">max</span>(ans,str.length());</span><br><span class="line">    <span class="keyword">int</span> tt = str.length();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(vis[i] &lt; <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> t = <span class="built_in">min</span>(tt,len[i]) - <span class="number">1</span>,flag = <span class="number">0</span>,j = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(;j &lt;= t;++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i].substr(<span class="number">0</span>,j)==str.substr(tt - j))&#123;</span><br><span class="line">                    flag = <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                ++vis[i];</span><br><span class="line">                dfs(str + s[i].substr(j));</span><br><span class="line">                --vis[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cin</span>&gt;&gt;s[i];</span><br><span class="line">        len[i] = s[i].length();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">char</span> start;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; start;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i][<span class="number">0</span>] == start)&#123;</span><br><span class="line">            ++vis[i];</span><br><span class="line">            dfs(s[i]);</span><br><span class="line">            --vis[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
           
         
       
@@ -1688,7 +1592,7 @@ int main(){
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  239
+                  243
                 </span>
               
 
@@ -1731,29 +1635,8 @@ int main(){
 <p><strong>描述：</strong>时间T内，M种药，每种药需要不同的时间，并含有不同的价值，问能获得的最大价值是多少？</p>
 <p><strong>思路：</strong>简单的tp问题，作一个dp[M][T]数组，表示T时间内前M的药物能获得的最大价值，然后递增即可。</p>
 <p><strong>传递方程：</strong>dp[i][j] = max(dp[i - 1][j - a[i]] + b[i],dp[i - 1][j]);</p>
-<p><strong>代码：</strong><br>```c++</p>
-<pre><code>#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-using namespace std;
-int max(int x,int y){return x &lt; y ? y : x;}
-int a[105],b[105],dp[105][1005] = {0},T,M;
-int main()
-{
-    scanf(&quot;%d %d&quot;,&amp;T,&amp;M);
-    for(int i = 1;i &lt;= M;++i) scanf(&quot;%d %d&quot;,&amp;a[i],&amp;b[i]);
-    a[0] = b[0] = 0;
-    for(int i = 1;i &lt;= M;++i){
-        for(int j = 0;j &lt;= T;++j){
-            if(j &gt;= a[i])
-                dp[i][j] = max(dp[i - 1][j - a[i]] + b[i],dp[i - 1][j]);
-            else 
-                dp[i][j] = dp[i - 1][j];
-        }
-    }
-    printf(&quot;%d&quot;,dp[M][T]);
-    return 0;
-}
-</code></pre>
+<p><strong>代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;<span class="keyword">return</span> x &lt; y ? y : x;&#125;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">105</span>],b[<span class="number">105</span>],dp[<span class="number">105</span>][<span class="number">1005</span>] = &#123;<span class="number">0</span>&#125;,T,M;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;T,&amp;M);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= M;++i) <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;a[i],&amp;b[i]);</span><br><span class="line">    a[<span class="number">0</span>] = b[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= M;++i)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt;= T;++j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j &gt;= a[i])</span><br><span class="line">                dp[i][j] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>][j - a[i]] + b[i],dp[i - <span class="number">1</span>][j]);</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,dp[M][T]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
           
         
       
@@ -1940,38 +1823,8 @@ int main()
 <p><strong>描述：</strong>给出一个数字，输出一定规律的图腾</p>
 <p><strong>思考：</strong>直接初始化一个足够大的二维数组，做盛放字符的容器，然后一步步将原规律复制到数组中。</p>
 <p><strong>坑点：</strong>数组必须在主函数内部进行初始化，否则洛谷会报错，但本地运行良好。</p>
-<p><strong>代码：</strong><br>```c++</p>
-<pre><code>#include&lt;cstdio&gt;
-using namespace std;
-char arr[1024][2048];
-int main(){
-    int n;
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i = 0;i &lt; 1024;++i){
-        for(int j = 0;j &lt; 2048;++j)
-        arr[i][j] = &#39; &#39;;
-    }
-    arr[0][0] = arr[1][1] = &#39;/&#39;;
-    arr[0][1] = arr[0][2] = &#39;_&#39;;
-    arr[0][3] = arr[1][2] = &#39;\\&#39;;
-    int l = 4, h = 2;//where next group start copying
-    while(--n){
-        for(int i = 0;i &lt; h;++i)
-        for(int j = 0;j &lt; l;++j){
-            arr[i + h][j + h] = arr[i][j + l] = arr[i][j];
-        }
-        l &lt;&lt;= 1;
-        h &lt;&lt;= 1;
-    }
-    for(int i = h - 1;i &gt;= 0;--i){
-        for(int j = 0;j &lt; l;++j){
-            putchar(arr[i][j]);
-        }
-        putchar(&#39;\n&#39;);
-    }
-    return 0;
-}
-</code></pre>
+<p><strong>代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> arr[<span class="number">1024</span>][<span class="number">2048</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">1024</span>;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">2048</span>;++j)</span><br><span class="line">		arr[i][j] = <span class="string">' '</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	arr[<span class="number">0</span>][<span class="number">0</span>] = arr[<span class="number">1</span>][<span class="number">1</span>] = <span class="string">'/'</span>;</span><br><span class="line">	arr[<span class="number">0</span>][<span class="number">1</span>] = arr[<span class="number">0</span>][<span class="number">2</span>] = <span class="string">'_'</span>;</span><br><span class="line">	arr[<span class="number">0</span>][<span class="number">3</span>] = arr[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">'\\'</span>;</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">4</span>, h = <span class="number">2</span>;<span class="comment">//where next group start copying</span></span><br><span class="line">	<span class="keyword">while</span>(--n)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; h;++i)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; l;++j)&#123;</span><br><span class="line">			arr[i + h][j + h] = arr[i][j + l] = arr[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">		l &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">		h &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = h - <span class="number">1</span>;i &gt;= <span class="number">0</span>;--i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; l;++j)&#123;</span><br><span class="line">			<span class="built_in">putchar</span>(arr[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
           
         
       
@@ -2115,7 +1968,7 @@ int main(){
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  129
+                  131
                 </span>
               
 
@@ -2155,10 +2008,7 @@ int main(){
         
           
             <p>定义：进制间转换指一个数从x进制转换到y进制，可以先把x进制转换为十进制，再把十进制转换为y进制。</p>
-<p>一、从x进制到十进制的转换<br><strong>按位累加</strong></p>
-<p>for(int i = 0,ans = 0;i &lt; n;++i){<br>    ans = ans*x + arr[i];<br>}<br>二、从十进制到y进制的转换<br><strong>除以基数取余数</strong></p>
-<p>string ans;<br>while(x){<br>    ans = x % y + ans;<br>    x /= y;<br>}</p>
-<p>特别地，二进制的余数只有0和1，就不用取余，而是求奇偶得到</p>
+<p>一、从x进制到十进制的转换<br><strong>按位累加</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>,ans = <span class="number">0</span>;i &lt; n;++i)&#123;</span><br><span class="line">	ans = ans\*x + arr[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>二、从十进制到y进制的转换<br><strong>除以基数取余数</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> ans;</span><br><span class="line"><span class="keyword">while</span>(x)&#123;</span><br><span class="line">	ans = x % y + ans;</span><br><span class="line">	x /= y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>特别地，二进制的余数只有0和1，就不用取余，而是求奇偶得到</p>
 
           
         
@@ -2303,7 +2153,7 @@ int main(){
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  353
+                  356
                 </span>
               
 
@@ -2347,51 +2197,8 @@ int main(){
 <p><strong>思路：</strong>使用归并排序，根据排序原理，排序中间添加一行计数器代码，每次当左边数组的数字大于右边数组的数字的时候，说明左边数组存在m - i + 1个数(i往右边数直到中数m)大于右边数组的数，那么计数器加上m-i+1，最后计数器的数就是答案。</p>
 <p><strong>代码：</strong></p>
 <blockquote>
-<p>复杂度为O(nlogn)<br>```c++</p>
-<pre><code>#include&lt;cstdio&gt;
-using namespace std;
-#define ll long long
-const int maxn = 5e5 + 5;
-int arr[maxn],t[maxn]; 
-ll ans = 0;
-void merge(int l,int r,int m);
-void msort(int l,int r){
-    if(l &lt; r){
-        int m = l + (r - l)/2;
-        msort(l,m);
-        msort(m+1,r);
-        merge(l,r,m);
-    }
-}
-void merge(int l,int r,int m){
-    int i = l,j = m + 1,id = l;
-    while(i &lt;= m &amp;&amp; j &lt;= r){
-        if(arr[i] &lt;= arr[j]){
-            t[id++] = arr[i++];
-        }else{
-            ans += (ll)m - i + 1;
-            t[id++] = arr[j++];
-        }
-    }
-    while(i &lt;= m) t[id++] = arr[i++];
-    while(j &lt;= r) t[id++] = arr[j++];
-    while(l&lt;=r) arr[l] = t[l],++l;
-}
-inline int read(){
-    int p = 0,flag = 1;
-    char c = getchar();
-    while(c &lt; &#39;0&#39; || c &gt; &#39;9&#39;){if(c == &#39;-&#39;) flag = -1;c = getchar();}
-    while(c &gt;= &#39;0&#39; &amp;&amp; c &lt;= &#39;9&#39;) p = p*10 + c - &#39;0&#39;,c = getchar();
-    return p*flag;
-}
-int main(){
-    int n = read();
-    for(int i = 0;i &lt; n;++i)arr[i] = read();
-    msort(0,n - 1);
-    printf(&quot;%lld&quot;,ans);
-    return 0;
-}
-</code></pre></blockquote>
+<p>复杂度为O(nlogn)<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">5e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> arr[maxn],t[maxn]; </span><br><span class="line">ll ans = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> m)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">msort</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l &lt; r)&#123;</span><br><span class="line">		<span class="keyword">int</span> m = l + (r - l)/<span class="number">2</span>;</span><br><span class="line">		msort(l,m);</span><br><span class="line">		msort(m+<span class="number">1</span>,r);</span><br><span class="line">		merge(l,r,m);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = l,j = m + <span class="number">1</span>,id = l;</span><br><span class="line">	<span class="keyword">while</span>(i &lt;= m &amp;&amp; j &lt;= r)&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr[i] &lt;= arr[j])&#123;</span><br><span class="line">			t[id++] = arr[i++];</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			ans += (ll)m - i + <span class="number">1</span>;</span><br><span class="line">			t[id++] = arr[j++];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(i &lt;= m) t[id++] = arr[i++];</span><br><span class="line">	<span class="keyword">while</span>(j &lt;= r) t[id++] = arr[j++];</span><br><span class="line">	<span class="keyword">while</span>(l&lt;=r) arr[l] = t[l],++l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p = <span class="number">0</span>,flag = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> c = getchar();</span><br><span class="line">	<span class="keyword">while</span>(c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>)&#123;<span class="keyword">if</span>(c == <span class="string">'-'</span>) flag = <span class="number">-1</span>;c = getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>) p = p*<span class="number">10</span> + c - <span class="string">'0'</span>,c = getchar();</span><br><span class="line">	<span class="keyword">return</span> p*flag;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="built_in">read</span>();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)arr[i] = <span class="built_in">read</span>();</span><br><span class="line">	msort(<span class="number">0</span>,n - <span class="number">1</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
 
           
         

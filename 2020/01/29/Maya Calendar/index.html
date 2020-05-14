@@ -101,14 +101,14 @@
 
 
 
-<meta name="description" content="Description解题思路：1.先把固有的数据放入char数组中并预定义其他要用的变量2.用scanf和printf规范的输入，大大减小复杂度3.注意每月和每年的最后一天，除余为0，那么实际上应该是最大值，如果是年份除余为0，还得减一。下面是代码，16ms。&#96;&#96;&#96;c++     #include&lt;cstring&gt;     #include&lt;cstdio&gt;     usi">
+<meta name="description" content="Description解题思路：1.先把固有的数据放入char数组中并预定义其他要用的变量2.用scanf和printf规范的输入，大大减小复杂度3.注意每月和每年的最后一天，除余为0，那么实际上应该是最大值，如果是年份除余为0，还得减一。下面是代码，16ms。1234567891011121314151617181920212223242526272829303132333435#include">
 <meta property="og:type" content="article">
-<meta property="og:title" content="POJ1008">
+<meta property="og:title" content="Maya Calendar">
 <meta property="og:url" content="http://yoursite.com/2020/01/29/Maya%20Calendar/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="Description解题思路：1.先把固有的数据放入char数组中并预定义其他要用的变量2.用scanf和printf规范的输入，大大减小复杂度3.注意每月和每年的最后一天，除余为0，那么实际上应该是最大值，如果是年份除余为0，还得减一。下面是代码，16ms。&#96;&#96;&#96;c++     #include&lt;cstring&gt;     #include&lt;cstdio&gt;     usi">
+<meta property="og:description" content="Description解题思路：1.先把固有的数据放入char数组中并预定义其他要用的变量2.用scanf和printf规范的输入，大大减小复杂度3.注意每月和每年的最后一天，除余为0，那么实际上应该是最大值，如果是年份除余为0，还得减一。下面是代码，16ms。1234567891011121314151617181920212223242526272829303132333435#include">
 <meta property="article:published_time" content="2020-01-29T12:51:36.000Z">
-<meta property="article:modified_time" content="2020-02-14T13:49:24.097Z">
+<meta property="article:modified_time" content="2020-05-14T11:17:59.525Z">
 <meta property="article:author" content="殷泽伟">
 <meta property="article:tag" content="简单数据结构">
 <meta name="twitter:card" content="summary">
@@ -146,7 +146,7 @@
 
 
 
-  <title>POJ1008 | 殷泽伟的博客</title>
+  <title>Maya Calendar | 殷泽伟的博客</title>
   
 
 
@@ -306,7 +306,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">POJ1008</h2>
+          <h2 class="post-title" itemprop="name headline">Maya Calendar</h2>
         
 
         <div class="post-meta">
@@ -358,7 +358,7 @@
 
           
           
-             <span id="/2020/01/29/Maya%20Calendar/" class="leancloud_visitors" data-flag-title="POJ1008">
+             <span id="/2020/01/29/Maya%20Calendar/" class="leancloud_visitors" data-flag-title="Maya Calendar">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  340
+                  268
                 </span>
               
 
@@ -420,43 +420,8 @@
       
 
       
-        <p><a href="http://poj.org/problem?id=1008" target="_blank" rel="noopener">Description</a><br>解题思路：<br>1.先把固有的数据放入char数组中并预定义其他要用的变量<br>2.用scanf和printf规范的输入，大大减小复杂度<br>3.注意每月和每年的最后一天，除余为0，那么实际上应该是最大值，如果是年份除余为0，还得减一。<br>下面是代码，16ms。<br>```c++</p>
-<pre><code>    #include&lt;cstring&gt;
-    #include&lt;cstdio&gt;
-    using namespace std;
-    //预定义
-    char hname[19][10] = {&quot;pop&quot;, &quot;no&quot;, &quot;zip&quot;, &quot;zotz&quot;, &quot;tzec&quot;, &quot;xul&quot;, &quot;yoxkin&quot;, &quot;mol&quot;, &quot;chen&quot;
-    , &quot;yax&quot;, &quot;zac&quot;, &quot;ceh&quot;, &quot;mac&quot;,&quot;kankin&quot;, &quot;muan&quot;,&quot;pax&quot;,&quot;koyab&quot;, &quot;cumhu&quot;,&quot;uayet&quot;};//月 
-    char tname[20][10] = {&quot;imix&quot;, &quot;ik&quot;, &quot;akbal&quot;, &quot;kan&quot;, &quot;chicchan&quot;, &quot;cimi&quot;, &quot;manik&quot;, &quot;lamat&quot;, &quot;muluk&quot;,
-     &quot;ok&quot;, &quot;chuen&quot;, &quot;eb&quot;, &quot;ben&quot;, &quot;ix&quot;, &quot;mem&quot;, &quot;cib&quot;, &quot;caban&quot;, &quot;eznab&quot;, &quot;canac&quot;, &quot;ahau&quot; };//日 
-    int yy,dd,n,pos,days,mon;
-    char mm[10];
-    int main(){
-        scanf(&quot;%d&quot;,&amp;n);
-        printf(&quot;%d\n&quot;,n);
-        for(int i = 0;i &lt; n;++i){
-            scanf(&quot;%d. %s %d&quot;,&amp;dd,mm,&amp;yy);
-            for(int j = 0;j &lt; 19;++j){
-                if(strcmp(mm,hname[j]) == 0){
-                    mon = j;
-                    break;
-                }
-            }
-            days = dd + 1 + yy*365 + mon * 20;
-            yy = days / 260;
-            days %= 260;
-            if(days == 0){
-                yy--;
-                days = 260;
-            }
-            dd = days % 13;
-            if(dd == 0)dd = 13;
-            mon = days % 20;
-            if(mon == 0)mon = 20;
-            printf(&quot;%d %s %d\n&quot;,dd,tname[mon - 1],yy);
-        }
-    }
-</code></pre>
+        <p><a href="http://poj.org/problem?id=1008" target="_blank" rel="noopener">Description</a><br>解题思路：<br>1.先把固有的数据放入char数组中并预定义其他要用的变量<br>2.用scanf和printf规范的输入，大大减小复杂度<br>3.注意每月和每年的最后一天，除余为0，那么实际上应该是最大值，如果是年份除余为0，还得减一。<br>下面是代码，16ms。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//预定义</span></span><br><span class="line"><span class="keyword">char</span> hname[<span class="number">19</span>][<span class="number">10</span>] = &#123;<span class="string">"pop"</span>, <span class="string">"no"</span>, <span class="string">"zip"</span>, <span class="string">"zotz"</span>, <span class="string">"tzec"</span>, <span class="string">"xul"</span>, <span class="string">"yoxkin"</span>, <span class="string">"mol"</span>, <span class="string">"chen"</span></span><br><span class="line">, <span class="string">"yax"</span>, <span class="string">"zac"</span>, <span class="string">"ceh"</span>, <span class="string">"mac"</span>,<span class="string">"kankin"</span>, <span class="string">"muan"</span>,<span class="string">"pax"</span>,<span class="string">"koyab"</span>, <span class="string">"cumhu"</span>,<span class="string">"uayet"</span>&#125;;<span class="comment">//月 </span></span><br><span class="line"><span class="keyword">char</span> tname[<span class="number">20</span>][<span class="number">10</span>] = &#123;<span class="string">"imix"</span>, <span class="string">"ik"</span>, <span class="string">"akbal"</span>, <span class="string">"kan"</span>, <span class="string">"chicchan"</span>, <span class="string">"cimi"</span>, <span class="string">"manik"</span>, <span class="string">"lamat"</span>, <span class="string">"muluk"</span>,</span><br><span class="line"> <span class="string">"ok"</span>, <span class="string">"chuen"</span>, <span class="string">"eb"</span>, <span class="string">"ben"</span>, <span class="string">"ix"</span>, <span class="string">"mem"</span>, <span class="string">"cib"</span>, <span class="string">"caban"</span>, <span class="string">"eznab"</span>, <span class="string">"canac"</span>, <span class="string">"ahau"</span> &#125;;<span class="comment">//日 </span></span><br><span class="line"><span class="keyword">int</span> yy,dd,n,pos,days,mon;</span><br><span class="line"><span class="keyword">char</span> mm[<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d. %s %d"</span>,&amp;dd,mm,&amp;yy);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">19</span>;++j)&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">strcmp</span>(mm,hname[j]) == <span class="number">0</span>)&#123;</span><br><span class="line">				mon = j;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		days = dd + <span class="number">1</span> + yy*<span class="number">365</span> + mon * <span class="number">20</span>;</span><br><span class="line">		yy = days / <span class="number">260</span>;</span><br><span class="line">		days %= <span class="number">260</span>;</span><br><span class="line">		<span class="keyword">if</span>(days == <span class="number">0</span>)&#123;</span><br><span class="line">			yy--;</span><br><span class="line">			days = <span class="number">260</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		dd = days % <span class="number">13</span>;</span><br><span class="line">		<span class="keyword">if</span>(dd == <span class="number">0</span>)dd = <span class="number">13</span>;</span><br><span class="line">		mon = days % <span class="number">20</span>;</span><br><span class="line">		<span class="keyword">if</span>(mon == <span class="number">0</span>)mon = <span class="number">20</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d %s %d\n"</span>,dd,tname[mon - <span class="number">1</span>],yy);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -476,7 +441,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2020/01/29/Maya%20Calendar/" title="POJ1008">http://yoursite.com/2020/01/29/Maya%20Calendar/</a>
+    <a href="http://yoursite.com/2020/01/29/Maya%20Calendar/" title="Maya Calendar">http://yoursite.com/2020/01/29/Maya%20Calendar/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>

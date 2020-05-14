@@ -101,14 +101,14 @@
 
 
 
-<meta name="description" content="一般来讲，c++读入一个整数可以使用cin或者scanf()，而且scanf()函数会快一点，然而在大批整数的读取过程中，可以使用getchar()函数读取，速度更快，更省时间，因为scanf()需要缓冲，需要解析字符串，而getchar()直接读入一个字符，同理，putchar()也比printf()快一点。&#96;&#96;&#96;c++    int read(){        int res &#x3D; 0;">
+<meta name="description" content="一般来讲，c++读入一个整数可以使用cin或者scanf()，而且scanf()函数会快一点，然而在大批整数的读取过程中，可以使用getchar()函数读取，速度更快，更省时间，因为scanf()需要缓冲，需要解析字符串，而getchar()直接读入一个字符，同理，putchar()也比printf()快一点。1234567int read()&amp;#123;	int res &#x3D; 0;	char c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++快读整数">
 <meta property="og:url" content="http://yoursite.com/2020/02/09/c-%E5%BF%AB%E8%AF%BB%E6%95%B4%E6%95%B0/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="一般来讲，c++读入一个整数可以使用cin或者scanf()，而且scanf()函数会快一点，然而在大批整数的读取过程中，可以使用getchar()函数读取，速度更快，更省时间，因为scanf()需要缓冲，需要解析字符串，而getchar()直接读入一个字符，同理，putchar()也比printf()快一点。&#96;&#96;&#96;c++    int read(){        int res &#x3D; 0;">
+<meta property="og:description" content="一般来讲，c++读入一个整数可以使用cin或者scanf()，而且scanf()函数会快一点，然而在大批整数的读取过程中，可以使用getchar()函数读取，速度更快，更省时间，因为scanf()需要缓冲，需要解析字符串，而getchar()直接读入一个字符，同理，putchar()也比printf()快一点。1234567int read()&amp;#123;	int res &#x3D; 0;	char c">
 <meta property="article:published_time" content="2020-02-09T08:23:31.000Z">
-<meta property="article:modified_time" content="2020-02-14T13:49:30.026Z">
+<meta property="article:modified_time" content="2020-05-14T11:18:12.991Z">
 <meta property="article:author" content="殷泽伟">
 <meta property="article:tag" content="基础知识">
 <meta name="twitter:card" content="summary">
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  126
+                  127
                 </span>
               
 
@@ -420,7 +420,7 @@
       
 
       
-        <p>一般来讲，c++读入一个整数可以使用cin或者scanf()，而且scanf()函数会快一点，然而在大批整数的读取过程中，可以使用getchar()函数读取，速度更快，更省时间，因为scanf()需要缓冲，需要解析字符串，而getchar()直接读入一个字符，同理，putchar()也比printf()快一点。<br>```c++<br>    int read(){<br>        int res = 0;<br>        char c = getchar();<br>        while(c &lt; ‘0’ || c &gt; ‘9’) c = getchar();<br>        while(c &gt;= ‘0’ &amp;&amp; c &lt;= ‘9’) res = res*10 + c - 48,c = getchar();<br>        return res;<br>    }</p>
+        <p>一般来讲，c++读入一个整数可以使用cin或者scanf()，而且scanf()函数会快一点，然而在大批整数的读取过程中，可以使用getchar()函数读取，速度更快，更省时间，因为scanf()需要缓冲，需要解析字符串，而getchar()直接读入一个字符，同理，putchar()也比printf()快一点。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> c = getchar();</span><br><span class="line">	<span class="keyword">while</span>(c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>) c = getchar();</span><br><span class="line">	<span class="keyword">while</span>(c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>) res = res\*<span class="number">10</span> + c - <span class="number">48</span>,c = getchar();</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

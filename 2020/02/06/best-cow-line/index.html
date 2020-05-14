@@ -101,14 +101,14 @@
 
 
 
-<meta name="description" content="描述有n头奶牛，重新排序并输出，每80个换一行，使得字典序最小，但只能从头添加到新列或从尾添加到新列，以下是AC代码。&#96;&#96;&#96;c++ #include&lt;cstdio&gt; #include&lt;cstring&gt; using namespace std; const int maxn &#x3D; 100005; int n; char ch[maxn],ans[maxn]; &#x2F;&#x2F;check w">
+<meta name="description" content="描述有n头奶牛，重新排序并输出，每80个换一行，使得字典序最小，但只能从头添加到新列或从尾添加到新列，以下是AC代码。12345678910111213141516171819202122232425262728293031323334353637#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;const int m">
 <meta property="og:type" content="article">
 <meta property="og:title" content="best cow line">
 <meta property="og:url" content="http://yoursite.com/2020/02/06/best-cow-line/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="描述有n头奶牛，重新排序并输出，每80个换一行，使得字典序最小，但只能从头添加到新列或从尾添加到新列，以下是AC代码。&#96;&#96;&#96;c++ #include&lt;cstdio&gt; #include&lt;cstring&gt; using namespace std; const int maxn &#x3D; 100005; int n; char ch[maxn],ans[maxn]; &#x2F;&#x2F;check w">
+<meta property="og:description" content="描述有n头奶牛，重新排序并输出，每80个换一行，使得字典序最小，但只能从头添加到新列或从尾添加到新列，以下是AC代码。12345678910111213141516171819202122232425262728293031323334353637#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;const int m">
 <meta property="article:published_time" content="2020-02-06T03:43:45.000Z">
-<meta property="article:modified_time" content="2020-02-14T13:49:47.724Z">
+<meta property="article:modified_time" content="2020-05-14T11:18:21.014Z">
 <meta property="article:author" content="殷泽伟">
 <meta property="article:tag" content="贪心">
 <meta name="twitter:card" content="summary">
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  203
+                  215
                 </span>
               
 
@@ -420,45 +420,8 @@
       
 
       
-        <p><a href="http://poj.org/problem?id=3617" target="_blank" rel="noopener"><strong>描述</strong></a><br>有n头奶牛，重新排序并输出，每80个换一行，使得字典序最小，但只能从头添加到新列或从尾添加到新列，以下是AC代码。<br>```c++</p>
-<pre><code>#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-using namespace std;
-const int maxn = 100005;
-int n;
-char ch[maxn],ans[maxn];
-//check when ch[a] == ch[b]
-bool check(int a,int b){    //return 1 then from left,return 0 then from right 
-    if(a == b)return 1;
-    if(ch[a] == ch[b])return check(a+1,b-1);
-    return ch[a] &lt; ch[b];
-}
-int main(){
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i = 0;i &lt; n;++i)scanf(&quot; %c&quot;,&amp;ch[i]);
-    int len = strlen(ch);
-    int l = 0,r = len - 1,id = 0;
-    while(l &lt;= r){
-        if(ch[l] == ch[r]){
-            if(check(l,r)){
-                ans[id] = ch[l++];
-            }else{
-                ans[id] = ch[r--];
-            }
-        }
-        else if(ch[l] &lt; ch[r]){
-            ans[id] = ch[l++];
-        }else{
-            ans[id] = ch[r--];
-        }
-        //output
-        putchar(ans[id++]);
-        if(id % 80 == 0){
-            putchar(&#39;\n&#39;);
-        }
-    }
-}
-</code></pre>
+        <p><a href="http://poj.org/problem?id=3617" target="_blank" rel="noopener"><strong>描述</strong></a><br>有n头奶牛，重新排序并输出，每80个换一行，使得字典序最小，但只能从头添加到新列或从尾添加到新列，以下是AC代码。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> ch[maxn],ans[maxn];</span><br><span class="line"><span class="comment">//check when ch[a] == ch[b]</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;	<span class="comment">//return 1 then from left,return 0 then from right </span></span><br><span class="line">	<span class="keyword">if</span>(a == b)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(ch[a] == ch[b])<span class="keyword">return</span> check(a+<span class="number">1</span>,b<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">return</span> ch[a] &lt; ch[b];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)<span class="built_in">scanf</span>(<span class="string">" %c"</span>,&amp;ch[i]);</span><br><span class="line">	<span class="keyword">int</span> len = <span class="built_in">strlen</span>(ch);</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">0</span>,r = len - <span class="number">1</span>,id = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">		<span class="keyword">if</span>(ch[l] == ch[r])&#123;</span><br><span class="line">			<span class="keyword">if</span>(check(l,r))&#123;</span><br><span class="line">				ans[id] = ch[l++];</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				ans[id] = ch[r--];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(ch[l] &lt; ch[r])&#123;</span><br><span class="line">			ans[id] = ch[l++];</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			ans[id] = ch[r--];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//output</span></span><br><span class="line">		<span class="built_in">putchar</span>(ans[id++]);</span><br><span class="line">		<span class="keyword">if</span>(id % <span class="number">80</span> == <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     

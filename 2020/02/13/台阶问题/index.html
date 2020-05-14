@@ -101,14 +101,14 @@
 
 
 
-<meta name="description" content="台阶问题是指到达第n个台阶，每部最多走k步的问题，如果dfs必然超标，只能dp规律发现，k个以内的台阶，每次都是上面一步的两倍k个以外的台阶，每次都是上次的两倍减去f[i-k-1]&#96;&#96;&#96;c++     #include&lt;iostream&gt;     const int mod &#x3D; 100003;     int ans &#x3D; 0,f[100001],n,k;     int main(){">
+<meta name="description" content="台阶问题是指到达第n个台阶，每部最多走k步的问题，如果dfs必然超标，只能dp规律发现，k个以内的台阶，每次都是上面一步的两倍k个以外的台阶，每次都是上次的两倍减去f[i-k-1]1234567891011121314#include&lt;iostream&gt;const int mod &#x3D; 100003;int ans &#x3D; 0,f[100001],n,k;int main()&amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="台阶问题">
 <meta property="og:url" content="http://yoursite.com/2020/02/13/%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="台阶问题是指到达第n个台阶，每部最多走k步的问题，如果dfs必然超标，只能dp规律发现，k个以内的台阶，每次都是上面一步的两倍k个以外的台阶，每次都是上次的两倍减去f[i-k-1]&#96;&#96;&#96;c++     #include&lt;iostream&gt;     const int mod &#x3D; 100003;     int ans &#x3D; 0,f[100001],n,k;     int main(){">
+<meta property="og:description" content="台阶问题是指到达第n个台阶，每部最多走k步的问题，如果dfs必然超标，只能dp规律发现，k个以内的台阶，每次都是上面一步的两倍k个以外的台阶，每次都是上次的两倍减去f[i-k-1]1234567891011121314#include&lt;iostream&gt;const int mod &#x3D; 100003;int ans &#x3D; 0,f[100001],n,k;int main()&amp;#123;">
 <meta property="article:published_time" content="2020-02-13T10:33:44.000Z">
-<meta property="article:modified_time" content="2020-02-14T13:45:42.170Z">
+<meta property="article:modified_time" content="2020-05-14T11:17:25.591Z">
 <meta property="article:author" content="殷泽伟">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  157
+                  161
                 </span>
               
 
@@ -420,22 +420,8 @@
       
 
       
-        <p>台阶问题是指到达第n个台阶，每部最多走k步的问题，如果dfs必然超标，只能dp<br>规律发现，k个以内的台阶，每次都是上面一步的两倍<br>k个以外的台阶，每次都是上次的两倍减去f[i-k-1]<br>```c++</p>
-<pre><code>    #include&lt;iostream&gt;
-    const int mod = 100003;
-    int ans = 0,f[100001],n,k;
-    int main(){
-        std::ios::sync_with_stdio(false);
-        std::cin&gt;&gt;n&gt;&gt;k;
-        f[0] = f[1]  = 1;
-        for(int i = 2;i &lt;= n;++i){
-            if(i &lt;= k)f[i] = 2*f[i - 1] %mod;
-            else f[i] = (2*f[i-1]-f[i-k-1])%mod;
-        }
-        std::cout &lt;&lt; (f[n]+mod)%mod &lt;&lt; std::endl;
-        return 0;
-    }
-</code></pre>
+        <p>台阶问题是指到达第n个台阶，每部最多走k步的问题，如果dfs必然超标，只能dp<br>规律发现，k个以内的台阶，每次都是上面一步的两倍<br>k个以外的台阶，每次都是上次的两倍减去f[i-k-1]<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">100003</span>;</span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>,f[<span class="number">100001</span>],n,k;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    f[<span class="number">0</span>] = f[<span class="number">1</span>]  = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i &lt;= n;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &lt;= k)f[i] = <span class="number">2</span>*f[i - <span class="number">1</span>] %mod;</span><br><span class="line">        <span class="keyword">else</span> f[i] = (<span class="number">2</span>*f[i<span class="number">-1</span>]-f[i-k<span class="number">-1</span>])%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; (f[n]+mod)%mod &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     

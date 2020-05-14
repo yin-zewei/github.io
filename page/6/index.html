@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  126
+                  127
                 </span>
               
 
@@ -421,7 +421,7 @@
       
         
           
-            <p>一般来讲，c++读入一个整数可以使用cin或者scanf()，而且scanf()函数会快一点，然而在大批整数的读取过程中，可以使用getchar()函数读取，速度更快，更省时间，因为scanf()需要缓冲，需要解析字符串，而getchar()直接读入一个字符，同理，putchar()也比printf()快一点。<br>```c++<br>    int read(){<br>        int res = 0;<br>        char c = getchar();<br>        while(c &lt; ‘0’ || c &gt; ‘9’) c = getchar();<br>        while(c &gt;= ‘0’ &amp;&amp; c &lt;= ‘9’) res = res*10 + c - 48,c = getchar();<br>        return res;<br>    }</p>
+            <p>一般来讲，c++读入一个整数可以使用cin或者scanf()，而且scanf()函数会快一点，然而在大批整数的读取过程中，可以使用getchar()函数读取，速度更快，更省时间，因为scanf()需要缓冲，需要解析字符串，而getchar()直接读入一个字符，同理，putchar()也比printf()快一点。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> c = getchar();</span><br><span class="line">	<span class="keyword">while</span>(c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>) c = getchar();</span><br><span class="line">	<span class="keyword">while</span>(c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>) res = res\*<span class="number">10</span> + c - <span class="number">48</span>,c = getchar();</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -754,7 +754,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  191
+                  199
                 </span>
               
 
@@ -794,34 +794,7 @@
         
           
             <p><strong>原题链接：</strong><a href="https://vjudge.net/problem/POJ-2253" target="_blank" rel="noopener">传送门</a><br><strong>思路：</strong>由于数据量较小，直接采用Floyd的改进算法，O(n<em>n</em>n)</p>
-<p>```c++</p>
-<pre><code>    #include&lt;cstdio&gt;
-    #include&lt;algorithm&gt;
-    #include&lt;cmath&gt;
-    using namespace std; 
-    const int maxn = 205;
-    int x[maxn],y[maxn],id = 1,n,a,b;
-    double s[maxn][maxn];
-    int main(){
-        while(scanf(&quot;%d&quot;,&amp;n) &amp;&amp; n){
-            for(int i = 1;i &lt;= n;++i)scanf(&quot;%d %d&quot;,&amp;x[i],&amp;y[i]);
-            for(int i = 1;i &lt;= n;++i){
-                s[i][i] = 0;
-                for(int j = i + 1;j &lt;= n;++j){
-                    s[j][i] = s[i][j] = sqrt(pow(abs(x[i]-x[j])*1.0,2)+pow(abs(y[i] - y[j])*1.0,2));
-                }
-            }
-            for(int k = 1;k &lt;= n;++k){
-                for(int i = 1;i &lt;= n;++i){
-                    for(int j = 1;j &lt;= n;++j){
-                        s[i][j] = min(s[i][j],max(s[i][k],s[k][j]));
-                    }
-                }
-            }
-            printf(&quot;Scenario #%d\nFrog Distance = %.3lf\n\n&quot;,id++,s[1][2]);;
-        }
-    }
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>; </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">205</span>;</span><br><span class="line"><span class="keyword">int</span> x[maxn],y[maxn],id = <span class="number">1</span>,n,a,b;</span><br><span class="line"><span class="keyword">double</span> s[maxn][maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n) &amp;&amp; n)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;x[i],&amp;y[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">			s[i][i] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>;j &lt;= n;++j)&#123;</span><br><span class="line">				s[j][i] = s[i][j] = <span class="built_in">sqrt</span>(<span class="built_in">pow</span>(<span class="built_in">abs</span>(x[i]-x[j])*<span class="number">1.0</span>,<span class="number">2</span>)+<span class="built_in">pow</span>(<span class="built_in">abs</span>(y[i] - y[j])*<span class="number">1.0</span>,<span class="number">2</span>));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>;k &lt;= n;++k)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= n;++j)&#123;</span><br><span class="line">					s[i][j] = <span class="built_in">min</span>(s[i][j],<span class="built_in">max</span>(s[i][k],s[k][j]));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Scenario #%d\nFrog Distance = %.3lf\n\n"</span>,id++,s[<span class="number">1</span>][<span class="number">2</span>]);;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1401,7 +1374,7 @@ int main(){
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  203
+                  215
                 </span>
               
 
@@ -1440,45 +1413,8 @@ int main(){
       
         
           
-            <p><a href="http://poj.org/problem?id=3617" target="_blank" rel="noopener"><strong>描述</strong></a><br>有n头奶牛，重新排序并输出，每80个换一行，使得字典序最小，但只能从头添加到新列或从尾添加到新列，以下是AC代码。<br>```c++</p>
-<pre><code>#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-using namespace std;
-const int maxn = 100005;
-int n;
-char ch[maxn],ans[maxn];
-//check when ch[a] == ch[b]
-bool check(int a,int b){    //return 1 then from left,return 0 then from right 
-    if(a == b)return 1;
-    if(ch[a] == ch[b])return check(a+1,b-1);
-    return ch[a] &lt; ch[b];
-}
-int main(){
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i = 0;i &lt; n;++i)scanf(&quot; %c&quot;,&amp;ch[i]);
-    int len = strlen(ch);
-    int l = 0,r = len - 1,id = 0;
-    while(l &lt;= r){
-        if(ch[l] == ch[r]){
-            if(check(l,r)){
-                ans[id] = ch[l++];
-            }else{
-                ans[id] = ch[r--];
-            }
-        }
-        else if(ch[l] &lt; ch[r]){
-            ans[id] = ch[l++];
-        }else{
-            ans[id] = ch[r--];
-        }
-        //output
-        putchar(ans[id++]);
-        if(id % 80 == 0){
-            putchar(&#39;\n&#39;);
-        }
-    }
-}
-</code></pre>
+            <p><a href="http://poj.org/problem?id=3617" target="_blank" rel="noopener"><strong>描述</strong></a><br>有n头奶牛，重新排序并输出，每80个换一行，使得字典序最小，但只能从头添加到新列或从尾添加到新列，以下是AC代码。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> ch[maxn],ans[maxn];</span><br><span class="line"><span class="comment">//check when ch[a] == ch[b]</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;	<span class="comment">//return 1 then from left,return 0 then from right </span></span><br><span class="line">	<span class="keyword">if</span>(a == b)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(ch[a] == ch[b])<span class="keyword">return</span> check(a+<span class="number">1</span>,b<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">return</span> ch[a] &lt; ch[b];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)<span class="built_in">scanf</span>(<span class="string">" %c"</span>,&amp;ch[i]);</span><br><span class="line">	<span class="keyword">int</span> len = <span class="built_in">strlen</span>(ch);</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">0</span>,r = len - <span class="number">1</span>,id = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">		<span class="keyword">if</span>(ch[l] == ch[r])&#123;</span><br><span class="line">			<span class="keyword">if</span>(check(l,r))&#123;</span><br><span class="line">				ans[id] = ch[l++];</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				ans[id] = ch[r--];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(ch[l] &lt; ch[r])&#123;</span><br><span class="line">			ans[id] = ch[l++];</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			ans[id] = ch[r--];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//output</span></span><br><span class="line">		<span class="built_in">putchar</span>(ans[id++]);</span><br><span class="line">		<span class="keyword">if</span>(id % <span class="number">80</span> == <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
           
         
       
@@ -2238,7 +2174,7 @@ int main(){
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  308
+                  315
                 </span>
               
 
@@ -2278,64 +2214,7 @@ int main(){
         
           
             <p><a href="http://poj.org/problem?id=1328" target="_blank" rel="noopener">Description</a><br>对每个岛屿，得到一个雷达的活动范围,然后根据活动范围的左界进行排序,再通过贪心进行求解，如果下一个范围左界小于当前右界，那么说明重合,不用添加雷达，如果大于当前右界，那么需要添加一个雷达，并且更新右界;</p>
-<p>```c++</p>
-<pre><code>#include&lt;cmath&gt;
-#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#define MAX 1005
-using namespace std;
-struct note{                //雷达范围
-    double left,right;
-}b[MAX];
-bool cmp(note a,note b)      //比较函数
-{
-    if(a.right==b.right) return a.left&gt;b.left; 
-        else
-    return a.right&lt;b.right;
-}
-int acount,n; 
-void search(double maxn)     //贪心代码
-{
-    int i;
-    for(i=1;i&lt;n;i++)
-        if(b[i].left&gt;maxn)
-        {
-            maxn=b[i].right;        
-            acount++;
-        }
-}
-int main()
-{
-    double d,x,y;
-    scanf(&quot;%d%lf&quot;,&amp;n,&amp;d);
-    int t=0;
-    while(n||d)
-    {
-        t++;
-        int flag=0;
-        acount=0;    
-        for(int i=0;i&lt;n;i++)
-        {
-            scanf(&quot;%lf%lf&quot;,&amp;x,&amp;y);
-            if(y&gt;d){ 
-                flag = 1;break;    //存在雷达无法触及的点，跳出循环，输出-1
-            }
-            b[i].left=x-sqrt((d*d)-(y*y));      
-            b[i].right=x+sqrt((d*d)-(y*y));
-        }
-        if(!o)
-        {
-            sort(b,b+n,cmp);
-            search(b[0].right);
-            printf(&quot;Case %d: %d\n&quot;,t,acount+1);
-        }
-        else
-            printf(&quot;Case %d: -1\n&quot;,t);
-        scanf(&quot;%d%lf&quot;,&amp;n,&amp;d);
-    }
-    return 0;
-}
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 1005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">note</span>&#123;</span>				<span class="comment">//雷达范围</span></span><br><span class="line">    <span class="keyword">double</span> left,right;</span><br><span class="line">&#125;b[MAX];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(note a,note b)</span>      <span class="comment">//比较函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.right==b.right) <span class="keyword">return</span> a.left&gt;b.left; </span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> a.right&lt;b.right;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> acount,n; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">search</span><span class="params">(<span class="keyword">double</span> maxn)</span>     <span class="comment">//贪心代码</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">        <span class="keyword">if</span>(b[i].left&gt;maxn)</span><br><span class="line">        &#123;</span><br><span class="line">            maxn=b[i].right;        </span><br><span class="line">            acount++;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> d,x,y;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%lf"</span>,&amp;n,&amp;d);</span><br><span class="line">    <span class="keyword">int</span> t=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n||d)</span><br><span class="line">    &#123;</span><br><span class="line">        t++;</span><br><span class="line">        <span class="keyword">int</span> flag=<span class="number">0</span>;</span><br><span class="line">        acount=<span class="number">0</span>;	</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;x,&amp;y);</span><br><span class="line">            <span class="keyword">if</span>(y&gt;d)&#123; </span><br><span class="line">            	flag = <span class="number">1</span>;<span class="keyword">break</span>;	<span class="comment">//存在雷达无法触及的点，跳出循环，输出-1</span></span><br><span class="line">            &#125;</span><br><span class="line">            b[i].left=x-<span class="built_in">sqrt</span>((d*d)-(y*y));      </span><br><span class="line">            b[i].right=x+<span class="built_in">sqrt</span>((d*d)-(y*y));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!o)</span><br><span class="line">        &#123;</span><br><span class="line">            sort(b,b+n,cmp);</span><br><span class="line">            search(b[<span class="number">0</span>].right);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Case %d: %d\n"</span>,t,acount+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Case %d: -1\n"</span>,t);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%lf"</span>,&amp;n,&amp;d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
