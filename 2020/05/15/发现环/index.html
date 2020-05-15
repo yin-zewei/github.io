@@ -85,7 +85,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="基础知识," />
+  <meta name="keywords" content="tarjan缩点," />
 
 
 
@@ -101,16 +101,16 @@
 
 
 
-<meta name="description" content="一般来讲，c++读入一个整数可以使用cin或者scanf()，而且scanf()函数会快一点，然而在大批整数的读取过程中，可以使用getchar()函数读取，速度更快，更省时间，因为scanf()需要缓冲，需要解析字符串，而getchar()直接读入一个字符，同理，putchar()也比printf()快一点。1234567int read()&amp;#123;	int res &#x3D; 0;	char c">
+<meta name="description" content="来源 描述：一棵树，求其中包含的一个环，并输出所有环上的点 思路：是tarjan缩点的一个变式 可以初始化一个栈 dfs这棵树 首先把开始的元素放入栈中 判断是否已经放入 如果放入，那么说明成环 回退直到碰到相同点，这些都是答案   如果没有找到，那么把这些元素直到dfs的根元素退栈 注意这是双向图，那么dfs的时候不能回到父节点，所以要特判一下有没有这个特殊情况    123456789101">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c++快读整数">
-<meta property="og:url" content="http://yoursite.com/2020/02/09/c-%E5%BF%AB%E8%AF%BB%E6%95%B4%E6%95%B0/index.html">
+<meta property="og:title" content="发现环">
+<meta property="og:url" content="http://yoursite.com/2020/05/15/%E5%8F%91%E7%8E%B0%E7%8E%AF/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="一般来讲，c++读入一个整数可以使用cin或者scanf()，而且scanf()函数会快一点，然而在大批整数的读取过程中，可以使用getchar()函数读取，速度更快，更省时间，因为scanf()需要缓冲，需要解析字符串，而getchar()直接读入一个字符，同理，putchar()也比printf()快一点。1234567int read()&amp;#123;	int res &#x3D; 0;	char c">
-<meta property="article:published_time" content="2020-02-09T08:23:31.000Z">
-<meta property="article:modified_time" content="2020-05-14T11:18:12.991Z">
+<meta property="og:description" content="来源 描述：一棵树，求其中包含的一个环，并输出所有环上的点 思路：是tarjan缩点的一个变式 可以初始化一个栈 dfs这棵树 首先把开始的元素放入栈中 判断是否已经放入 如果放入，那么说明成环 回退直到碰到相同点，这些都是答案   如果没有找到，那么把这些元素直到dfs的根元素退栈 注意这是双向图，那么dfs的时候不能回到父节点，所以要特判一下有没有这个特殊情况    123456789101">
+<meta property="article:published_time" content="2020-05-15T10:23:23.000Z">
+<meta property="article:modified_time" content="2020-05-15T10:32:16.178Z">
 <meta property="article:author" content="殷泽伟">
-<meta property="article:tag" content="基础知识">
+<meta property="article:tag" content="tarjan缩点">
 <meta name="twitter:card" content="summary">
 
 
@@ -140,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/09/c-快读整数/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/15/发现环/"/>
 
 
 
 
 
-  <title>c++快读整数 | 殷泽伟的博客</title>
+  <title>发现环 | 殷泽伟的博客</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/c-%E5%BF%AB%E8%AF%BB%E6%95%B4%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/15/%E5%8F%91%E7%8E%B0%E7%8E%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殷泽伟">
@@ -306,7 +306,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">c++快读整数</h2>
+          <h2 class="post-title" itemprop="name headline">发现环</h2>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-09T16:23:31+08:00">
-                2020-02-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-15T18:23:23+08:00">
+                2020-05-15
               </time>
             
 
@@ -358,7 +358,7 @@
 
           
           
-             <span id="/2020/02/09/c-%E5%BF%AB%E8%AF%BB%E6%95%B4%E6%95%B0/" class="leancloud_visitors" data-flag-title="c++快读整数">
+             <span id="/2020/05/15/%E5%8F%91%E7%8E%B0%E7%8E%AF/" class="leancloud_visitors" data-flag-title="发现环">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  127
+                  423
                 </span>
               
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -420,7 +420,24 @@
       
 
       
-        <p>一般来讲，c++读入一个整数可以使用cin或者scanf()，而且scanf()函数会快一点，然而在大批整数的读取过程中，可以使用getchar()函数读取，速度更快，更省时间，因为scanf()需要缓冲，需要解析字符串，而getchar()直接读入一个字符，同理，putchar()也比printf()快一点。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> c = getchar();</span><br><span class="line">	<span class="keyword">while</span>(c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>) c = getchar();</span><br><span class="line">	<span class="keyword">while</span>(c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>) res = res\*<span class="number">10</span> + c - <span class="number">48</span>,c = getchar();</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <ul>
+<li><a href="http://lx.lanqiao.cn/problem.page?gpid=T452" target="_blank" rel="noopener">来源</a></li>
+<li>描述：一棵树，求其中包含的一个环，并输出所有环上的点</li>
+<li>思路：是tarjan缩点的一个变式<ul>
+<li>可以初始化一个栈</li>
+<li>dfs这棵树<ul>
+<li>首先把开始的元素放入栈中</li>
+<li>判断是否已经放入</li>
+<li>如果放入，那么说明成环</li>
+<li>回退直到碰到相同点，这些都是答案</li>
+</ul>
+</li>
+<li>如果没有找到，那么把这些元素直到dfs的根元素退栈</li>
+<li>注意这是双向图，那么dfs的时候不能回到父节点，所以要特判一下有没有这个特殊情况</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> par pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>&lt;par&gt;s;</span><br><span class="line"><span class="keyword">int</span> n,f1,f2,flag,vis[N],stac[N],cnt,ans[N],tot;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;fa[N],tg[N],g[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> root,<span class="keyword">int</span> tag)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// freopen("in.txt","r",stdin);</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>,a,b;i &lt;= n;++i)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;a,&amp;b);</span><br><span class="line">        tg[a].push_back(b);</span><br><span class="line">        tg[b].push_back(a);</span><br><span class="line">        par p(a,b),p1(b,a);</span><br><span class="line">        <span class="keyword">if</span>(s.<span class="built_in">find</span>(p)!=s.<span class="built_in">end</span>())&#123;                 <span class="comment">//特判父子节点成环</span></span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="built_in">min</span>(a,b) &lt;&lt; <span class="string">" "</span> &lt;&lt; <span class="built_in">max</span>(a,b);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        s.insert(p),s.insert(p1);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>,<span class="number">-1</span>);    <span class="comment">//dfs</span></span><br><span class="line">    sort(ans+<span class="number">1</span>,ans+<span class="number">1</span>+tot);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= tot;++i)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,ans[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> root,<span class="keyword">int</span> tag)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(flag)<span class="keyword">return</span>;         <span class="comment">//已经找到答案，退出</span></span><br><span class="line">    stac[++cnt]=root;       <span class="comment">//入栈</span></span><br><span class="line">    <span class="keyword">if</span>(vis[root]==<span class="number">1</span>)&#123;       <span class="comment">//发现环，输出答案</span></span><br><span class="line">        --cnt;</span><br><span class="line">        <span class="keyword">while</span>(stac[cnt]!=root)&#123;</span><br><span class="line">            ans[++tot]=stac[cnt];</span><br><span class="line">            --cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        ans[++tot]=root;</span><br><span class="line">        flag=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ++vis[root];            <span class="comment">//标记元素</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; tg[root].<span class="built_in">size</span>();++i)&#123; <span class="comment">//深度优先遍历</span></span><br><span class="line">        <span class="keyword">int</span> x = tg[root][i];</span><br><span class="line">        <span class="keyword">if</span>(x!=tag)&#123;</span><br><span class="line">            dfs(x,root);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!flag)&#123;                      <span class="comment">//未发现环，退栈</span></span><br><span class="line">        <span class="keyword">while</span>(stac[cnt--]!=root);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -441,7 +458,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2020/02/09/c-%E5%BF%AB%E8%AF%BB%E6%95%B4%E6%95%B0/" title="c++快读整数">http://yoursite.com/2020/02/09/c-%E5%BF%AB%E8%AF%BB%E6%95%B4%E6%95%B0/</a>
+    <a href="http://yoursite.com/2020/05/15/%E5%8F%91%E7%8E%B0%E7%8E%AF/" title="发现环">http://yoursite.com/2020/05/15/%E5%8F%91%E7%8E%B0%E7%8E%AF/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -456,7 +473,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># 基础知识</a>
+            <a href="/tags/tarjan%E7%BC%A9%E7%82%B9/" rel="tag"># tarjan缩点</a>
           
         </div>
       
@@ -469,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/09/%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99/" rel="next" title="快速幂取余">
-                <i class="fa fa-chevron-left"></i> 快速幂取余
+              <a href="/2020/05/15/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E6%A6%82%E8%AE%BA/" rel="next" title="计算几何概论">
+                <i class="fa fa-chevron-left"></i> 计算几何概论
               </a>
             
           </div>
@@ -478,10 +495,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/09/%E9%80%86%E5%BA%8F%E5%AF%B9/" rel="prev" title="逆序对">
-                逆序对 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
