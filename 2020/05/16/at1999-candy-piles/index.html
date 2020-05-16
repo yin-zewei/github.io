@@ -85,7 +85,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="数学," />
+  <meta name="keywords" content="博弈论," />
 
 
 
@@ -101,16 +101,16 @@
 
 
 
-<meta name="description" content="一般的组合数可以使用常规的递归得到，但是大组合数取模的复杂度太大，可以使用lucas定理进行优化原题假设组合数函数为C(n,m) p为模数,fac(n)为阶乘函数那么C(n,m)mod p &#x3D; C(n&#x2F;p,m&#x2F;p)*C(n%p,m%p)mod p其中，第一项接着lucas递归，第二项直接求解ie.直接求解时可以使用逆元运算，避免除数，即C(n,m)&#x3D;fac(n)*(m,p-2)*(n-m,p-2)">
+<meta name="description" content="传送门  介绍：n堆糖果，两个人轮流吃，要么所有的减一，要么直接吃一堆，吃完的人输掉，求第一个人会赢还是第二个人会赢 算法：将糖果的堆转化为网格表，就可以做了  1234567891011121314151617181920212223242526272829303132#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;int n,a[100010]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大组合数取模">
-<meta property="og:url" content="http://yoursite.com/2020/04/21/%E5%A4%A7%E7%BB%84%E5%90%88%E6%95%B0%E5%8F%96%E6%A8%A1/index.html">
+<meta property="og:title" content="at1999 candy piles">
+<meta property="og:url" content="http://yoursite.com/2020/05/16/at1999-candy-piles/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="一般的组合数可以使用常规的递归得到，但是大组合数取模的复杂度太大，可以使用lucas定理进行优化原题假设组合数函数为C(n,m) p为模数,fac(n)为阶乘函数那么C(n,m)mod p &#x3D; C(n&#x2F;p,m&#x2F;p)*C(n%p,m%p)mod p其中，第一项接着lucas递归，第二项直接求解ie.直接求解时可以使用逆元运算，避免除数，即C(n,m)&#x3D;fac(n)*(m,p-2)*(n-m,p-2)">
-<meta property="article:published_time" content="2020-04-21T14:13:18.000Z">
-<meta property="article:modified_time" content="2020-05-13T09:41:02.132Z">
+<meta property="og:description" content="传送门  介绍：n堆糖果，两个人轮流吃，要么所有的减一，要么直接吃一堆，吃完的人输掉，求第一个人会赢还是第二个人会赢 算法：将糖果的堆转化为网格表，就可以做了  1234567891011121314151617181920212223242526272829303132#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;int n,a[100010]">
+<meta property="article:published_time" content="2020-05-16T10:12:21.000Z">
+<meta property="article:modified_time" content="2020-05-16T10:16:47.539Z">
 <meta property="article:author" content="殷泽伟">
-<meta property="article:tag" content="数学">
+<meta property="article:tag" content="博弈论">
 <meta name="twitter:card" content="summary">
 
 
@@ -140,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/21/大组合数取模/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/16/at1999-candy-piles/"/>
 
 
 
 
 
-  <title>大组合数取模 | 殷泽伟的博客</title>
+  <title>at1999 candy piles | 殷泽伟的博客</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/21/%E5%A4%A7%E7%BB%84%E5%90%88%E6%95%B0%E5%8F%96%E6%A8%A1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/16/at1999-candy-piles/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殷泽伟">
@@ -306,7 +306,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">大组合数取模</h2>
+          <h2 class="post-title" itemprop="name headline">at1999 candy piles</h2>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-21T22:13:18+08:00">
-                2020-04-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-16T18:12:21+08:00">
+                2020-05-16
               </time>
             
 
@@ -358,7 +358,7 @@
 
           
           
-             <span id="/2020/04/21/%E5%A4%A7%E7%BB%84%E5%90%88%E6%95%B0%E5%8F%96%E6%A8%A1/" class="leancloud_visitors" data-flag-title="大组合数取模">
+             <span id="/2020/05/16/at1999-candy-piles/" class="leancloud_visitors" data-flag-title="at1999 candy piles">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  325
+                  206
                 </span>
               
 
@@ -420,7 +420,12 @@
       
 
       
-        <p>一般的组合数可以使用常规的递归得到，但是大组合数取模的复杂度太大，可以使用lucas定理进行优化<br><a href="https://www.luogu.com.cn/problem/P3807" target="_blank" rel="noopener">原题</a><br>假设组合数函数为C(n,m) p为模数,fac(n)为阶乘函数<br>那么C(n,m)mod p = C(n/p,m/p)*C(n%p,m%p)mod p<br>其中，第一项接着lucas递归，第二项直接求解<br>ie.直接求解时可以使用逆元运算，避免除数，即C(n,m)=fac(n)*(m,p-2)*(n-m,p-2)mod p<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> ll maxn = <span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">ll f[maxn],p;</span><br><span class="line"><span class="function">ll <span class="title">lucas</span><span class="params">(ll n,ll m)</span></span>;</span><br><span class="line"><span class="function">ll <span class="title">C</span><span class="params">(ll n,ll m)</span></span>;</span><br><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll n,ll m)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//freopen("in.txt","r",stdin);</span></span><br><span class="line">    ll T,a,b;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;T;</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;p;</span><br><span class="line">        f[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(ll i = <span class="number">1</span>;i &lt;= p;++i)f[i]=i*f[i<span class="number">-1</span>]%p;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;lucas(a+b,a)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll n,ll m)</span></span>&#123;</span><br><span class="line">    ll ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = m;i;i&gt;&gt;=<span class="number">1</span>,n=n*n%p)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i&amp;<span class="number">1</span>)ans = ans * n % p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">ll <span class="title">C</span><span class="params">(ll n,ll m)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(m&gt;n)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> f[n]*qpow(f[m],p<span class="number">-2</span>)%p*qpow(f[n-m],p<span class="number">-2</span>)%p;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">ll <span class="title">lucas</span><span class="params">(ll n,ll m)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(m==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> lucas(n/p,m/p)*C(n%p,m%p)%p;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+        <p><a href="https://atcoder.jp/contests/agc002/tasks/agc002_e" target="_blank" rel="noopener">传送门</a></p>
+<ul>
+<li>介绍：n堆糖果，两个人轮流吃，要么所有的减一，要么直接吃一堆，吃完的人输掉，求第一个人会赢还是第二个人会赢</li>
+<li>算法：将糖果的堆转化为网格表，就可以做了</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">100010</span>],ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dx=<span class="number">0</span>,dy=a[p]-p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = p+<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]&gt;=p)++dx;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dx&amp;<span class="number">1</span>||dy&amp;<span class="number">1</span>)<span class="built_in">puts</span>(<span class="string">"First"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"Second"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// freopen("in.txt","r",stdin);</span></span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[<span class="number">1</span>]&amp;<span class="number">1</span>)<span class="built_in">puts</span>(<span class="string">"Second"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"First"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n,greater&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">    <span class="keyword">int</span> p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i+<span class="number">1</span>]&lt;i+<span class="number">1</span>)&#123;</span><br><span class="line">            p=i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    f(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -441,7 +446,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2020/04/21/%E5%A4%A7%E7%BB%84%E5%90%88%E6%95%B0%E5%8F%96%E6%A8%A1/" title="大组合数取模">http://yoursite.com/2020/04/21/%E5%A4%A7%E7%BB%84%E5%90%88%E6%95%B0%E5%8F%96%E6%A8%A1/</a>
+    <a href="http://yoursite.com/2020/05/16/at1999-candy-piles/" title="at1999 candy piles">http://yoursite.com/2020/05/16/at1999-candy-piles/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -456,7 +461,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+            <a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" rel="tag"># 博弈论</a>
           
         </div>
       
@@ -469,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/04/%E7%A7%98%E5%AF%86%E8%A1%8C%E5%8A%A8/" rel="next" title="秘密行动">
-                <i class="fa fa-chevron-left"></i> 秘密行动
+              <a href="/2020/05/16/%E4%B8%BB%E5%B8%AD%E6%A0%91/" rel="next" title="主席树">
+                <i class="fa fa-chevron-left"></i> 主席树
               </a>
             
           </div>
@@ -478,10 +483,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/26/%E5%8C%BA%E9%97%B4dp%E6%A8%A1%E7%89%88/" rel="prev" title="区间dp模版">
-                区间dp模版 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

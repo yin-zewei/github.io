@@ -286,6 +286,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/%E6%A0%91%E5%BD%A2dp%E6%A8%A1%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/26/%E6%A0%91%E5%BD%A2dp%E6%A8%A1%E7%89%88/" itemprop="url">树形dp模版</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T20:20:06+08:00">
+                2020-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/04/26/%E6%A0%91%E5%BD%A2dp%E6%A8%A1%E7%89%88/" class="leancloud_visitors" data-flag-title="树形dp模版">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  242
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>树形dp显而易见，就是在一棵数上进行dp，说到树，必然有dfs或bfs进行遍历<br>此处我们使用f[i][j]说明第i个节点的状态，使用dfs遍历<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">6e3</span>+<span class="number">5</span>,inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">int</span> n,f[maxn][<span class="number">2</span>],ans = <span class="number">0</span>,root,r[maxn],fa[maxn];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;rel[maxn];</span><br><span class="line"><span class="comment">//dfs没问题的</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(f[p][<span class="number">0</span>]||f[p][<span class="number">1</span>])<span class="keyword">return</span>;</span><br><span class="line">    f[p][<span class="number">1</span>] += r[p];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; rel[p].<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">        dfs(rel[p][i]);</span><br><span class="line">        f[p][<span class="number">0</span>] += <span class="built_in">max</span>(f[rel[p][i]][<span class="number">1</span>],f[rel[p][i]][<span class="number">0</span>]);</span><br><span class="line">        f[p][<span class="number">1</span>] += f[rel[p][i]][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//freopen("in.txt","r",stdin);</span></span><br><span class="line">    ios::sync_with_stdio(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; r[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; n;++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> l,k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; l &gt;&gt; k;</span><br><span class="line">        rel[k].push_back(l);</span><br><span class="line">        fa[l] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(fa[i]==<span class="number">0</span>)&#123;</span><br><span class="line">            dfs(i);</span><br><span class="line">            ans = <span class="built_in">max</span>(ans,<span class="built_in">max</span>(f[i][<span class="number">0</span>],f[i][<span class="number">1</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/%E5%8C%BA%E9%97%B4dp%E6%A8%A1%E7%89%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1957,211 +2141,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url">计算机组成原理</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T12:45:03+08:00">
-                2020-02-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%BE/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机课</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/02/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="leancloud_visitors" data-flag-title="计算机组成原理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  344
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h2><h3 id="计算机的概念与类型"><a href="#计算机的概念与类型" class="headerlink" title="计算机的概念与类型"></a>计算机的概念与类型</h3><ul>
-<li>定义：是一种可以存储程序，并且通过执行程序指令，可以自动、高速、精确地对数字信息进行各种复杂处理，然后输出运算结果的高科技智能电子设备。</li>
-<li>五个逻辑模块：输入设备，存储器，输出设备，运算器，控制器<br><img src="计算机运行逻辑图.png" alt=""></li>
-<li>信息的数字化表示<ul>
-<li>在计算机中用数字代码表示各种信息</li>
-<li>在物理机制上用数字信号表示数字代码</li>
-<li>信息数字化表示的优点<br>  （1）物理上易实现信息的表示与存储<br>  （2）抗干扰能力强，可靠性高<br>  （3）数值的表示范围大，精度高<br>  （4）可表示的信息类型广泛<br>  （5）能用数字逻辑技术进行处理</li>
-</ul>
-</li>
-<li>存储程序工作方式<ol>
-<li>编制程序</li>
-<li>存储程序</li>
-<li>自动、连续执行程序</li>
-<li>输出结果</li>
-</ol>
-</li>
-<li>计算机的分类，主要分为模拟计算机和数字计算机 <ul>
-<li>模拟计算机：由模拟运算器件构成，处理在时间和数值上连续的模拟量（如：电压、电流等）；</li>
-<li>数字计算机：由数字逻辑器件构成，处理离散的数字量。</li>
-</ul>
-</li>
-</ul>
-<h3 id="计算机的诞生与发展"><a href="#计算机的诞生与发展" class="headerlink" title="计算机的诞生与发展"></a>计算机的诞生与发展</h3><h3 id="计算机系统的层次"><a href="#计算机系统的层次" class="headerlink" title="计算机系统的层次"></a>计算机系统的层次</h3><h3 id="计算机的性能评价"><a href="#计算机的性能评价" class="headerlink" title="计算机的性能评价"></a>计算机的性能评价</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2212,7 +2191,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2234,7 +2213,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
