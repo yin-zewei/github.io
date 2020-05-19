@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="殷泽伟的博客">
 <meta property="og:description" content="博弈论(Game Theory)又称对策论，是研究具有斗争或竞争性质现象的数学理论和方法。也是运筹学的一个重要学科。博弈论考虑游戏中的个体的预测行为和实际行为，并研究它们的优化策略。表面上不同的相互作用可能表现出相似的激励结构（incentive structure），所以它们是同一个游戏的特例。著名的例子是囚徒困境。 巴什博弈 介绍：一堆n个物品，两人轮流取1~m个，先取完的人获胜 答案：如果n">
 <meta property="article:published_time" content="2020-05-17T07:45:09.000Z">
-<meta property="article:modified_time" content="2020-05-17T08:57:51.594Z">
+<meta property="article:modified_time" content="2020-05-17T09:41:49.889Z">
 <meta property="article:author" content="殷泽伟">
 <meta property="article:tag" content="博弈论">
 <meta name="twitter:card" content="summary">
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  407
+                  583
                 </span>
               
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -435,10 +435,14 @@
 <li>介绍：n堆物品，两人轮流取，每次取堆中至少一个，最后取完者胜。</li>
 <li>结论：将n堆物品全部异或，结果为0则必败，否则必胜。</li>
 <li>证明略，较为复杂</li>
-<li><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">    res ^= a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(res)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-</li>
 </ul>
-<h2 id="一般博弈"><a href="#一般博弈" class="headerlink" title="一般博弈"></a>一般博弈</h2><p>一般博弈不太可能是模板题，需要通过SG函数ICG模型转化为尼姆博弈再进行求解。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">    res ^= a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(res)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="一般博弈"><a href="#一般博弈" class="headerlink" title="一般博弈"></a>一般博弈</h2><p>一般博弈不太可能是模板题，需要通过SG函数ICG模型转化为尼姆博弈再进行求解。<br>即将任何一种局面看成有向无环图的一个顶点，每个局面和它的子局面相连。<br>定义mex(集合)运算，表示最小的不属于这个集合的非负整数。<br>每个顶点的SG函数为sg(x)=mex(sg(y)|y是x的后继)<br>状态是先手的人的状态，移动是两个人的移动<br>如果某个状态是另外一个状态的子状态，那么父状态的sg值是所有子状态的sg值的异或和。<br>sg函数的求法，每个题目是不同的。</p>
+<ul>
+<li>寻找所有的必败态</li>
+<li>找出当前所有状态的前驱节点</li>
+<li>根据定义计算节点的sg值</li>
+</ul>
 
       
     </div>
@@ -496,6 +500,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/19/Balanced%20Lineup/" rel="prev" title="P2880 [USACO07JAN]Balanced Lineup G">
+                P2880 [USACO07JAN]Balanced Lineup G <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -574,7 +582,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -596,7 +604,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

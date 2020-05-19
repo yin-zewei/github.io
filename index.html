@@ -286,6 +286,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/Balanced%20Lineup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/19/Balanced%20Lineup/" itemprop="url">P2880 [USACO07JAN]Balanced Lineup G</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-19T09:50:20+08:00">
+                2020-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/05/19/Balanced%20Lineup/" class="leancloud_visitors" data-flag-title="P2880 [USACO07JAN]Balanced Lineup G">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  781
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.luogu.com.cn/problem/P2880" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="倍增做法"><a href="#倍增做法" class="headerlink" title="倍增做法"></a>倍增做法</h2><p>以倍增的做法打个ST表,注意每个变量的意义。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(x, a, b) for (reg int x = a; x &lt;= b; ++x)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> drp(x, a, b) for (reg int x = a; x &gt;= b; --x)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">5e4</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,q,a1,a2;</span><br><span class="line"><span class="keyword">int</span> a[N][<span class="number">22</span>],b[N][<span class="number">22</span>],p[N];<span class="comment">//a[x][y]为(x+1,x+2^y]的最小值,同理，b为最大值，p为原始数组</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ST</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	a1 = p[x],a2 = p[y];</span><br><span class="line">	drp(i,<span class="number">21</span>,<span class="number">0</span>)&#123;    <span class="comment">//以逼近的方式得到最大最小</span></span><br><span class="line">		<span class="keyword">if</span>(x+(<span class="number">1</span>&lt;&lt;i)&lt;=y)&#123;</span><br><span class="line">			a1 = <span class="built_in">min</span>(a1,a[x][i]);</span><br><span class="line">			a2 = <span class="built_in">max</span>(a2,b[x][i]);</span><br><span class="line">			x = (x+(<span class="number">1</span>&lt;&lt;i));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; q;</span><br><span class="line">	rep(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;p[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	rep(i,<span class="number">1</span>,n<span class="number">-1</span>)&#123;       <span class="comment">//初始化</span></span><br><span class="line">		a[i][<span class="number">0</span>]=<span class="built_in">min</span>(p[i],p[i+<span class="number">1</span>]);</span><br><span class="line">		b[i][<span class="number">0</span>]=<span class="built_in">max</span>(p[i],p[i+<span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	rep(i,<span class="number">1</span>,<span class="number">21</span>)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j+(<span class="number">1</span>&lt;&lt;i)&lt;=n;++j)&#123;</span><br><span class="line">			a[j][i]=<span class="built_in">min</span>(a[j][i<span class="number">-1</span>],a[j+(<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>))][i<span class="number">-1</span>]);<span class="comment">//已更新所有j的i-1,所以可以更新所有j的i</span></span><br><span class="line">			b[j][i]=<span class="built_in">max</span>(b[j][i<span class="number">-1</span>],b[j+(<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>))][i<span class="number">-1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//极速查询</span></span><br><span class="line">	<span class="keyword">while</span>(q--)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		ST(x,y);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a2-a1);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="线段树做法"><a href="#线段树做法" class="headerlink" title="线段树做法"></a>线段树做法</h2><p>显然，每个线段维护的是最大值，最小值，所以采用一个结构体数组表示树<br>显然，这是个静态树，所以只需要build和query，省去了update和lazy tag</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(x, a, b) for (reg int x = a; x &lt;= b; ++x)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> drp(x, a, b) for (reg int x = a; x &gt;= b; --x)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">5e4</span>+<span class="number">5</span>,maxn = <span class="number">1e6</span>+<span class="number">5</span>,minn = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//前面提到的结构体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Tr</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> mi,mx;</span><br><span class="line">    Tr()&#123;</span><br><span class="line">        mi = maxn,mx = minn;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,q,a[N];<span class="comment">//a为初始数组</span></span><br><span class="line">Tr rt[N&lt;&lt;<span class="number">2</span>];<span class="comment">//rt为树上数组</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ls</span><span class="params">(<span class="keyword">int</span> x)</span></span>;  <span class="comment">//x的左二子节点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rs</span><span class="params">(<span class="keyword">int</span> x)</span></span>;  <span class="comment">//x的右儿子节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>;  <span class="comment">//建树</span></span><br><span class="line"><span class="function">Tr <span class="title">query</span><span class="params">(<span class="keyword">int</span> ql,<span class="keyword">int</span> qr,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> p)</span></span>;  <span class="comment">//查询ql,qr上的最大值，最小值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; q;</span><br><span class="line">    rep(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">    <span class="keyword">while</span>(q--)&#123;</span><br><span class="line">        <span class="keyword">int</span> x,y;<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;x,&amp;y);</span><br><span class="line">        Tr t = query(x,y,<span class="number">1</span>,n,<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,t.mx-t.mi);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ls</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x&lt;&lt;<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x&lt;&lt;<span class="number">1</span>|<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        rt[x].mi = a[l],rt[x].mx = a[l];</span><br><span class="line">        <span class="keyword">return</span>;    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">    build(ls(x),l,mid);</span><br><span class="line">    build(rs(x),mid+<span class="number">1</span>,r);</span><br><span class="line">    rt[x].mi = <span class="built_in">min</span>(rt[ls(x)].mi,rt[rs(x)].mi);</span><br><span class="line">    rt[x].mx = <span class="built_in">max</span>(rt[ls(x)].mx,rt[rs(x)].mx);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Tr <span class="title">query</span><span class="params">(<span class="keyword">int</span> ql,<span class="keyword">int</span> qr,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    Tr res;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=ql&amp;&amp;r&lt;=qr)&#123;</span><br><span class="line">        res.mi = rt[p].mi;</span><br><span class="line">        res.mx = rt[p].mx;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(ql&lt;=mid)&#123;</span><br><span class="line">        Tr t1 = query(ql,qr,l,mid,ls(p));</span><br><span class="line">        res.mi = <span class="built_in">min</span>(res.mi,t1.mi),res.mx=<span class="built_in">max</span>(res.mx,t1.mx);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(qr &gt; mid)&#123;</span><br><span class="line">        Tr t1 = query(ql,qr,mid + <span class="number">1</span>,r,rs(p));</span><br><span class="line">        res.mi = <span class="built_in">min</span>(res.mi,t1.mi),res.mx=<span class="built_in">max</span>(res.mx,t1.mx);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/17/%E5%8D%9A%E5%BC%88%E6%A6%82%E8%BF%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -382,7 +569,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  407
+                  583
                 </span>
               
 
@@ -398,7 +585,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -436,10 +623,14 @@
 <li>介绍：n堆物品，两人轮流取，每次取堆中至少一个，最后取完者胜。</li>
 <li>结论：将n堆物品全部异或，结果为0则必败，否则必胜。</li>
 <li>证明略，较为复杂</li>
-<li><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">    res ^= a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(res)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-</li>
 </ul>
-<h2 id="一般博弈"><a href="#一般博弈" class="headerlink" title="一般博弈"></a>一般博弈</h2><p>一般博弈不太可能是模板题，需要通过SG函数ICG模型转化为尼姆博弈再进行求解。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">    res ^= a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(res)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="一般博弈"><a href="#一般博弈" class="headerlink" title="一般博弈"></a>一般博弈</h2><p>一般博弈不太可能是模板题，需要通过SG函数ICG模型转化为尼姆博弈再进行求解。<br>即将任何一种局面看成有向无环图的一个顶点，每个局面和它的子局面相连。<br>定义mex(集合)运算，表示最小的不属于这个集合的非负整数。<br>每个顶点的SG函数为sg(x)=mex(sg(y)|y是x的后继)<br>状态是先手的人的状态，移动是两个人的移动<br>如果某个状态是另外一个状态的子状态，那么父状态的sg值是所有子状态的sg值的异或和。<br>sg函数的求法，每个题目是不同的。</p>
+<ul>
+<li>寻找所有的必败态</li>
+<li>找出当前所有状态的前驱节点</li>
+<li>根据定义计算节点的sg值</li>
+</ul>
 
           
         
@@ -2029,205 +2220,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/09/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/" itemprop="url">裴蜀定理</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-09T21:31:38+08:00">
-                2020-05-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/05/09/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/" class="leancloud_visitors" data-flag-title="裴蜀定理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  107
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>定义：ax+by=c成立的充要条件是gcd(a,b)|c,其中，a,b,x,y,c都是整数<br>令s=gcd(a,b)<br>充分条件的证明：</p>
-<script type="math/tex; mode=display">
-\because a = sp,b = sq\\  
-\therefore s|ax,s|by\\
-\therefore s|(ax+by)\\
-\therefore s|c</script><p>必要条件的证明：</p>
-<script type="math/tex; mode=display">
-\because gcd(a,b)|c\\
-\because a=sp,b=sq,c=sk\\
-\therefore 易得spx+sqy=s(px+qy)\\
-\because p,q,x,y \in N \therefore px+qy \in N\\
-\therefore 必然存在x,y使得px+qy=k存在\\</script>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2273,7 +2270,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2295,7 +2292,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
