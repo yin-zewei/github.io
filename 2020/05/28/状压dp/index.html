@@ -85,7 +85,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="图论," />
+  <meta name="keywords" content="动态规划," />
 
 
 
@@ -101,16 +101,16 @@
 
 
 
-<meta name="description" content="链式向前星是一种极其节省空间的存图的方法，而且易访问123456789101112131415int to[N],nxt[N],head[N];&#x2F;&#x2F;如代码所示&#x2F;&#x2F;to[i]代表第i条边的末端点，nxt[i]代表连接源点a的下一条边，head[i]代表i为源点的最后一条边的poivoid addEdge(int a,int b)&amp;#123;    to[++cur]&#x3D;b;    nxt[cur]&#x3D;h">
+<meta name="description" content="概念：将一个集合的选取压缩成一个整数，作为数组的一个下标进行dp，但是，状压dp的核心还是dp，状态压缩只是手段。 传送门 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#include&lt;iostream&gt;#include&lt;cstdio&gt;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="链式向前星">
-<meta property="og:url" content="http://yoursite.com/2020/05/01/%E9%93%BE%E5%BC%8F%E5%90%91%E5%89%8D%E6%98%9F/index.html">
+<meta property="og:title" content="状压dp">
+<meta property="og:url" content="http://yoursite.com/2020/05/28/%E7%8A%B6%E5%8E%8Bdp/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="链式向前星是一种极其节省空间的存图的方法，而且易访问123456789101112131415int to[N],nxt[N],head[N];&#x2F;&#x2F;如代码所示&#x2F;&#x2F;to[i]代表第i条边的末端点，nxt[i]代表连接源点a的下一条边，head[i]代表i为源点的最后一条边的poivoid addEdge(int a,int b)&amp;#123;    to[++cur]&#x3D;b;    nxt[cur]&#x3D;h">
-<meta property="article:published_time" content="2020-05-01T09:48:09.000Z">
-<meta property="article:modified_time" content="2020-05-13T09:39:03.504Z">
+<meta property="og:description" content="概念：将一个集合的选取压缩成一个整数，作为数组的一个下标进行dp，但是，状压dp的核心还是dp，状态压缩只是手段。 传送门 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#include&lt;iostream&gt;#include&lt;cstdio&gt;#">
+<meta property="article:published_time" content="2020-05-28T12:12:27.000Z">
+<meta property="article:modified_time" content="2020-05-28T14:05:05.568Z">
 <meta property="article:author" content="殷泽伟">
-<meta property="article:tag" content="图论">
+<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
 
 
@@ -140,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/05/01/链式向前星/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/28/状压dp/"/>
 
 
 
 
 
-  <title>链式向前星 | 殷泽伟的博客</title>
+  <title>状压dp | 殷泽伟的博客</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/%E9%93%BE%E5%BC%8F%E5%90%91%E5%89%8D%E6%98%9F/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/28/%E7%8A%B6%E5%8E%8Bdp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="殷泽伟">
@@ -306,7 +306,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">链式向前星</h2>
+          <h2 class="post-title" itemprop="name headline">状压dp</h2>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-01T17:48:09+08:00">
-                2020-05-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-28T20:12:27+08:00">
+                2020-05-28
               </time>
             
 
@@ -358,7 +358,7 @@
 
           
           
-             <span id="/2020/05/01/%E9%93%BE%E5%BC%8F%E5%90%91%E5%89%8D%E6%98%9F/" class="leancloud_visitors" data-flag-title="链式向前星">
+             <span id="/2020/05/28/%E7%8A%B6%E5%8E%8Bdp/" class="leancloud_visitors" data-flag-title="状压dp">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  122
+                  313
                 </span>
               
 
@@ -420,7 +420,9 @@
       
 
       
-        <p>链式向前星是一种极其节省空间的存图的方法，而且易访问<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> to[N],nxt[N],head[N];</span><br><span class="line"><span class="comment">//如代码所示</span></span><br><span class="line"><span class="comment">//to[i]代表第i条边的末端点，nxt[i]代表连接源点a的下一条边，head[i]代表i为源点的最后一条边的poi</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    to[++cur]=b;</span><br><span class="line">    nxt[cur]=head[a];</span><br><span class="line">    head[a]=cur;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    e[++cnt].to = v;</span><br><span class="line">    nxt[cnt] = head[u];</span><br><span class="line">    head[u] = cnt;</span><br><span class="line">    e[cnt].w = w;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>概念：将一个集合的选取压缩成一个整数，作为数组的一个下标进行dp，但是，状压dp的核心还是dp，状态压缩只是手段。</p>
+<p><a href="https://www.luogu.com.cn/problem/P3052" target="_blank" rel="noopener">传送门</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,w;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">20</span>];</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">1</span>&lt;&lt;<span class="number">18</span>];<span class="comment">//f[i]状态为i的最小次数</span></span><br><span class="line"><span class="keyword">int</span> g[<span class="number">1</span>&lt;&lt;<span class="number">18</span>];<span class="comment">//g[i]状态为i时,最后一个电梯的剩余体积</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;w);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	f[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	g[<span class="number">0</span>]=w;</span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;(<span class="number">1</span>&lt;&lt;n);i++)</span><br><span class="line">	<span class="comment">//枚举状态 </span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">		<span class="comment">//枚举每一头奶牛 </span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i &amp; (<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))) <span class="keyword">continue</span>;<span class="comment">//如果这头奶牛已经在电梯里了</span></span><br><span class="line">			<span class="keyword">if</span>(g[i]&gt;=a[j])</span><br><span class="line">			<span class="comment">//如果这个电梯坐得下</span></span><br><span class="line">			&#123;</span><br><span class="line">				f[i | (<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))]=f[i];</span><br><span class="line">				<span class="comment">//让奶牛坐电梯</span></span><br><span class="line">				<span class="comment">//合并答案 </span></span><br><span class="line">				g[i | (<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))]=<span class="built_in">max</span>(g[i | (<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))],g[i]-a[j]);</span><br><span class="line">				<span class="comment">//更新剩余体积 </span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				f[i | (<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))]=f[i]+<span class="number">1</span>;<span class="comment">//电梯次数+1 </span></span><br><span class="line">				g[i | (<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))]=<span class="built_in">max</span>(g[i | (<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))],w-a[j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,f[(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>]);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -441,7 +443,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2020/05/01/%E9%93%BE%E5%BC%8F%E5%90%91%E5%89%8D%E6%98%9F/" title="链式向前星">http://yoursite.com/2020/05/01/%E9%93%BE%E5%BC%8F%E5%90%91%E5%89%8D%E6%98%9F/</a>
+    <a href="http://yoursite.com/2020/05/28/%E7%8A%B6%E5%8E%8Bdp/" title="状压dp">http://yoursite.com/2020/05/28/%E7%8A%B6%E5%8E%8Bdp/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -456,7 +458,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag"># 图论</a>
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
           
         </div>
       
@@ -469,8 +471,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/27/%E5%90%84%E7%A7%8D%E5%B8%B8%E6%95%B0%E4%BC%98%E5%8C%96/" rel="next" title="各种常数优化">
-                <i class="fa fa-chevron-left"></i> 各种常数优化
+              <a href="/2020/05/28/git-%E5%9F%BA%E7%A1%80/" rel="next" title="git 基础">
+                <i class="fa fa-chevron-left"></i> git 基础
               </a>
             
           </div>
@@ -478,10 +480,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/02/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="prev" title="最小生成树">
-                最小生成树 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
