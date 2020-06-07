@@ -286,6 +286,337 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/web/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/06/web/" itemprop="url">web</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-06T19:50:01+08:00">
+                2020-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/06/06/web/" class="leancloud_visitors" data-flag-title="web">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  935
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>JavaWeb:使用Java语言开发基于互联网的网页</li>
+<li>软件架构<ul>
+<li>C/S结构：客户端/服务器架构</li>
+<li>B/S架构：浏览器/服务器架构</li>
+</ul>
+</li>
+<li>资源<ul>
+<li>静态资源：文字，图片，视频等资源，HTML,CSS,JS语言去实现</li>
+<li>动态资源：动态网页发布的资源，如jsp/servlet，服务器会把动态资源转为静态资源再发到浏览器。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Html"><a href="#Html" class="headerlink" title="Html"></a>Html</h2><ul>
+<li>概念：Hyper Text Markup Language超文本标记语言</li>
+<li>Notes：标记语言不是编程语言，没有逻辑性，只需要把这个标签打上去就行。</li>
+<li>语法<ol>
+<li>html文件后缀：html，htm</li>
+<li>标签分为<ul>
+<li>围堵标签，由开始标签和闭合标签组成，如&lt; head &gt;&lt; /head &gt;，可以嵌套</li>
+<li>自闭合标签，开始标签和闭合标签为一体，如&lt; br/ &gt;</li>
+</ul>
+</li>
+<li>开始标签中可以定义属性，属性由键值对构成，需要用引号引起来(单引双引都可以)</li>
+</ol>
+</li>
+<li>标签<ul>
+<li>文件标签：构成html最基本的内容<ul>
+<li>html：根标签</li>
+<li>head：头标签。指定html文档的属性，引入外部的资源</li>
+<li>title：标题标签</li>
+<li>body：体标签</li>
+<li>&lt; !DOCTYPE html&gt;：h5定义该文档为html文档</li>
+</ul>
+</li>
+<li>文本标签：<ul>
+<li>&lt; !— — &gt;：注释标签</li>
+<li>h1-h6：标题标签</li>
+<li>p：段落标签</li>
+<li>br：换行标签</li>
+<li>hr：显示水平线 </li>
+<li>b：字体加粗</li>
+<li>i：字体斜体 </li>
+</ul>
+</li>
+<li>图片标签：<ul>
+<li>img<ul>
+<li>src：图片路径</li>
+<li>绝对路径(//)</li>
+<li>相对路径(./src)，以点开头</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>列表标签<ul>
+<li>li:列表项，封装在列表其中</li>
+<li>ol:有序列表</li>
+<li>ul:无序列表 </li>
+</ul>
+</li>
+<li>链接标签<ul>
+<li>a：标签<ul>
+<li>href：资源网址，可以是url，也可以是本地的资源，打开客户端等</li>
+<li>target：url是否在本页面打开</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>快标签<ul>
+<li>把代码包裹出来，便于css进行样式选择</li>
+<li>span：行内标签</li>
+<li>div：块级标签</li>
+</ul>
+</li>
+<li>语义化标签<ul>
+<li>概念：提高程序可读性</li>
+<li>header：页眉</li>
+<li>footer：页脚</li>
+</ul>
+</li>
+<li>表格标签<ul>
+<li>table标签包裹</li>
+<li>tr：行标签</li>
+<li>td：单元格标签</li>
+<li>th：表头单元格</li>
+<li>caption：表格标题</li>
+<li>thead：表格头</li>
+<li>tbody：表格体</li>
+<li>tfoot：表格脚</li>
+</ul>
+</li>
+<li>表单标签<ul>
+<li>概念：用于采集用户输入的数据，用于和服务器交互</li>
+<li>form标签：定义一个输入的范围，提高可读性<ul>
+<li>input：输入标签<ul>
+<li>type属性：<ul>
+<li>text：文本输入框</li>
+<li>password：密码输入框</li>
+<li>radio：单选框<ul>
+<li>注意：要使多个单选框实现单选的效果，那么必须使得name属性值相同</li>
+<li>如果要使得能提交到服务器，那么必须指定value的值</li>
+</ul>
+</li>
+<li>checkbox：复选框<ul>
+<li>同单选框的注意事项，但是可以实现多选</li>
+</ul>
+</li>
+<li>file：文件提交框，用于提交文件</li>
+<li>hidden：隐藏域，用于提交用户看不到的信息</li>
+<li>checkcode：验证码</li>
+<li>submit：提交框<ul>
+<li>提交表单数据到服务器</li>
+</ul>
+</li>
+<li>image：图片提交按钮，点击会提交表单</li>
+</ul>
+</li>
+<li>placeholder：指定输入框的提示文字</li>
+<li>lable：指定输入项的文字提示，for属性可以和后面的input标签的id属性对应，进而点击会进入input框 </li>
+</ul>
+</li>
+<li>select：下拉列表<ul>
+<li>option：指定下拉列表的值</li>
+<li>提交成功的前提是select的name不为空，option的value不为空</li>
+</ul>
+</li>
+<li>textvalue：文本域<ul>
+<li>rows，cols：限制多少行和列</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>属性：action,method</li>
+<li>GET与POST请求的区别：GET会直接将请求封装到请求行中，POST会将请求加入到请求体中，GET对请求长度有要求，POST无要求，GET不安全，POST较安全</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>静态html开发流程<ul>
+<li>观察布局，使用table</li>
+<li>如果某一行一个单元格，就一个tr+td</li>
+<li>如果多个单元格，那么嵌套一个表格tr+table+td</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><ul>
+<li>用于页面的美化和布局工作</li>
+</ul>
+<h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/%E5%9F%BA%E6%9C%ACvim%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -559,7 +890,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  3
+                  150
                 </span>
               
 
@@ -598,7 +929,19 @@
       
         
           
-            <h2 id="JAVA-running-envirment"><a href="#JAVA-running-envirment" class="headerlink" title="JAVA running envirment"></a>JAVA running envirment</h2>
+            <h2 id="JAVA-running-envirment"><a href="#JAVA-running-envirment" class="headerlink" title="JAVA running envirment"></a>JAVA running envirment</h2><p>sudo apt update<br>sudo apt install openjdk-8-jdk </p>
+<h2 id="Apeche配置"><a href="#Apeche配置" class="headerlink" title="Apeche配置"></a>Apeche配置</h2><p>安装java8后，可以配置apeche了<br>介绍：Apache is the most widely used web server software. Developed and maintained by Apache Software Foundation, Apache is an open source software available for free. It runs on 67% of all webservers in the world. It is fast, reliable, and secure.</p>
+<p>sudo apt install apeche2</p>
+<h3 id="添加子网方法"><a href="#添加子网方法" class="headerlink" title="添加子网方法"></a>添加子网方法</h3><p>前提：购买了域名并且解析为这个服务器的公网ip</p>
+<ol>
+<li>cd/var/www/,mkdir gci,sudo vim index.html</li>
+<li>cd /etc/apache2/sites-available/</li>
+<li>sudo cp 000-default.conf gci.conf</li>
+<li>sudo vim gci.conf</li>
+<li>修改至自己的域名ServerAdmin yourname@example.com,DocumentRoot /var/www/gci/,ServerName gci.example.com</li>
+<li>激活sudo a2ensite gci.conf， systemctl reload apache2</li>
+</ol>
+
           
         
       
@@ -1984,194 +2327,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/28/apt-and-apt-get/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/28/apt-and-apt-get/" itemprop="url">apt and apt-get</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-28T13:26:12+08:00">
-                2020-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/05/28/apt-and-apt-get/" class="leancloud_visitors" data-flag-title="apt and apt-get">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  231
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://itsfoss.com/apt-vs-apt-get-difference/" target="_blank" rel="noopener">source artical</a></p>
-<p>apt简而言之，就是apt-get和apt-cache中最常使用的命令的集合，对一般用户来说，命令足够用了，但是，apt并不总是向后兼容apt-get，apt-get依旧有它自己的特色</p>
-<p>因此，推荐使用apt而不是apt-get，除非需要用到apt-get的一些独有的功能。</p>
-<p>附：清华镜像源</p>
-<p># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释<br>deb <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic main restricted universe multiverse<br># deb-src <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic main restricted universe multiverse<br>deb <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-updates main restricted universe multiverse<br># deb-src <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-updates main restricted universe multiverse<br>deb <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-backports main restricted universe multiverse<br># deb-src <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-backports main restricted universe multiverse<br>deb <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-security main restricted universe multiverse<br># deb-src <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-security main restricted universe multiverse</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2222,7 +2377,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">84</span>
+                <span class="site-state-item-count">85</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2233,7 +2388,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

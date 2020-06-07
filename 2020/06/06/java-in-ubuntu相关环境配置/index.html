@@ -101,14 +101,14 @@
 
 
 
-<meta name="description" content="JAVA running envirment">
+<meta name="description" content="JAVA running envirmentsudo apt updatesudo apt install openjdk-8-jdk  Apeche配置安装java8后，可以配置apeche了介绍：Apache is the most widely used web server software. Developed and maintained by Apache Software Foun">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java in ubuntu相关环境配置">
 <meta property="og:url" content="http://yoursite.com/2020/06/06/java-in-ubuntu%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="JAVA running envirment">
+<meta property="og:description" content="JAVA running envirmentsudo apt updatesudo apt install openjdk-8-jdk  Apeche配置安装java8后，可以配置apeche了介绍：Apache is the most widely used web server software. Developed and maintained by Apache Software Foun">
 <meta property="article:published_time" content="2020-06-06T07:41:40.000Z">
-<meta property="article:modified_time" content="2020-06-06T08:03:12.504Z">
+<meta property="article:modified_time" content="2020-06-06T10:24:47.588Z">
 <meta property="article:author" content="殷泽伟">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -361,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  3
+                  150
                 </span>
               
 
@@ -398,7 +398,19 @@
       
 
       
-        <h2 id="JAVA-running-envirment"><a href="#JAVA-running-envirment" class="headerlink" title="JAVA running envirment"></a>JAVA running envirment</h2>
+        <h2 id="JAVA-running-envirment"><a href="#JAVA-running-envirment" class="headerlink" title="JAVA running envirment"></a>JAVA running envirment</h2><p>sudo apt update<br>sudo apt install openjdk-8-jdk </p>
+<h2 id="Apeche配置"><a href="#Apeche配置" class="headerlink" title="Apeche配置"></a>Apeche配置</h2><p>安装java8后，可以配置apeche了<br>介绍：Apache is the most widely used web server software. Developed and maintained by Apache Software Foundation, Apache is an open source software available for free. It runs on 67% of all webservers in the world. It is fast, reliable, and secure.</p>
+<p>sudo apt install apeche2</p>
+<h3 id="添加子网方法"><a href="#添加子网方法" class="headerlink" title="添加子网方法"></a>添加子网方法</h3><p>前提：购买了域名并且解析为这个服务器的公网ip</p>
+<ol>
+<li>cd/var/www/,mkdir gci,sudo vim index.html</li>
+<li>cd /etc/apache2/sites-available/</li>
+<li>sudo cp 000-default.conf gci.conf</li>
+<li>sudo vim gci.conf</li>
+<li>修改至自己的域名ServerAdmin yourname@example.com,DocumentRoot /var/www/gci/,ServerName gci.example.com</li>
+<li>激活sudo a2ensite gci.conf， systemctl reload apache2</li>
+</ol>
+
       
     </div>
     
@@ -537,7 +549,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">84</span>
+                <span class="site-state-item-count">85</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -548,7 +560,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -594,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA-running-envirment"><span class="nav-number">1.</span> <span class="nav-text">JAVA running envirment</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA-running-envirment"><span class="nav-number">1.</span> <span class="nav-text">JAVA running envirment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apeche配置"><span class="nav-number">2.</span> <span class="nav-text">Apeche配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加子网方法"><span class="nav-number">2.1.</span> <span class="nav-text">添加子网方法</span></a></li></ol></li></ol></div>
             
 
           </div>
