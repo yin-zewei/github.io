@@ -101,14 +101,14 @@
 
 
 
-<meta name="description" content="调度算法是操作系统调度处理器的算法，而系统分配资源的基本单位是进程，所以一般而言调度算法指的就是进程调度，但是在批处理系统中，调度算法也可以指作业调度 先来先服务算法FIFS调度对象：作业调度，进程调度基本思想：按照进程进入就绪队列的先后次序分配处理器特点： * 利于长进程，不利于短进程，因为长进程等待的时间更短 *  短作业优先调度算法优先级调度算法时间片轮转调度算法高响应比优先调度算法多级反馈">
+<meta name="description" content="调度算法是操作系统调度处理器的算法，而系统分配资源的基本单位是进程，所以一般而言调度算法指的就是进程调度，但是在批处理系统中，调度算法也可以指作业调度 先来先服务算法FIFS 基本思想：按照进程进入就绪队列的先后次序分配处理器 特点： 利于长进程，不利于短进程，因为长进程等待的时间更短 对于分时系统和实时系统是致命的，因为这两种系统都要求很快的交互速度，尤其是实时系统 常常不单独使用，而是结合其他">
 <meta property="og:type" content="article">
 <meta property="og:title" content="调度算法总结">
 <meta property="og:url" content="http://yoursite.com/2020/06/17/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="调度算法是操作系统调度处理器的算法，而系统分配资源的基本单位是进程，所以一般而言调度算法指的就是进程调度，但是在批处理系统中，调度算法也可以指作业调度 先来先服务算法FIFS调度对象：作业调度，进程调度基本思想：按照进程进入就绪队列的先后次序分配处理器特点： * 利于长进程，不利于短进程，因为长进程等待的时间更短 *  短作业优先调度算法优先级调度算法时间片轮转调度算法高响应比优先调度算法多级反馈">
+<meta property="og:description" content="调度算法是操作系统调度处理器的算法，而系统分配资源的基本单位是进程，所以一般而言调度算法指的就是进程调度，但是在批处理系统中，调度算法也可以指作业调度 先来先服务算法FIFS 基本思想：按照进程进入就绪队列的先后次序分配处理器 特点： 利于长进程，不利于短进程，因为长进程等待的时间更短 对于分时系统和实时系统是致命的，因为这两种系统都要求很快的交互速度，尤其是实时系统 常常不单独使用，而是结合其他">
 <meta property="article:published_time" content="2020-06-17T09:48:14.000Z">
-<meta property="article:modified_time" content="2020-06-17T09:56:25.037Z">
+<meta property="article:modified_time" content="2020-06-17T10:33:54.411Z">
 <meta property="article:author" content="殷泽伟">
 <meta name="twitter:card" content="summary">
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  185
+                  324
                 </span>
               
 
@@ -420,10 +420,27 @@
 
       
         <p>调度算法是操作系统调度处理器的算法，而系统分配资源的基本单位是进程，所以一般而言调度算法指的就是进程调度，但是在批处理系统中，调度算法也可以指作业调度</p>
-<h2 id="先来先服务算法FIFS"><a href="#先来先服务算法FIFS" class="headerlink" title="先来先服务算法FIFS"></a>先来先服务算法FIFS</h2><p>调度对象：作业调度，进程调度<br>基本思想：按照进程进入就绪队列的先后次序分配处理器<br>特点：</p>
-<pre><code>* 利于长进程，不利于短进程，因为长进程等待的时间更短
-* 
-</code></pre><h2 id="短作业优先调度算法"><a href="#短作业优先调度算法" class="headerlink" title="短作业优先调度算法"></a>短作业优先调度算法</h2><h2 id="优先级调度算法"><a href="#优先级调度算法" class="headerlink" title="优先级调度算法"></a>优先级调度算法</h2><h2 id="时间片轮转调度算法"><a href="#时间片轮转调度算法" class="headerlink" title="时间片轮转调度算法"></a>时间片轮转调度算法</h2><h2 id="高响应比优先调度算法"><a href="#高响应比优先调度算法" class="headerlink" title="高响应比优先调度算法"></a>高响应比优先调度算法</h2><h2 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a>多级反馈队列调度算法</h2>
+<h2 id="先来先服务算法FIFS"><a href="#先来先服务算法FIFS" class="headerlink" title="先来先服务算法FIFS"></a>先来先服务算法FIFS</h2><ul>
+<li>基本思想：按照进程进入就绪队列的先后次序分配处理器</li>
+<li>特点：<ul>
+<li>利于长进程，不利于短进程，因为长进程等待的时间更短</li>
+<li>对于分时系统和实时系统是致命的，因为这两种系统都要求很快的交互速度，尤其是实时系统</li>
+<li>常常不单独使用，而是结合其他系统一起使用，比如优先级调度算法中，如果优先级一致，那么先来先服务</li>
+</ul>
+</li>
+</ul>
+<h2 id="短作业优先调度算法SJF"><a href="#短作业优先调度算法SJF" class="headerlink" title="短作业优先调度算法SJF"></a>短作业优先调度算法SJF</h2><ul>
+<li>基本思想：把处理器分配给最快完成的作业或进程</li>
+<li>特点<ul>
+<li>在所有作业同时到达时，SJF的平均周转时间最短</li>
+<li>但是对长进程不利，很可能出现”饥饿”或者”饿死现象”</li>
+</ul>
+</li>
+</ul>
+<h2 id="优先级调度算法"><a href="#优先级调度算法" class="headerlink" title="优先级调度算法"></a>优先级调度算法</h2><ul>
+<li>基本思想：</li>
+</ul>
+<h2 id="时间片轮转调度算法"><a href="#时间片轮转调度算法" class="headerlink" title="时间片轮转调度算法"></a>时间片轮转调度算法</h2><h2 id="高响应比优先调度算法"><a href="#高响应比优先调度算法" class="headerlink" title="高响应比优先调度算法"></a>高响应比优先调度算法</h2><h2 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a>多级反馈队列调度算法</h2>
       
     </div>
     
@@ -609,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先来先服务算法FIFS"><span class="nav-number">1.</span> <span class="nav-text">先来先服务算法FIFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#短作业优先调度算法"><span class="nav-number">2.</span> <span class="nav-text">短作业优先调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级调度算法"><span class="nav-number">3.</span> <span class="nav-text">优先级调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间片轮转调度算法"><span class="nav-number">4.</span> <span class="nav-text">时间片轮转调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高响应比优先调度算法"><span class="nav-number">5.</span> <span class="nav-text">高响应比优先调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多级反馈队列调度算法"><span class="nav-number">6.</span> <span class="nav-text">多级反馈队列调度算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先来先服务算法FIFS"><span class="nav-number">1.</span> <span class="nav-text">先来先服务算法FIFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#短作业优先调度算法SJF"><span class="nav-number">2.</span> <span class="nav-text">短作业优先调度算法SJF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级调度算法"><span class="nav-number">3.</span> <span class="nav-text">优先级调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间片轮转调度算法"><span class="nav-number">4.</span> <span class="nav-text">时间片轮转调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高响应比优先调度算法"><span class="nav-number">5.</span> <span class="nav-text">高响应比优先调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多级反馈队列调度算法"><span class="nav-number">6.</span> <span class="nav-text">多级反馈队列调度算法</span></a></li></ol></div>
             
 
           </div>
