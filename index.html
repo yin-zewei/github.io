@@ -305,7 +305,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/06/21/Servlet/" itemprop="url">Servelet</a></h2>
+                <a class="post-title-link" href="/2020/06/21/Servlet/" itemprop="url">Servlet</a></h2>
         
 
         <div class="post-meta">
@@ -328,6 +328,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaweb/" itemprop="url" rel="index">
+                    <span itemprop="name">javaweb</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -335,7 +357,7 @@
 
           
           
-             <span id="/2020/06/21/Servlet/" class="leancloud_visitors" data-flag-title="Servelet">
+             <span id="/2020/06/21/Servlet/" class="leancloud_visitors" data-flag-title="Servlet">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -360,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  0
+                  698
                 </span>
               
 
@@ -376,7 +398,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -399,7 +421,95 @@
       
         
           
-            
+            <ul>
+<li>概念：运行在服务器端的小程序</li>
+<li>Servlet就是一个接口，定义了Java类被浏览器访问到(tomcat识别)的规则。</li>
+<li>将来我们自定义一个类，实现Servlet接口，复写方法。</li>
+</ul>
+<ul>
+<li>快速入门：</li>
+</ul>
+<ol>
+<li>创建JavaEE项目</li>
+<li>定义一个类，实现Servlet接口</li>
+</ol>
+<ul>
+<li>public class ServletDemo1 implements Servlet</li>
+</ul>
+<ol>
+<li>实现接口中的抽象方法</li>
+<li>配置Servlet<br>在web.xml中配置：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置Servlet --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demo1<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>cn.itcast.web.servlet.ServletDemo1<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demo1<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/demo1<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>执行原理：</li>
+</ul>
+<ol>
+<li>当服务器接受到客户端浏览器的请求后，会解析请求URL路径，获取访问的Servlet的资源路径</li>
+<li>查找web.xml文件，是否有对应的&lt; url-pattern &gt;标签体内容。</li>
+<li>如果有，则在找到对应的&lt; servlet-class &gt;全类名</li>
+<li>tomcat会将字节码文件加载进内存，并且创建其对象</li>
+<li>调用其方法</li>
+</ol>
+<ul>
+<li>Servlet中的生命周期方法：</li>
+</ul>
+<ol>
+<li>被创建：执行init方法，只执行一次</li>
+</ol>
+<ul>
+<li>Servlet什么时候被创建？<ul>
+<li>默认情况下，第一次被访问时，Servlet被创建</li>
+<li>可以配置执行Servlet的创建时机。<ul>
+<li>在&lt; servlet &gt;标签下配置<ol>
+<li>第一次被访问时，创建<pre><code>   * &lt;load-on-startup&gt;的值为负数
+</code></pre></li>
+<li>在服务器启动时，创建<ul>
+<li>&lt; load-on-startup &gt;的值为0或正整数</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Servlet的init方法，只执行一次，说明一个Servlet在内存中只存在一个对象，Servlet是单例的<ul>
+<li>多个用户同时访问时，可能存在线程安全问题。</li>
+<li>解决：尽量不要在Servlet中定义成员变量。即使定义了成员变量，也不要对修改值</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>提供服务：执行service方法，执行多次</li>
+</ol>
+<ul>
+<li>每次访问Servlet时，Service方法都会被调用一次。</li>
+</ul>
+<ol>
+<li>被销毁：执行destroy方法，只执行一次</li>
+</ol>
+<ul>
+<li>Servlet被销毁时执行。服务器关闭时，Servlet被销毁</li>
+<li>只有服务器正常关闭时，才会执行destroy方法。</li>
+<li><p>destroy方法在Servlet被销毁之前执行，一般用于释放资源</p>
+</li>
+<li><p>Servlet3.0：</p>
+</li>
+<li>好处：</li>
+<li><p>支持注解配置。可以不需要web.xml了。</p>
+</li>
+<li><p>步骤：</p>
+</li>
+</ul>
+<ol>
+<li>创建JavaEE项目，选择Servlet的版本3.0以上，可以不创建web.xml</li>
+<li>定义一个类，实现Servlet接口</li>
+<li>复写方法</li>
+<li>在类上使用@WebServlet注解，进行配置<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"资源路径"</span>)</span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> WebServlet &#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;<span class="comment">//相当于&lt;Servlet-name&gt;</span></span><br><span class="line"></span><br><span class="line">    String[] value() <span class="keyword">default</span> &#123;&#125;;<span class="comment">//代表urlPatterns()属性配置</span></span><br><span class="line"></span><br><span class="line">    String[] urlPatterns() <span class="keyword">default</span> &#123;&#125;;<span class="comment">//相当于&lt;url-pattern&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">loadOnStartup</span><span class="params">()</span> <span class="keyword">default</span> -1</span>;<span class="comment">//相当于&lt;load-on-startup&gt;</span></span><br><span class="line"></span><br><span class="line">    WebInitParam[] initParams() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">asyncSupported</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">false</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">smallIcon</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">largeIcon</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">description</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">displayName</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
           
         
       
@@ -489,6 +599,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaweb/" itemprop="url" rel="index">
+                    <span itemprop="name">javaweb</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -521,7 +653,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  0
+                  434
                 </span>
               
 
@@ -560,7 +692,105 @@
       
         
           
-            
+            <ol>
+<li>下载：<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">http://tomcat.apache.org/</a></li>
+<li>安装：解压压缩包即可。<ul>
+<li>注意：安装目录建议不要有中文和空格</li>
+</ul>
+</li>
+<li>卸载：删除目录就行了</li>
+<li><p>启动：</p>
+<ul>
+<li>bin/startup.bat ,双击运行该文件即可</li>
+<li><p>访问：浏览器输入：<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> 回车访问自己</p>
+<pre><code>              http://别人的ip:8080 访问别人
+</code></pre></li>
+<li><p>可能遇到的问题：</p>
+<ol>
+<li><p>黑窗口一闪而过：</p>
+<ul>
+<li>原因： 没有正确配置JAVA_HOME环境变量</li>
+<li>解决方案：正确配置JAVA_HOME环境变量</li>
+</ul>
+</li>
+<li><p>启动报错：</p>
+<ol>
+<li>暴力：找到占用的端口号，并且找到对应的进程，杀死该进程<ul>
+<li>netstat -ano</li>
+</ul>
+</li>
+<li>温柔：修改自身的端口号<ul>
+<li>conf/server.xml</li>
+<li><Connector port="8888" protocol="HTTP/1.1"
+  connectionTimeout="20000"
+  redirectPort="8445" /></li>
+<li>一般会将tomcat的默认端口号修改为80。80端口号是http协议的默认端口号。<ul>
+<li>好处：在访问时，就不用输入端口号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>关闭：<ol>
+<li>正常关闭：<ul>
+<li>bin/shutdown.bat</li>
+<li>ctrl+c</li>
+</ul>
+</li>
+<li>强制关闭：<ul>
+<li>点击启动窗口的×</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>配置:</p>
+<ul>
+<li><p>部署项目的方式：</p>
+<ol>
+<li><p>直接将项目放到webapps目录下即可。</p>
+<ul>
+<li>/hello：项目的访问路径—&gt;虚拟目录</li>
+<li>简化部署：将项目打成一个war包，再将war包放置到webapps目录下。<ul>
+<li>war包会自动解压缩</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>配置conf/server.xml文件<br> 在<Host>标签体中配置<br> <Context docBase="D:\hello" path="/hehe" /></p>
+<ul>
+<li>docBase:项目存放的路径</li>
+<li>path：虚拟目录</li>
+</ul>
+</li>
+<li><p>在conf\Catalina\localhost创建任意名称的xml文件。在文件中编写<br> <Context docBase="D:\hello" /></p>
+<ul>
+<li>虚拟目录：xml文件的名称</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>静态项目和动态项目：</p>
+<ul>
+<li>目录结构<ul>
+<li>java动态项目的目录结构：<br>  — 项目的根目录<pre><code>  -- WEB-INF目录：
+      -- web.xml：web项目的核心配置文件
+      -- classes目录：放置字节码文件的目录
+      -- lib目录：放置依赖的jar包
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>* 将Tomcat集成到IDEA中，并且创建JavaEE的项目，部署项目。
+</code></pre>
           
         
       

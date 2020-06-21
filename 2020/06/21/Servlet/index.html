@@ -101,12 +101,14 @@
 
 
 
+<meta name="description" content="概念：运行在服务器端的小程序 Servlet就是一个接口，定义了Java类被浏览器访问到(tomcat识别)的规则。 将来我们自定义一个类，实现Servlet接口，复写方法。   快速入门：   创建JavaEE项目 定义一个类，实现Servlet接口   public class ServletDemo1 implements Servlet   实现接口中的抽象方法 配置Servlet在we">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Servelet">
+<meta property="og:title" content="Servlet">
 <meta property="og:url" content="http://yoursite.com/2020/06/21/Servlet/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
+<meta property="og:description" content="概念：运行在服务器端的小程序 Servlet就是一个接口，定义了Java类被浏览器访问到(tomcat识别)的规则。 将来我们自定义一个类，实现Servlet接口，复写方法。   快速入门：   创建JavaEE项目 定义一个类，实现Servlet接口   public class ServletDemo1 implements Servlet   实现接口中的抽象方法 配置Servlet在we">
 <meta property="article:published_time" content="2020-06-21T12:04:13.000Z">
-<meta property="article:modified_time" content="2020-06-21T12:04:13.890Z">
+<meta property="article:modified_time" content="2020-06-21T15:18:25.692Z">
 <meta property="article:author" content="殷泽伟">
 <meta name="twitter:card" content="summary">
 
@@ -143,7 +145,7 @@
 
 
 
-  <title>Servelet | 殷泽伟的博客</title>
+  <title>Servlet | 殷泽伟的博客</title>
   
 
 
@@ -303,7 +305,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Servelet</h2>
+          <h2 class="post-title" itemprop="name headline">Servlet</h2>
         
 
         <div class="post-meta">
@@ -326,6 +328,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaweb/" itemprop="url" rel="index">
+                    <span itemprop="name">javaweb</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -333,7 +357,7 @@
 
           
           
-             <span id="/2020/06/21/Servlet/" class="leancloud_visitors" data-flag-title="Servelet">
+             <span id="/2020/06/21/Servlet/" class="leancloud_visitors" data-flag-title="Servlet">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -358,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  0
+                  698
                 </span>
               
 
@@ -374,7 +398,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -395,7 +419,95 @@
       
 
       
-        
+        <ul>
+<li>概念：运行在服务器端的小程序</li>
+<li>Servlet就是一个接口，定义了Java类被浏览器访问到(tomcat识别)的规则。</li>
+<li>将来我们自定义一个类，实现Servlet接口，复写方法。</li>
+</ul>
+<ul>
+<li>快速入门：</li>
+</ul>
+<ol>
+<li>创建JavaEE项目</li>
+<li>定义一个类，实现Servlet接口</li>
+</ol>
+<ul>
+<li>public class ServletDemo1 implements Servlet</li>
+</ul>
+<ol>
+<li>实现接口中的抽象方法</li>
+<li>配置Servlet<br>在web.xml中配置：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置Servlet --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demo1<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>cn.itcast.web.servlet.ServletDemo1<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demo1<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/demo1<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>执行原理：</li>
+</ul>
+<ol>
+<li>当服务器接受到客户端浏览器的请求后，会解析请求URL路径，获取访问的Servlet的资源路径</li>
+<li>查找web.xml文件，是否有对应的&lt; url-pattern &gt;标签体内容。</li>
+<li>如果有，则在找到对应的&lt; servlet-class &gt;全类名</li>
+<li>tomcat会将字节码文件加载进内存，并且创建其对象</li>
+<li>调用其方法</li>
+</ol>
+<ul>
+<li>Servlet中的生命周期方法：</li>
+</ul>
+<ol>
+<li>被创建：执行init方法，只执行一次</li>
+</ol>
+<ul>
+<li>Servlet什么时候被创建？<ul>
+<li>默认情况下，第一次被访问时，Servlet被创建</li>
+<li>可以配置执行Servlet的创建时机。<ul>
+<li>在&lt; servlet &gt;标签下配置<ol>
+<li>第一次被访问时，创建<pre><code>   * &lt;load-on-startup&gt;的值为负数
+</code></pre></li>
+<li>在服务器启动时，创建<ul>
+<li>&lt; load-on-startup &gt;的值为0或正整数</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Servlet的init方法，只执行一次，说明一个Servlet在内存中只存在一个对象，Servlet是单例的<ul>
+<li>多个用户同时访问时，可能存在线程安全问题。</li>
+<li>解决：尽量不要在Servlet中定义成员变量。即使定义了成员变量，也不要对修改值</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>提供服务：执行service方法，执行多次</li>
+</ol>
+<ul>
+<li>每次访问Servlet时，Service方法都会被调用一次。</li>
+</ul>
+<ol>
+<li>被销毁：执行destroy方法，只执行一次</li>
+</ol>
+<ul>
+<li>Servlet被销毁时执行。服务器关闭时，Servlet被销毁</li>
+<li>只有服务器正常关闭时，才会执行destroy方法。</li>
+<li><p>destroy方法在Servlet被销毁之前执行，一般用于释放资源</p>
+</li>
+<li><p>Servlet3.0：</p>
+</li>
+<li>好处：</li>
+<li><p>支持注解配置。可以不需要web.xml了。</p>
+</li>
+<li><p>步骤：</p>
+</li>
+</ul>
+<ol>
+<li>创建JavaEE项目，选择Servlet的版本3.0以上，可以不创建web.xml</li>
+<li>定义一个类，实现Servlet接口</li>
+<li>复写方法</li>
+<li>在类上使用@WebServlet注解，进行配置<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"资源路径"</span>)</span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> WebServlet &#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;<span class="comment">//相当于&lt;Servlet-name&gt;</span></span><br><span class="line"></span><br><span class="line">    String[] value() <span class="keyword">default</span> &#123;&#125;;<span class="comment">//代表urlPatterns()属性配置</span></span><br><span class="line"></span><br><span class="line">    String[] urlPatterns() <span class="keyword">default</span> &#123;&#125;;<span class="comment">//相当于&lt;url-pattern&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">loadOnStartup</span><span class="params">()</span> <span class="keyword">default</span> -1</span>;<span class="comment">//相当于&lt;load-on-startup&gt;</span></span><br><span class="line"></span><br><span class="line">    WebInitParam[] initParams() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">asyncSupported</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">false</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">smallIcon</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">largeIcon</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">description</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">displayName</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
       
     </div>
     
@@ -415,7 +527,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2020/06/21/Servlet/" title="Servelet">http://yoursite.com/2020/06/21/Servlet/</a>
+    <a href="http://yoursite.com/2020/06/21/Servlet/" title="Servlet">http://yoursite.com/2020/06/21/Servlet/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
