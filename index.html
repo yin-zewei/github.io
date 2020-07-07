@@ -653,7 +653,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  434
+                  565
                 </span>
               
 
@@ -669,7 +669,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -692,7 +692,7 @@
       
         
           
-            <ol>
+            <h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><ol>
 <li>下载：<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">http://tomcat.apache.org/</a></li>
 <li>安装：解压压缩包即可。<ul>
 <li>注意：安装目录建议不要有中文和空格</li>
@@ -790,7 +790,11 @@
 </li>
 </ol>
 <pre><code>* 将Tomcat集成到IDEA中，并且创建JavaEE的项目，部署项目。
-</code></pre>
+</code></pre><h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><h3 id="无法访问"><a href="#无法访问" class="headerlink" title="无法访问"></a>无法访问</h3><ul>
+<li>安装完firewalld后，会阻挡8080端口，重新开放即可<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --zone&#x3D;public --add-port&#x3D;8080&#x2F;tcp 添加端口</span><br><span class="line">firewall-cmd --reload 重启防火墙</span><br><span class="line">firewall-cmd --zone&#x3D;public --query-port&#x3D;8080&#x2F;tcp 查询端口状态</span><br></pre></td></tr></table></figure></li>
+<li>在servel.xml更改端口为80后无法访问可能是启动时为非root用户启动，所以更好的方法是使用iptables将80端口转发为8080端口即可直接用ip访问</li>
+</ul>
+<h3 id="配置idea远程部署与访问"><a href="#配置idea远程部署与访问" class="headerlink" title="配置idea远程部署与访问"></a>配置idea远程部署与访问</h3>
           
         
       
