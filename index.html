@@ -286,6 +286,1025 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/30/%E5%A4%A7%E6%95%B0%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/30/%E5%A4%A7%E6%95%B0%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/" itemprop="url">大数加减乘除</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-30T21:56:25+08:00">
+                2020-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/07/30/%E5%A4%A7%E6%95%B0%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/" class="leancloud_visitors" data-flag-title="大数加减乘除">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  439
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>借助数组实现大数的加减乘除</li>
+<li>浓缩在一个结构体里，利于debug</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Matric</span>&#123;</span></span><br><span class="line">	<span class="comment">//a为存储大数的数组，低位对应的也是数的低位 </span></span><br><span class="line">	<span class="comment">//cnt为位数</span></span><br><span class="line">	<span class="comment">//flag为1代表正数，为-1代表负数 </span></span><br><span class="line">	<span class="keyword">int</span> a[N],cnt,flag;</span><br><span class="line">	Matric()&#123;</span><br><span class="line">		<span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));</span><br><span class="line">		cnt = <span class="number">1</span>;</span><br><span class="line">		flag = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Matric <span class="keyword">operator</span> +(Matric m)<span class="keyword">const</span>&#123;</span><br><span class="line">		Matric t;</span><br><span class="line">		<span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">		rep(i,<span class="number">0</span>,MAX(m.cnt,cnt)<span class="number">-1</span>)&#123;</span><br><span class="line">			t.a[i]=m.a[i]+a[i]+k;</span><br><span class="line">			k = t.a[i]/<span class="number">10</span>;</span><br><span class="line">			t.a[i]%=<span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		t.cnt=MAX(m.cnt,cnt);</span><br><span class="line">		<span class="keyword">if</span>(k)&#123;</span><br><span class="line">			t.a[t.cnt]=k;</span><br><span class="line">			t.cnt++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> t;</span><br><span class="line">	&#125;</span><br><span class="line">	Matric <span class="keyword">operator</span> -(Matric m)<span class="keyword">const</span>&#123;</span><br><span class="line">		Matric t;</span><br><span class="line">		<span class="keyword">int</span> mx = MAX(m.cnt,cnt);</span><br><span class="line">		drp(i,mx<span class="number">-1</span>,<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]!=m.a[i])&#123;</span><br><span class="line">				<span class="keyword">if</span>(a[i]&lt;m.a[i])&#123;</span><br><span class="line">					t.flag = <span class="number">-1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		rep(i,<span class="number">0</span>,mx<span class="number">-1</span>)&#123;</span><br><span class="line">			t.a[i] += t.flag*(a[i]-m.a[i]);</span><br><span class="line">			<span class="keyword">if</span>(t.a[i]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">				t.a[i+<span class="number">1</span>]--;</span><br><span class="line">				t.a[i]+=<span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		t.cnt = mx;</span><br><span class="line">		<span class="keyword">while</span>(t.a[t.cnt<span class="number">-1</span>]==<span class="number">0</span>&amp;&amp;t.cnt&gt;=<span class="number">2</span>)--t.cnt;</span><br><span class="line">		<span class="keyword">return</span> t;</span><br><span class="line">	&#125; </span><br><span class="line">	Matric <span class="keyword">operator</span> *(Matric m)&#123;</span><br><span class="line">		Matric t;</span><br><span class="line">        <span class="comment">// 处理当某个式子为0时的情况</span></span><br><span class="line">        <span class="comment">// 如果题目要求有负数时，可以用flag判定一下还是正数的乘法</span></span><br><span class="line">        <span class="keyword">if</span>(cnt==<span class="number">1</span>&amp;&amp;a[<span class="number">0</span>]==<span class="number">0</span>||m.cnt==<span class="number">1</span>&amp;&amp;m.a[<span class="number">0</span>]==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> t;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">		rep(i,<span class="number">0</span>,cnt<span class="number">-1</span>)&#123;</span><br><span class="line">			rep(j,<span class="number">0</span>,m.cnt<span class="number">-1</span>)&#123;</span><br><span class="line">				t.a[i+j]+=a[i]*m.a[j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		t.cnt = cnt+m.cnt<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">if</span>(t.cnt==<span class="number">0</span>)t.cnt = <span class="number">1</span>; </span><br><span class="line">		rep(i,<span class="number">0</span>,t.cnt<span class="number">-1</span>)&#123;</span><br><span class="line">            t.a[i]+=k;</span><br><span class="line">			k = t.a[i]/<span class="number">10</span>;</span><br><span class="line">			t.a[i]%=<span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(k)&#123;</span><br><span class="line">			t.a[t.cnt++]=k%<span class="number">10</span>;</span><br><span class="line">			k/=<span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> t;</span><br><span class="line">	&#125;</span><br><span class="line">    Matric <span class="keyword">operator</span> /(ll m)<span class="keyword">const</span>&#123;</span><br><span class="line">        Matric t;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        drp(i,cnt<span class="number">-1</span>,<span class="number">0</span>)&#123;</span><br><span class="line">            ll p = k*<span class="number">10</span>+a[i];</span><br><span class="line">            t.a[i] = p/m;</span><br><span class="line">            k = p%m;</span><br><span class="line">        &#125;</span><br><span class="line">        t.cnt = cnt;</span><br><span class="line">        <span class="keyword">while</span>(t.cnt&gt;=<span class="number">1</span>&amp;&amp;t.a[t.cnt<span class="number">-1</span>]==<span class="number">0</span>)--t.cnt;</span><br><span class="line">        <span class="keyword">if</span>(t.cnt==<span class="number">0</span>)t.cnt=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/23/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/23/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" itemprop="url">树状数组</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-23T09:27:30+08:00">
+                2020-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/07/23/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" class="leancloud_visitors" data-flag-title="树状数组">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  48
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>单点修改,区间查询,区间修改O(log2n)<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//x+lowbit[x]为父节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(;x&lt;cnt;x+=lowbit(x))&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/origin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/09/origin/" itemprop="url">origin</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T11:49:47+08:00">
+                2020-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/07/09/origin/" class="leancloud_visitors" data-flag-title="origin">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  0
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/matlab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/09/matlab/" itemprop="url">matlab</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T11:49:37+08:00">
+                2020-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/07/09/matlab/" class="leancloud_visitors" data-flag-title="matlab">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  0
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/spss/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/09/spss/" itemprop="url">spss</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T11:49:29+08:00">
+                2020-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/07/09/spss/" class="leancloud_visitors" data-flag-title="spss">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  0
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/Lingo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/09/Lingo/" itemprop="url">Lingo</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T11:49:21+08:00">
+                2020-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">数学建模</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/07/09/Lingo/" class="leancloud_visitors" data-flag-title="Lingo">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  45
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><blockquote>
+<p>LINGO is a comprehensive tool designed to make building and solving Linear, Nonlinear (convex &amp; nonconvex/Global), Quadratic, Quadratically Constrained, Second Order Cone, Semi-Definite, Stochastic, and Integer optimization models faster, easier and more efficient. ——官方总体介绍</p>
+</blockquote>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/21/Servlet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1482,1807 +2501,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/11/BootStrap%E6%A1%86%E6%9E%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/11/BootStrap%E6%A1%86%E6%9E%B6/" itemprop="url">BootStrap框架</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-11T09:58:08+08:00">
-                2020-06-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaweb/" itemprop="url" rel="index">
-                    <span itemprop="name">javaweb</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/06/11/BootStrap%E6%A1%86%E6%9E%B6/" class="leancloud_visitors" data-flag-title="BootStrap框架">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  442
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>概念：前端开发框架，开发人员可在框架基础上进一步开发</li>
-<li>好处<ul>
-<li>定义了很多css样式和js插件，得到丰富的页面效果</li>
-<li>响应式布局，兼容不同分辨率的设备</li>
-</ul>
-</li>
-<li>快速入门<ul>
-<li>下载bootstrap</li>
-<li>项目中引入，复制到项目当前目录</li>
-<li>创建html页面，引入必要的资源文件</li>
-</ul>
-</li>
-<li>响应式布局<ul>
-<li>同一套页面可以兼容不同分辨率的设备</li>
-<li>实现：依赖于栅格系统，将一行分成12个格子,然后可以让元素占得格子数量进行改变</li>
-<li>步骤<ul>
-<li>定义容器，相当于table<ul>
-<li>container，比起container-fluid，会有留白</li>
-<li>container-fluid：每种设备都是100%宽度</li>
-</ul>
-</li>
-<li>定义行，想当于tr，row</li>
-<li>定义元素，指定该元素在不同的设备上所占的各自数目。样式：col-设备代号-格子数目<ul>
-<li>设备代号<ul>
-<li>xs：超小屏幕 手机 &lt;768px 例：col-xs-12</li>
-<li>sm：小屏幕 平板 &gt;=768px</li>
-<li>md：桌面显示器 &gt;=992px</li>
-<li>lg：大屏幕 &gt;=1200px</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>注意<ul>
-<li>一行如果格子数目超过12，则超出部分自动换行</li>
-<li>栅格类属性可以向上兼容</li>
-<li>如果设备宽度小于设备代号</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>CSS样式和js插件<ul>
-<li>属于拿来就用，不要想太多，毕竟是前端的东西</li>
-<li>全局css样式<ul>
-<li>按钮：class=”btn btn-default”</li>
-<li>图片<ul>
-<li>class=”img-resopnsive”调成响应式图片</li>
-<li>图片形状：class = “img-rounded”…</li>
-</ul>
-</li>
-<li>表格：设置form的表格<ul>
-<li>.table-striped：条纹装表格</li>
-<li>.table-bordered：边框状表格</li>
-<li>.table-hover：鼠标悬停</li>
-<li>.table-condensed：紧缩表格</li>
-<li>状态类：可以通过状态类为行或单元格设置颜色</li>
-</ul>
-</li>
-<li>表单<ul>
-<li>form-control</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>组件<ul>
-<li>导航条:类似淘宝的下拉条幅</li>
-<li>分页条</li>
-</ul>
-</li>
-<li>轮播图</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/web/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/06/web/" itemprop="url">web基础</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-06T19:50:01+08:00">
-                2020-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaweb/" itemprop="url" rel="index">
-                    <span itemprop="name">javaweb</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/06/06/web/" class="leancloud_visitors" data-flag-title="web基础">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  3.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  12
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
-<li>JavaWeb:使用Java语言开发基于互联网的网页</li>
-<li>软件架构<ul>
-<li>C/S结构:客户端/服务器架构</li>
-<li>B/S架构:浏览器/服务器架构</li>
-</ul>
-</li>
-<li>资源<ul>
-<li>静态资源:文字，图片，视频等资源，HTML，CSS，JS语言去实现</li>
-<li>动态资源:动态网页发布的资源，如jsp/servlet，服务器会把动态资源转为静态资源再发到浏览器。</li>
-</ul>
-</li>
-</ul>
-<h2 id="Html"><a href="#Html" class="headerlink" title="Html"></a>Html</h2><ul>
-<li>概念:Hyper Text Markup Language超文本标记语言</li>
-<li>Notes:标记语言不是编程语言，没有逻辑性，只需要把这个标签打上去就行。</li>
-<li>语法<ol>
-<li>html文件后缀:html，htm</li>
-<li>标签分为<ul>
-<li>围堵标签，由开始标签和闭合标签组成，如&lt; head &gt;&lt; /head &gt;，可以嵌套</li>
-<li>自闭合标签，开始标签和闭合标签为一体，如&lt; br/ &gt;</li>
-</ul>
-</li>
-<li>开始标签中可以定义属性，属性由键值对构成，需要用引号引起来(单引双引都可以)</li>
-</ol>
-</li>
-<li>标签<ul>
-<li>文件标签:构成html最基本的内容<ul>
-<li>html:根标签</li>
-<li>head:头标签。指定html文档的属性，引入外部的资源</li>
-<li>title:标题标签</li>
-<li>body:体标签</li>
-<li>&lt; !DOCTYPE html&gt;:h5定义该文档为html文档</li>
-</ul>
-</li>
-<li>文本标签:<ul>
-<li>&lt; !— — &gt;:注释标签</li>
-<li>h1-h6:标题标签</li>
-<li>p:段落标签</li>
-<li>br:换行标签</li>
-<li>hr:显示水平线 </li>
-<li>b:字体加粗</li>
-<li>i:字体斜体 </li>
-</ul>
-</li>
-<li>图片标签:<ul>
-<li>img<ul>
-<li>src:图片路径</li>
-<li>绝对路径(//)</li>
-<li>相对路径(./src)，以点开头</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>列表标签<ul>
-<li>li:列表项，封装在列表其中</li>
-<li>ol:有序列表</li>
-<li>ul:无序列表 </li>
-</ul>
-</li>
-<li>链接标签<ul>
-<li>a:标签<ul>
-<li>href:资源网址，可以是url，也可以是本地的资源，打开客户端等</li>
-<li>target:url是否在本页面打开</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>快标签<ul>
-<li>把代码包裹出来，便于css进行样式选择</li>
-<li>span:行内标签</li>
-<li>div:块级标签</li>
-</ul>
-</li>
-<li>语义化标签<ul>
-<li>概念:提高程序可读性</li>
-<li>header:页眉</li>
-<li>footer:页脚</li>
-</ul>
-</li>
-<li>表格标签<ul>
-<li>table标签包裹</li>
-<li>tr:行标签</li>
-<li>td:单元格标签</li>
-<li>th:表头单元格</li>
-<li>caption:表格标题</li>
-<li>thead:表格头</li>
-<li>tbody:表格体</li>
-<li>tfoot:表格脚</li>
-</ul>
-</li>
-<li>表单标签<ul>
-<li>概念:用于采集用户输入的数据，用于和服务器交互</li>
-<li>form标签:定义一个输入的范围，提高可读性<ul>
-<li>input:输入标签<ul>
-<li>type属性:<ul>
-<li>text:文本输入框</li>
-<li>password:密码输入框</li>
-<li>radio:单选框<ul>
-<li>注意:要使多个单选框实现单选的效果，那么必须使得name属性值相同</li>
-<li>如果要使得能提交到服务器，那么必须指定value的值</li>
-</ul>
-</li>
-<li>checkbox:复选框<ul>
-<li>同单选框的注意事项，但是可以实现多选</li>
-</ul>
-</li>
-<li>file:文件提交框，用于提交文件</li>
-<li>hidden:隐藏域，用于提交用户看不到的信息</li>
-<li>checkcode:验证码</li>
-<li>submit:提交框<ul>
-<li>提交表单数据到服务器</li>
-</ul>
-</li>
-<li>image:图片提交按钮，点击会提交表单</li>
-</ul>
-</li>
-<li>placeholder:指定输入框的提示文字</li>
-<li>lable:指定输入项的文字提示，for属性可以和后面的input标签的id属性对应，进而点击会进入input框 </li>
-</ul>
-</li>
-<li>select:下拉列表<ul>
-<li>option:指定下拉列表的值</li>
-<li>提交成功的前提是select的name不为空，option的value不为空</li>
-</ul>
-</li>
-<li>textvalue:文本域<ul>
-<li>rows，cols:限制多少行和列</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>属性:action，method</li>
-<li>GET与POST请求的区别:GET会直接将请求封装到请求行中，POST会将请求加入到请求体中，GET对请求长度有要求，POST无要求，GET不安全，POST较安全</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>静态html开发流程<ul>
-<li>观察布局，使用table</li>
-<li>如果某一行一个单元格，就一个tr+td</li>
-<li>如果多个单元格，那么嵌套一个表格tr+table+td</li>
-</ul>
-</li>
-</ul>
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><ol>
-<li>概念:Cascading Style Sheets，用于页面的美化和布局工作</li>
-<li>好处:降低耦合度，让分工协作更容易，提高开发效率</li>
-<li>使用方式<ol>
-<li>内联方式<ul>
-<li>在当前的标签生效，不常用</li>
-</ul>
-</li>
-<li>内部样式<ul>
-<li>相当于这个文件的全局样式</li>
-<li>格式为<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line">    <span class="selector-tag">body</span> &#123;<span class="attribute">color</span>: red;&#125;</span><br><span class="line">    <span class="selector-tag">p</span> &#123;<span class="attribute">color</span>: green;&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>外部样式<ul>
-<li>在外部定义.css文件</li>
-<li>需要的时候用link直接引入</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>css语法<ul>
-<li>格式:<br>选择器{<br>  属性名:属性值；<br>  属性名:属性值；<br>}  </li>
-<li>筛选具有相似特征的元素，每一个属性需要用分号隔开</li>
-</ul>
-</li>
-<li>选择器:定义在style标签内的选择器，而摈弃了全局的样式选择<ul>
-<li>基本选择器<ul>
-<li>id选择器:选择具体id属性的元素<ul>
-<li>语法:#id属性值{}</li>
-<li>注意一般只用一次</li>
-</ul>
-</li>
-<li>元素选择器:选择元素名代表的样式<ul>
-<li>语法:元素名称{}</li>
-</ul>
-</li>
-<li>类选择器<ul>
-<li>.类名{}</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>扩展选择器<ul>
-<li>选择所有元素 *{}</li>
-<li>并集选择器:x1和x2标签 x1，x2{}</li>
-<li>子选择器:x1下的x2标签 x1 x2{}  </li>
-<li>父选择器:x2上的x1标签 x1 &gt; x2{}</li>
-<li>属性选择器:标签名称[属性名=属性值]{}，通常用于输入框的状态</li>
-<li>伪类选择器:选择一些标签具有的状态，通常用于链接的状态</li>
-</ul>
-</li>
-<li>选择器直接在其他标签内使用即可，例如类就是标签内指定class=类名</li>
-</ul>
-</li>
-<li>属性 <ul>
-<li>字体、文本<ul>
-<li>font-size</li>
-<li>color</li>
-<li>text-align</li>
-<li>line-height</li>
-</ul>
-</li>
-<li>背景<ul>
-<li>background</li>
-</ul>
-</li>
-<li>边框<ul>
-<li>border</li>
-</ul>
-</li>
-<li>尺寸 <ul>
-<li>width</li>
-<li>height</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>盒子模型:控制布局，把元素的集合看做一个盒子<ul>
-<li>margin:外边距</li>
-<li>padding:内边距<ul>
-<li>默认内边距会影响盒子大小，可使用box-sizing=border-box指定大小 </li>
-</ul>
-</li>
-<li>float:left，right</li>
-</ul>
-</li>
-</ol>
-<h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2><ul>
-<li>基本概念:客户端脚本语言，每个浏览器都有JS的解析引擎</li>
-<li>功能:增强用户与html页面的交互</li>
-<li>JavaScript = ECMAScript + JavaScript特有的东西</li>
-</ul>
-<h3 id="ECMAscript"><a href="#ECMAscript" class="headerlink" title="ECMAscript"></a>ECMAscript</h3><ul>
-<li><p>基本语法</p>
-<ul>
-<li><p>与html结合方式</p>
-<ul>
-<li>内部js:任意位置都可以，但是执行顺序会不一样，就是先加载或者先执行js代码</li>
-<li>外部js:通过script标签和src引入</li>
-</ul>
-</li>
-<li><p>注释:和java一样 //或者/**/</p>
-</li>
-<li><p>数据类型</p>
-<ul>
-<li>原始数据类型:<ul>
-<li>number:数字。整数、小数、NaN</li>
-<li>string:字符串。单引或双引，没有字符的概念</li>
-<li>boolean:true和false</li>
-<li>null:一个对象为空的占位符</li>
-<li>undefined:未定义。一个变量魏碑初始化类型</li>
-</ul>
-</li>
-<li>引用数据类型:即为对象</li>
-</ul>
-</li>
-<li><p>变量</p>
-<ul>
-<li>js是弱类型语言，不定义变量空间的固定类型</li>
-<li>var 变量名 = 值</li>
-<li>typeof() 查看数据类型</li>
-</ul>
-</li>
-<li><p>运算符  </p>
-<ul>
-<li>基本使用方法与java一样</li>
-<li>一元运算符:++，—，+（）</li>
-<li>二元运算符:+，-，*，\。。。。</li>
-<li>赋值运算符:=，+=，-=</li>
-<li>比较运算符:&gt;，&lt;，&gt;=，&lt;=，==，===（全等于），，</li>
-<li>逻辑运算符:&amp;&amp;，||，!<ul>
-<li>对于num类型，0或NaN为false，1为true</li>
-<li>string类型，空为false</li>
-<li>所有对象都为true</li>
-<li>null和undefined为false</li>
-</ul>
-</li>
-<li>三元运算符:，?，:</li>
-</ul>
-</li>
-<li><p>特殊语法</p>
-<ul>
-<li>js中可以不写分号，如果只有一行的话</li>
-</ul>
-</li>
-<li><p>变量可以用var命名，但是也可以不写var，用var的时候为局部变量，不用的时候为全局变量</p>
-</li>
-<li><p>流程控制:基本和java一样，除了switch</p>
-<ul>
-<li>if..else..</li>
-<li>while for</li>
-<li>switch:可以接受任意的类型，case也可以是任意的类型，同样要加break。 </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>基本对象</p>
-<ul>
-<li><p>函数</p>
-<ul>
-<li>创建<ul>
-<li>var fun = new Function(形参列表，方法体);<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"a"</span>，<span class="string">"b"</span>，<span class="string">"alert(a);"</span>);</span><br><span class="line">fun(<span class="number">3</span>，<span class="number">4</span>);</span><br></pre></td></tr></table></figure></li>
-<li>function 方法名称(形参列表){方法体}<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">a，b</span>)</span>&#123;</span><br><span class="line">    alert(a);</span><br><span class="line">&#125;;</span><br><span class="line">fun(<span class="number">3</span>，<span class="number">4</span>);</span><br></pre></td></tr></table></figure></li>
-<li>var 方法名=function(形参列表){方法体}<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params">a，b</span>)</span>&#123;</span><br><span class="line">  alert(a+b);</span><br><span class="line">&#125;</span><br><span class="line">fun(<span class="number">3</span>+<span class="number">4</span>);</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>方法</li>
-<li><p>属性</p>
-<ul>
-<li>length:返回方法的形参个数</li>
-</ul>
-</li>
-<li>特点<ul>
-<li>传入参数与形参不一致的时候，后面的参数默认为undefined</li>
-<li>方法如果重复定义，会覆盖原来的方法</li>
-<li>方法的调用只与方法名称有关，与参数列表无关</li>
-<li>在方法声明中有一个内置的对象数组，arguments，封装所有的实参</li>
-</ul>
-</li>
-<li><p>调用 </p>
-<ul>
-<li>方法名(实参列表)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Array:数组对象</p>
-<ul>
-<li>创建:<ul>
-<li>var a = new Array(元素列表);</li>
-<li>var a = new Array(默认长度);</li>
-<li>var a = [ 元素列表 ];</li>
-</ul>
-</li>
-<li>特点<ul>
-<li>数组元素类型可以任意</li>
-<li>长度可变</li>
-</ul>
-</li>
-<li>方法<ul>
-<li>join:将数组中的元素按指定的分隔符拼接形成字符串</li>
-<li>push:向数组的尾部添加元素</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>RegExp:正则表达式对象</p>
-<ul>
-<li>正则表达式<ul>
-<li>单词字符:[]，如[a]，[ab]，[a-zA-Z0-9]，\d(单个数字符号)，\w(单个以上字符)</li>
-<li>量词符号<ul>
-<li>?:出现0次或1次</li>
-<li>*:出现0次或多次</li>
-<li>+:出现1次或多次</li>
-<li>{m，n}:表示m&lt;=数量&lt;=n，m如果缺省，表示最多n次，n缺省同理</li>
-</ul>
-</li>
-<li>开始与结束<ul>
-<li>^:开始</li>
-<li>$:结束</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>正则对象<ul>
-<li>创建<ul>
-<li>var r = new RegExp(“正则表达式”);注意字符串中的转义</li>
-<li>var r = /正则表达式/;推荐这种，因为不用考虑转义</li>
-</ul>
-</li>
-<li>方法<ul>
-<li>test(参数):查看是否满足正则</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Grobal:全局对象，任意地方都可以调用，不用初始化，方法()<ul>
-<li>方法<ul>
-<li>encodeURL():url编码，将utf-8转为由16进制数字组成的位字符串</li>
-<li>decodeURL():url解码，将位串转为utf-8</li>
-<li>encodeURLComponent():同上，但是会编更多的码</li>
-<li>decodeURLComponent()</li>
-<li>parseInt():将字符串中的字符转为十进制数字，如果非数字，则停止</li>
-<li>isNaN():判断某值是否是NaN</li>
-<li>eval():讲字符串转为js代码来执行</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>BOM<ul>
-<li>概念:Browser Object Model 浏览器对象模型</li>
-<li>组成<ul>
-<li>Window对象<ul>
-<li>方法<ul>
-<li>与弹出窗口有关<ul>
-<li>alert():显示一段消息</li>
-<li>confirm():如果点击确定返回true，反之，返回false</li>
-<li>prompt():显示可提示用户输入的框</li>
-</ul>
-</li>
-<li>与打开关闭有关<ul>
-<li>open()，可传入打开窗口的地址</li>
-<li>close()，关闭窗口，谁调用关闭谁</li>
-</ul>
-</li>
-<li>与定时器有关的方法<ul>
-<li>setTimeout(js代码或方法，时间):一次性定时器</li>
-<li>clearTimeout():取消定时器</li>
-<li>setInterval():循环定时器</li>
-<li>clearInterval:取消循环定时器 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>特点:不需要创建，直接使用，引用可以省略</li>
-</ul>
-</li>
-<li>Screen对象</li>
-<li>Location对象：是windows的子对象<ul>
-<li>方法<ul>
-<li>reload()，刷新页面</li>
-</ul>
-</li>
-<li>属性<ul>
-<li>href：地址</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>History对象：表示当前window的历史记录<ul>
-<li>创建<ul>
-<li>window.history</li>
-<li>history</li>
-</ul>
-</li>
-<li>方法<ul>
-<li>back()</li>
-<li>forward()</li>
-<li>go()</li>
-</ul>
-</li>
-<li>属性</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>DOM:<ul>
-<li>概念:Document Object Model</li>
-<li>DOM树:通过html的标签形成的树</li>
-<li>DOM标准<ul>
-<li>核心 DOM:针对任何结构性文档的标准模型<ul>
-<li>Document:文档对象</li>
-<li>Element:元素对象</li>
-<li>Attribute:属性对象</li>
-<li>Text:文本对象</li>
-<li>Comment:注释对象</li>
-</ul>
-</li>
-<li>XML DOM:针对XML文档的标准模型</li>
-<li>HTML DOM:针对HTML文档的标准模型</li>
-</ul>
-</li>
-<li>核心DOM<ul>
-<li>Document:文档对象<ul>
-<li>创建:window.document</li>
-<li>方法<ul>
-<li>获取对象<ul>
-<li>getElementById():通过id获取元素</li>
-<li>getElementsByTagName():通过标签名返回一个数组</li>
-<li>getElementsByClassName():根据class的属性值返回对象</li>
-<li>getElementsByName():根据name属性值返回对象数组</li>
-</ul>
-</li>
-<li>创建其他DOM对象<ul>
-<li>createAttribute()</li>
-<li>createComment()</li>
-<li>createTextNode()</li>
-<li>createElement()</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>属性 </li>
-</ul>
-</li>
-<li>Element:元素对象<ul>
-<li>获取与创建:通过Document获取与创建</li>
-<li>方法<ul>
-<li>setAttrbute():设置属性</li>
-<li>removeAttribute():移除属性</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Node:节点对象，公共方法<ul>
-<li>特点：所有DOM对象都可以认为是一个节点</li>
-<li>方法<ul>
-<li>CRUD dom树<ul>
-<li>appendChild():添加子节点</li>
-<li>removeChild():删除子节点</li>
-<li>replaceChind():替换子节点</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>属性<ul>
-<li>parentNode:返回当前节点的父节点</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>HTML DOM<ul>
-<li>标签体的获取和设置:innerHtml<ul>
-<li>是一个标签的属性，表示方括号中的内容</li>
-<li>替换=，直接通过id获取标签再通过字符串进行更改，可以更改为文本，标签等等</li>
-<li>添加+=，如上</li>
-</ul>
-</li>
-<li>使用html元素对象的属性</li>
-<li>控制标签样式<ul>
-<li>标签的style的子元素进行控制</li>
-<li>或者设置标签的类名，直接修改整体的样式，可读性也好点<pre><code class="lang-js">var div1 = document.getElementById(&quot;div1&quot;);
-div1.onclick=function(){
-div1.style.border=&quot;1px solid red&quot;;
-div1.style.width=&quot;200px&quot;;
-div1.style.fontSize=&quot;10px&quot;;
-}
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>事件<ul>
-<li>功能:某些组件被执行了某些操作后，触发某些代码的执行<ul>
-<li>事件：如单机，双击，键盘按下，鼠标移动</li>
-<li>事件源：组件 </li>
-<li>监听器：代码</li>
-<li>注册监听：将事件，事件源，监听器结合在一起，当事件源上发生了某个事件，便触发执行某个监听器代码</li>
-</ul>
-</li>
-<li>如何绑定事件<ul>
-<li>直接在属性上进行绑定事件，耦合度很高，不利于维护</li>
-<li>通过js获取元素再进行修改，可读性高，推荐使用</li>
-</ul>
-</li>
-<li>常见的事件<ul>
-<li>点击事件<ul>
-<li>onclick：单击事件</li>
-<li>ondblclick：双击事件</li>
-</ul>
-</li>
-<li>焦点事件<ul>
-<li>onblur：失去焦点</li>
-<li>onfocus：获得焦点，例如输入框被点中，进入输入状态</li>
-</ul>
-</li>
-<li>加载事件<ul>
-<li>onload：一章页面或一幅图片完成加载</li>
-</ul>
-</li>
-<li>鼠标事件<ul>
-<li>onmousedown：鼠标被按下<ul>
-<li>定义方法时，定义一个形参，接受event对象</li>
-<li>event对象可以定义哪个按键被点击了</li>
-</ul>
-</li>
-<li>onmouseup：鼠标按键被松开</li>
-<li>onmonsemove：鼠标被移动</li>
-<li>onmouseover：鼠标被移动到某元素之上</li>
-<li>onmouseout：鼠标从某元素移开</li>
-</ul>
-</li>
-<li>键盘事件<ul>
-<li>onkeydown：键盘被按下</li>
-<li>onkeyup：键盘被松开</li>
-<li>onkeypress：键盘按键被按下并松开</li>
-</ul>
-</li>
-<li>选择和改变<ul>
-<li>onchange：域的内容被改变</li>
-<li>onselect：文本被选中</li>
-</ul>
-</li>
-<li>表单事件<ul>
-<li>onsubmit：按钮被点击<ul>
-<li>可以检查表单，阻止提交</li>
-</ul>
-</li>
-<li>onreset：重置按钮被点击</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/%E5%9F%BA%E6%9C%ACvim%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/06/%E5%9F%BA%E6%9C%ACvim%E5%91%BD%E4%BB%A4/" itemprop="url">基本vim命令</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-06T17:04:10+08:00">
-                2020-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/06/06/%E5%9F%BA%E6%9C%ACvim%E5%91%BD%E4%BB%A4/" class="leancloud_visitors" data-flag-title="基本vim命令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  155
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h2><p>按i进入插入模式，可以插入字符</p>
-<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><p>Press Esc to 命令模式</p>
-<ul>
-<li>x - to delete the unwanted character</li>
-<li>u - to undo the last the command and U to undo the whole line</li>
-<li>CTRL-R to redo</li>
-<li>A - to append text at the end</li>
-<li>:wq - to save and exit</li>
-<li>:q! - to trash all changes</li>
-<li>dw - move the cursor to the beginning of the word to delete that word</li>
-<li>2w - to move the cursor two words forward.</li>
-<li>3e - to move the cursor to the end of the third word forward.</li>
-<li>0 (zero) to move to the start of the line.</li>
-<li>d2w - which deletes 2 words .. number can be changed for deleting the number of consecutive * words like d3w</li>
-<li>dd to delete the line and 2dd to delete to line .number can be changed for deleting the number of consecutive words</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/java-in-ubuntu%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/06/java-in-ubuntu%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="url">java in ubuntu相关环境配置</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-06T15:41:40+08:00">
-                2020-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/06/06/java-in-ubuntu%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="leancloud_visitors" data-flag-title="java in ubuntu相关环境配置">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  150
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="JAVA-running-envirment"><a href="#JAVA-running-envirment" class="headerlink" title="JAVA running envirment"></a>JAVA running envirment</h2><p>sudo apt update<br>sudo apt install openjdk-8-jdk </p>
-<h2 id="Apeche配置"><a href="#Apeche配置" class="headerlink" title="Apeche配置"></a>Apeche配置</h2><p>安装java8后，可以配置apeche了<br>介绍：Apache is the most widely used web server software. Developed and maintained by Apache Software Foundation, Apache is an open source software available for free. It runs on 67% of all webservers in the world. It is fast, reliable, and secure.</p>
-<p>sudo apt install apeche2</p>
-<h3 id="添加子网方法"><a href="#添加子网方法" class="headerlink" title="添加子网方法"></a>添加子网方法</h3><p>前提：购买了域名并且解析为这个服务器的公网ip</p>
-<ol>
-<li>cd/var/www/,mkdir gci,sudo vim index.html</li>
-<li>cd /etc/apache2/sites-available/</li>
-<li>sudo cp 000-default.conf gci.conf</li>
-<li>sudo vim gci.conf</li>
-<li>修改至自己的域名ServerAdmin yourname@example.com,DocumentRoot /var/www/gci/,ServerName gci.example.com</li>
-<li>激活sudo a2ensite gci.conf， systemctl reload apache2</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/02/%E7%88%AC%E8%99%AB%E7%B2%BE%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/02/%E7%88%AC%E8%99%AB%E7%B2%BE%E6%9E%90/" itemprop="url">爬虫精析</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-02T16:53:51+08:00">
-                2020-06-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">程序人生</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/06/02/%E7%88%AC%E8%99%AB%E7%B2%BE%E6%9E%90/" class="leancloud_visitors" data-flag-title="爬虫精析">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  302
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>爬虫是python一个最简单之一的应用了，就是模拟浏览器对资源进行筛选，下载，用到的东西不多，大多的调用一些库进行调用就可以达到目的，但是学习的过程中将对计算机网络，python基础，数据库，数据结构与算法等知识进行链接，故，作为入门的项目再好不过了</p>
-<h2 id="初级爬虫"><a href="#初级爬虫" class="headerlink" title="初级爬虫"></a>初级爬虫</h2><h3 id="urllib"><a href="#urllib" class="headerlink" title="urllib"></a>urllib</h3><p><a href="https://docs.python.org/3/library/urllib.html" target="_blank" rel="noopener">Doc</a></p>
-<p>主要下面四种module</p>
-<ul>
-<li>urllib.request for opening and reading URLs</li>
-<li>urllib.error containing the exceptions raised by urllib.request</li>
-<li>urllib.parse for parsing URLs</li>
-<li>urllib.robotparser for parsing robots.txt files*</li>
-</ul>
-<p>功能：<strong>发送请求，处理异常，解析链接</strong>，分析robots协议(用得少)</p>
-<ul>
-<li>request<ul>
-<li>Request()：封装发送头，发送方法等等 <strong>class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)</strong></li>
-<li>urlopen()：直接传入Request()函数返回的Request对象，此函数返回的对象为<strong>http.client.HTTPResponse</strong>，需要调用 <strong>read()</strong> 返回 <strong>bytes对象</strong> ，如果使用 <strong>chardet.detect()</strong> 函数发现不是utf-8编码，还可用 <strong>decode()</strong> 转换编码</li>
-</ul>
-</li>
-<li>error<ul>
-<li>当url返回出错的时候，可以打印错误</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request,error  </span><br><span class="line"><span class="keyword">try</span>:  </span><br><span class="line">    response = request.urlopen(<span class="string">'https://cuiqingcai.com/index.htm'</span>)  </span><br><span class="line"><span class="keyword">except</span> error.HTTPError <span class="keyword">as</span> e:  </span><br><span class="line">    print(e.reason, e.code, e.headers, sep=<span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>parse</li>
-</ul>
-<h3 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/01/python-%E7%94%BB%E5%9B%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/01/python-%E7%94%BB%E5%9B%BE/" itemprop="url">python 画图</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-01T13:30:11+08:00">
-                2020-06-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/06/01/python-%E7%94%BB%E5%9B%BE/" class="leancloud_visitors" data-flag-title="python 画图">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  91
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//简单的折线图</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">x = [<span class="number">5</span>,<span class="number">10</span>,<span class="number">15</span>,<span class="number">20</span>,<span class="number">40</span>,<span class="number">60</span>,<span class="number">80</span>,<span class="number">100</span>,<span class="number">120</span>,<span class="number">140</span>,<span class="number">180</span>,<span class="number">200</span>]</span><br><span class="line">y = [<span class="number">2.068</span>,<span class="number">0.818</span>,<span class="number">0.337</span>,<span class="number">0.298</span>,<span class="number">0.160</span>,<span class="number">0.112</span>,<span class="number">0.112</span>,<span class="number">0.096</span>,<span class="number">0.096</span>,<span class="number">0.096</span>,<span class="number">0.096</span>,<span class="number">0.096</span>]</span><br><span class="line"></span><br><span class="line">//画图函数</span><br><span class="line">plt.plot(x, y, color=<span class="string">"r"</span>, linestyle=<span class="string">"-"</span>, marker=<span class="string">"."</span>, linewidth=<span class="number">1.0</span>)</span><br><span class="line"></span><br><span class="line">//标题</span><br><span class="line">plt.title(<span class="string">"Curve of current density with time"</span>)</span><br><span class="line"></span><br><span class="line">//坐标轴标签</span><br><span class="line">plt.xlabel(<span class="string">"T/s"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"I/(mA/cm^2)"</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -3328,7 +2551,7 @@ div1.style.fontSize=&quot;10px&quot;;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">90</span>
+                <span class="site-state-item-count">95</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -3339,7 +2562,7 @@ div1.style.fontSize=&quot;10px&quot;;
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
