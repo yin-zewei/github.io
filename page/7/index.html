@@ -286,6 +286,196 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/19/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/19/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/" itemprop="url">最长上升子序列</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-19T21:08:14+08:00">
+                2020-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/02/19/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/" class="leancloud_visitors" data-flag-title="最长上升子序列">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  230
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最长上升子序列就是指在一个序列当中，某个子序列满足任意i &lt; j,a[i] &lt; a[j]</p>
+<h2 id="n2枚举算法"><a href="#n2枚举算法" class="headerlink" title="n2枚举算法"></a>n2枚举算法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span>* a)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; i;++j)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i] &gt; a[j])</span><br><span class="line">				dp[i] = <span class="built_in">max</span>(dp[i],dp[j]+<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="nlogn算法"><a href="#nlogn算法" class="headerlink" title="nlogn算法"></a>nlogn算法</h2><p>可以看出，每次n2算法都是找i前面的dp数最大的且比a[i]小的值，那么我们制造一个数组d[maxn]进行存储</p>
+<ul>
+<li>如果a[i]比d[len]大，那么添加到d数组后面，++len</li>
+<li>如果a[i]比d[len]小，那么在d数组中找到第一个比a[i]大的值，进行替换即可<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span>* a)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> d[maxn],len = <span class="number">1</span>;</span><br><span class="line">	d[<span class="number">1</span>] = a[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i &lt;= n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[i] &gt; d[len])d[++len]=a[i];</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> p = lower_bound(d+<span class="number">1</span>,d+<span class="number">1</span>+len,a[i])-d;</span><br><span class="line">			d[p] = a[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/18/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2900,282 +3090,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/Meteor-Shower/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/16/Meteor-Shower/" itemprop="url">Meteor Shower</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-16T10:49:11+08:00">
-                2020-02-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A2%98/" itemprop="url" rel="index">
-                    <span itemprop="name">题</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/02/16/Meteor-Shower/" class="leancloud_visitors" data-flag-title="Meteor Shower">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  451
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>原题链接：<a href="http://poj.org/problem?id=3669" target="_blank" rel="noopener">传送门</a></p>
-<p>题意：贝西在（0，0）点出发，路上有流星雨，给出流星雨的地点和降落时间，并且流星雨会摧毁该点及上下左右四个方块，每次贝西只能在1s内水平或垂直移动一个距离，求贝西是否移动到安全地点。</p>
-<p>思路：建一个数组map[][]为图的点，记录降落时间，mark[][]为是否访问过的点，bfs遍历即可。</p>
-<p>```c++</p>
-<pre><code>#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;queue&gt;
-using namespace std;
-int map[310][310];
-int dir[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
-int mark[310][310];
-struct node
-{
-    int x,y,step;
-}temp,a;
-bool operator &lt; (const node &amp;a,const node &amp;b)
-{
-    return a.step&gt;b.step;
-} 
-
-int min(int a,int b)
-{
-    return a&gt;b?b:a;
-}
-
-void bfs()
-{
-    int i;
-    memset(mark,0,sizeof(mark));
-    priority_queue&lt;node&gt;q;
-    a.x=0;
-    a.y=0;
-    a.step=0;
-    q.push(a);
-    mark[0][0]=1;
-    while(!q.empty())
-    {
-        a=q.top();
-        q.pop();
-        if(map[a.x][a.y]==-1)
-        {
-            printf(&quot;%d\n&quot;,a.step);
-            return ;
-        }
-        for(i=0;i&lt;4;++i)
-        {
-            temp.x=a.x+dir[i][0];
-            temp.y=a.y+dir[i][1];
-            temp.step=a.step+1;
-            if(temp.x&gt;=0&amp;&amp;temp.y&gt;=0&amp;&amp;(map[temp.x][temp.y]==-1||map[temp.x][temp.y]&gt;temp.step))
-            {
-                if(!mark[temp.x][temp.y])
-                q.push(temp);
-                mark[temp.x][temp.y]=1;
-            }
-        }
-    }
-    printf(&quot;-1\n&quot;);
-}
-
-
-
-int main()
-{
-    int n,x,y,t,i,j;
-    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)
-    {
-        memset(map,-1,sizeof(map));
-        for(i=0;i&lt;n;++i)
-        {
-            scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;t);
-            if(map[x][y]==-1)//判断是否受过撞击时间的更新 
-                map[x][y]=t;
-            else
-                map[x][y]=min(map[x][y],t);//受过撞击后的点不能再走了 
-            for(j=0;j&lt;4;++j)
-            {
-                int nx=x+dir[j][0];
-                int ny=y+dir[j][1];
-                if(nx&gt;=0&amp;&amp;ny&gt;=0)
-                {
-                    if(map[nx][ny]==-1)
-                        map[nx][ny]=t;
-                    else
-                        map[nx][ny]=min(t,map[nx][ny]); 
-                }
-            }
-        }
-        bfs();
-    }
-    return 0;
-
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3226,7 +3140,7 @@ int main()
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">95</span>
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
