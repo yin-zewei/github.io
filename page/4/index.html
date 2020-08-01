@@ -286,6 +286,401 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/17/%E5%8D%9A%E5%BC%88%E6%A6%82%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/17/%E5%8D%9A%E5%BC%88%E6%A6%82%E8%BF%B0/" itemprop="url">博弈概述</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-17T15:45:09+08:00">
+                2020-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/05/17/%E5%8D%9A%E5%BC%88%E6%A6%82%E8%BF%B0/" class="leancloud_visitors" data-flag-title="博弈概述">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  583
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>博弈论(Game Theory)又称对策论，是研究具有斗争或竞争性质现象的数学理论和方法。也是运筹学的一个重要学科。博弈论考虑游戏中的个体的预测行为和实际行为，并研究它们的优化策略。表面上不同的相互作用可能表现出相似的激励结构（incentive structure），所以它们是同一个游戏的特例。著名的例子是囚徒困境。</p>
+<h2 id="巴什博弈"><a href="#巴什博弈" class="headerlink" title="巴什博弈"></a>巴什博弈</h2><ul>
+<li>介绍：一堆n个物品，两人轮流取1~m个，先取完的人获胜</li>
+<li>答案：如果n%(m+1)==0,第一个人必输，反之，必赢。</li>
+<li>思路：如果第一个人取a个，第二个人取m+1-a个，那么永远是第二个人结尾</li>
+</ul>
+<h2 id="威佐夫博弈"><a href="#威佐夫博弈" class="headerlink" title="威佐夫博弈"></a>威佐夫博弈</h2><ul>
+<li>介绍：两堆物品a,b，两个人挑，要么从一堆中至少取出一个，要么同时从两堆取出相同多的物品</li>
+<li>答案：证明有点复杂，直接上代码了</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> r = (<span class="built_in">sqrt</span>(<span class="number">5.0</span>)+<span class="number">1</span>)/<span class="number">2</span>; <span class="comment">//黄金分割比</span></span><br><span class="line"><span class="keyword">int</span> d = <span class="built_in">abs</span>(a-b)*r;</span><br><span class="line"><span class="keyword">if</span>(d!=<span class="built_in">min</span>(a,b))<span class="keyword">return</span> <span class="number">1</span>;    <span class="comment">//第一个人会赢</span></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>；</span><br></pre></td></tr></table></figure>
+<h2 id="尼姆博弈"><a href="#尼姆博弈" class="headerlink" title="尼姆博弈"></a>尼姆博弈</h2><ul>
+<li>介绍：n堆物品，两人轮流取，每次取堆中至少一个，最后取完者胜。</li>
+<li>结论：将n堆物品全部异或，结果为0则必败，否则必胜。</li>
+<li>证明略，较为复杂</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">    res ^= a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(res)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="一般博弈"><a href="#一般博弈" class="headerlink" title="一般博弈"></a>一般博弈</h2><p>一般博弈不太可能是模板题，需要通过SG函数ICG模型转化为尼姆博弈再进行求解。<br>即将任何一种局面看成有向无环图的一个顶点，每个局面和它的子局面相连。<br>定义mex(集合)运算，表示最小的不属于这个集合的非负整数。<br>每个顶点的SG函数为sg(x)=mex(sg(y)|y是x的后继)<br>状态是先手的人的状态，移动是两个人的移动<br>如果某个状态是另外一个状态的子状态，那么父状态的sg值是所有子状态的sg值的异或和。<br>sg函数的求法，每个题目是不同的。</p>
+<ul>
+<li>寻找所有的必败态</li>
+<li>找出当前所有状态的前驱节点</li>
+<li>根据定义计算节点的sg值</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/16/at1999-candy-piles/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/16/at1999-candy-piles/" itemprop="url">at1999 candy piles</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-16T18:12:21+08:00">
+                2020-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98/" itemprop="url" rel="index">
+                    <span itemprop="name">题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/05/16/at1999-candy-piles/" class="leancloud_visitors" data-flag-title="at1999 candy piles">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  206
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://atcoder.jp/contests/agc002/tasks/agc002_e" target="_blank" rel="noopener">传送门</a></p>
+<ul>
+<li>介绍：n堆糖果，两个人轮流吃，要么所有的减一，要么直接吃一堆，吃完的人输掉，求第一个人会赢还是第二个人会赢</li>
+<li>算法：将糖果的堆转化为网格表，就可以做了</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">100010</span>],ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dx=<span class="number">0</span>,dy=a[p]-p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = p+<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]&gt;=p)++dx;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dx&amp;<span class="number">1</span>||dy&amp;<span class="number">1</span>)<span class="built_in">puts</span>(<span class="string">"First"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"Second"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// freopen("in.txt","r",stdin);</span></span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[<span class="number">1</span>]&amp;<span class="number">1</span>)<span class="built_in">puts</span>(<span class="string">"Second"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"First"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n,greater&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">    <span class="keyword">int</span> p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i+<span class="number">1</span>]&lt;i+<span class="number">1</span>)&#123;</span><br><span class="line">            p=i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    f(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/16/%E4%B8%BB%E5%B8%AD%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1832,437 +2227,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E4%B8%8E%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/09/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E4%B8%8E%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/" itemprop="url">欧拉函数与欧拉定理</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-09T15:21:20+08:00">
-                2020-05-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/05/09/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E4%B8%8E%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/" class="leancloud_visitors" data-flag-title="欧拉函数与欧拉定理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  638
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><ul>
-<li>定义：φ(n)即欧拉函数，为1-n中与n互质的数的个数</li>
-<li>互质：a与b互质即a与b只有1一个公因数，特殊地，1与1互质，其他任何数与它本身不互质</li>
-<li><p>性质</p>
-<ul>
-<li><p>n为素数时，显然，</p>
-<script type="math/tex; mode=display">
-φ(n)=n-1</script><p>,前面n-1个数都与他互质</p>
-</li>
-<li><p>n为互质数之积时，即$n=ab$,那么</p>
-<script type="math/tex; mode=display">
-φ(n)=φ(a)*φ(b)</script></li>
-</ul>
-</li>
-</ul>
-<pre><code>* n为素数的幂时，即
-  $$
-  n=p^k
-  $$
-  (p为素数)，有且仅有以下数与他互为合数：
-
-
-  $$
-  p,2p,3p,,,m p，其中m=p^{k-1}
-  $$
-
-
-  $$
-  φ(n) = n-m = p^k  -  p^{k-1} = p^k(1-1/p) = n(1-1/p)
-  $$
-
-
-
-* n为一个任意数时，可以分解为$$n=p_1^{k_1} * p_2^{k_2} *,,,p_m^{k_m}$$，显然，其中任意两项都是互质的，因为两项都是质数的积，可以用反证法来证明，那么根据第二项性质得到
-</code></pre><script type="math/tex; mode=display">
-\phi(n)=φ(p_1^k1)φ(p_2^k2),,,φ(p_m^km)\\
-\phi(p_1^k1)=p_1^k1*(1-1/p_1)\\
-\phi(n)=n(1-1/p_1)(1-1/p_2),,,(1-1/p_m)</script><p>根据以上性质，得到以下程序<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单个n的欧拉函数求解,复杂度O(n^0.5)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">phi</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i &lt;= <span class="built_in">sqrt</span>(x);++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%i==<span class="number">0</span>)&#123;</span><br><span class="line">			ans = ans/i*(i<span class="number">-1</span>);</span><br><span class="line">			<span class="keyword">while</span>(x%i==<span class="number">0</span>)x/=i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x&gt;<span class="number">1</span>)ans = ans/x*(x<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>欧拉函数的线性筛法,复杂度O(n)<br>线性筛的原则是每一个合数都是被最小的质因子筛掉<br>比如p是N的最小质因子<br>那么</p>
-<script type="math/tex; mode=display">
-n=\frac{N}{p}</script><p>,线性筛的过程中N通过n*p筛掉<br>当</p>
-<script type="math/tex; mode=display">
-n mod p_1 = 0</script><p>时，那么n包含了N的所有质因子</p>
-<script type="math/tex; mode=display">
-\phi(N)=N*\Pi_{i=1}^{s}(\frac{p_i-1}{p_i})=p*n*\Pi_{i=1}^{s}(\frac{p_i-1}{p_i})
-=p*\phi(n)</script><script type="math/tex; mode=display">
-n mod p_1 != 0$时，那么$\phi(N)=(p-1)*\phi(n)</script><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">phi_table</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>* phi)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>,p[N],flag[N]=&#123;<span class="number">0</span>&#125;;<span class="comment">//p为素数的值，flag标记是否为合数，初始都为合数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i &lt;= n;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!flag[i])&#123;</span><br><span class="line">            p[cnt++] = i;</span><br><span class="line">            phi[i] = i - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; cnt;++j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p[j] &gt; n)<span class="keyword">break</span>;</span><br><span class="line">            flag[i*p[j]]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i%p[j]==<span class="number">0</span>)&#123;</span><br><span class="line">                phi[i*p[j]] = p[j]*phi[i];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                phi[i*p[j]] = (p[j]<span class="number">-1</span>)*phi[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="欧拉定理的证明"><a href="#欧拉定理的证明" class="headerlink" title="欧拉定理的证明"></a>欧拉定理的证明</h2><p>若gcd(a,m)=1,则</p>
-<script type="math/tex; mode=display">
-a^{φ(m)}=1(mod m)</script><p>证明：</p>
-<script type="math/tex; mode=display">
-令p_i=ax_i\\
-\because gcd(a,n)\equiv1,gcd(x_i,n)\equiv1\\
-\therefore gcd(p_i,n)\equiv1\\
-\therefore \sum_{i=1}^{\phi(n)}p_i\equiv\sum_{i=1}^{\phi(n)}x\equiv1\\
-\because \sum_{i=1}^{\phi(n)}p_i=a^{\phi(n)}*\sum_{i=1}^{\phi(n)}x\\
-\therefore 移项得a^{\phi(n)}\equiv1</script>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/08/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" itemprop="url">拓扑排序</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T13:03:10+08:00">
-                2020-05-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/05/08/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" class="leancloud_visitors" data-flag-title="拓扑排序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  150
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>介绍：拓扑排序是指在一个有向无环图中求一条线性路径，使得任意一条边<u,v>在路径上都有u在v前面</li>
-<li>步骤：<ul>
-<li>根据入度放入队列中</li>
-<li>pop出入度为0的点，并将它的相邻点的入度减一</li>
-<li>直到所有的边都出来<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v[N];</span><br><span class="line"><span class="keyword">int</span> ins[N],ans[N],cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">toposort</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;pq;</span><br><span class="line">    rep(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!ins[i])pq.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!pq.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> u = pq.top()</span><br><span class="line">        ans[++cnt] = u;</span><br><span class="line">        pq.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u];i;i = nxt[i])&#123;</span><br><span class="line">            ins[to[i]]--;</span><br><span class="line">            <span class="keyword">if</span>(!ins[to[i]])pq.push(to[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2313,7 +2277,7 @@ a^{φ(m)}=1(mod m)</script><p>证明：</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">96</span>
+                <span class="site-state-item-count">98</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

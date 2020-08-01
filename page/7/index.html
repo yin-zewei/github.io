@@ -286,6 +286,400 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/21/%E5%B0%BC%E5%85%8B%E7%9A%84%E4%BB%BB%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/21/%E5%B0%BC%E5%85%8B%E7%9A%84%E4%BB%BB%E5%8A%A1/" itemprop="url">尼克的任务</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-21T14:12:01+08:00">
+                2020-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98/" itemprop="url" rel="index">
+                    <span itemprop="name">题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/02/21/%E5%B0%BC%E5%85%8B%E7%9A%84%E4%BB%BB%E5%8A%A1/" class="leancloud_visitors" data-flag-title="尼克的任务">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  180
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>原题链接：<a href="https://www.luogu.com.cn/problem/P1280" target="_blank" rel="noopener">传送门</a></p>
+<p>思路：从后往前dp</p>
+<ul>
+<li>如果当前时刻空闲，那么dp[i]=dp[i+1]+1</li>
+<li>如果此刻有任务发布，那么dp[i] = max(dp[i],dp[i+time]);</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e4</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,k,dp[maxn],t1,t2;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; k;++i)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;t1,&amp;t2);</span><br><span class="line">		v[t1].push_back(t2);</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n;i &gt;= <span class="number">1</span>;--i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(v[i].empty())dp[i]=dp[i+<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; v[i].<span class="built_in">size</span>();++j)&#123;</span><br><span class="line">				dp[i] = <span class="built_in">max</span>(dp[i],dp[i+v[i][j]]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; dp[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url">计算机组成原理</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T12:45:03+08:00">
+                2020-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%BE/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机课</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/02/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="leancloud_visitors" data-flag-title="计算机组成原理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  344
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h2><h3 id="计算机的概念与类型"><a href="#计算机的概念与类型" class="headerlink" title="计算机的概念与类型"></a>计算机的概念与类型</h3><ul>
+<li>定义：是一种可以存储程序，并且通过执行程序指令，可以自动、高速、精确地对数字信息进行各种复杂处理，然后输出运算结果的高科技智能电子设备。</li>
+<li>五个逻辑模块：输入设备，存储器，输出设备，运算器，控制器<br><img src="计算机运行逻辑图.png" alt=""></li>
+<li>信息的数字化表示<ul>
+<li>在计算机中用数字代码表示各种信息</li>
+<li>在物理机制上用数字信号表示数字代码</li>
+<li>信息数字化表示的优点<br>  （1）物理上易实现信息的表示与存储<br>  （2）抗干扰能力强，可靠性高<br>  （3）数值的表示范围大，精度高<br>  （4）可表示的信息类型广泛<br>  （5）能用数字逻辑技术进行处理</li>
+</ul>
+</li>
+<li>存储程序工作方式<ol>
+<li>编制程序</li>
+<li>存储程序</li>
+<li>自动、连续执行程序</li>
+<li>输出结果</li>
+</ol>
+</li>
+<li>计算机的分类，主要分为模拟计算机和数字计算机 <ul>
+<li>模拟计算机：由模拟运算器件构成，处理在时间和数值上连续的模拟量（如：电压、电流等）；</li>
+<li>数字计算机：由数字逻辑器件构成，处理离散的数字量。</li>
+</ul>
+</li>
+</ul>
+<h3 id="计算机的诞生与发展"><a href="#计算机的诞生与发展" class="headerlink" title="计算机的诞生与发展"></a>计算机的诞生与发展</h3><h3 id="计算机系统的层次"><a href="#计算机系统的层次" class="headerlink" title="计算机系统的层次"></a>计算机系统的层次</h3><h3 id="计算机的性能评价"><a href="#计算机的性能评价" class="headerlink" title="计算机的性能评价"></a>计算机的性能评价</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/19/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2724,372 +3118,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/16/%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95/" itemprop="url">高精度乘法</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-16T16:34:43+08:00">
-                2020-02-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/02/16/%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95/" class="leancloud_visitors" data-flag-title="高精度乘法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  189
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> a1[<span class="number">50001</span>],b1[<span class="number">50001</span>];</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">50001</span>],b[<span class="number">50001</span>],i,x,len,j,c[<span class="number">50001</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt;a1 &gt;&gt;b1;<span class="comment">//读入两个数</span></span><br><span class="line">    a[<span class="number">0</span>]=<span class="built_in">strlen</span>(a1);b[<span class="number">0</span>]=<span class="built_in">strlen</span>(b1);<span class="comment">//计算长度</span></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=a[<span class="number">0</span>];++i)a[i]=a1[a[<span class="number">0</span>]-i]-<span class="string">'0'</span>;<span class="comment">//将字符串转换成数字</span></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=b[<span class="number">0</span>];++i)b[i]=b1[b[<span class="number">0</span>]-i]-<span class="string">'0'</span>;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=a[<span class="number">0</span>];++i)<span class="keyword">for</span> (j=<span class="number">1</span>;j&lt;=b[<span class="number">0</span>];++j)c[i+j<span class="number">-1</span>]+=a[i]*b[j];<span class="comment">//按乘法</span></span><br><span class="line">    len=a[<span class="number">0</span>]+b[<span class="number">0</span>];                                       <span class="comment">//原理进行高精乘</span></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;len;++i)<span class="keyword">if</span> (c[i]&gt;<span class="number">9</span>)&#123;c[i+<span class="number">1</span>]+=c[i]/<span class="number">10</span>;c[i]%=<span class="number">10</span>;&#125;<span class="comment">//进位</span></span><br><span class="line">    <span class="keyword">while</span> (c[len]==<span class="number">0</span>&amp;&amp;len&gt;<span class="number">1</span>)len--;<span class="comment">//判断位数</span></span><br><span class="line">    <span class="keyword">for</span> (i=len;i&gt;=<span class="number">1</span>;--i)<span class="built_in">cout</span> &lt;&lt;c[i];<span class="comment">//输出</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8A%A0%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/16/%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8A%A0%E6%B3%95/" itemprop="url">高精度加法</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-16T15:46:19+08:00">
-                2020-02-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/02/16/%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8A%A0%E6%B3%95/" class="leancloud_visitors" data-flag-title="高精度加法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  169
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//高精度加法</span></span><br><span class="line"><span class="comment">//只能是两个正数相加</span></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">add</span><span class="params">(<span class="built_in">string</span> str1,<span class="built_in">string</span> str2)</span><span class="comment">//高精度加法</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> str=<span class="string">""</span>;</span><br><span class="line">    <span class="keyword">int</span> len1=str1.length();</span><br><span class="line">    <span class="keyword">int</span> len2=str2.length();</span><br><span class="line">    <span class="comment">//前面补0，弄成长度相同</span></span><br><span class="line">    <span class="keyword">if</span>(len1&lt;len2)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len2-len1;i++)</span><br><span class="line">           str1=<span class="string">"0"</span>+str1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len1-len2;i++)</span><br><span class="line">           str2=<span class="string">"0"</span>+str2;</span><br><span class="line">    &#125;</span><br><span class="line">    len1=str1.length();</span><br><span class="line">    <span class="keyword">int</span> cf=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=len1<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        temp=str1[i]-<span class="string">'0'</span>+str2[i]-<span class="string">'0'</span>+cf;</span><br><span class="line">        cf=temp/<span class="number">10</span>;</span><br><span class="line">        temp%=<span class="number">10</span>;</span><br><span class="line">        str=<span class="keyword">char</span>(temp+<span class="string">'0'</span>)+str;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cf!=<span class="number">0</span>)  str=<span class="keyword">char</span>(cf+<span class="string">'0'</span>)+str;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> a,b;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; add(a,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3140,7 +3168,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">96</span>
+                <span class="site-state-item-count">98</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

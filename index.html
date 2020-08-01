@@ -286,6 +286,387 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/01/Trie%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/01/Trie%E6%A0%91/" itemprop="url">Trie树</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-01T12:08:36+08:00">
+                2020-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/08/01/Trie%E6%A0%91/" class="leancloud_visitors" data-flag-title="Trie树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  201
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>常用操作：插入，查询</li>
+<li>通常不是作为一个单独的考察点，而是伴随着其他算法一起使用，如ac自动机等等。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ext[i]表示第i棵树是否为字母节点,trie[i][j]为第i棵树的第j的位置存放的下一棵树的坐标,cnt为树的坐标，每一棵树都有坐标</span></span><br><span class="line"><span class="comment">//每一棵树都代表着一个字母</span></span><br><span class="line"><span class="keyword">int</span> ext[MAXN],trie[MAXN][<span class="number">26</span>],cnt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//插入</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">trie_insert</span><span class="params">(<span class="keyword">char</span>* str)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len = <span class="built_in">strlen</span>(str),root = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; len;++i)&#123;</span><br><span class="line">		<span class="keyword">int</span> id = str[i]-<span class="string">'a'</span>;</span><br><span class="line">		<span class="keyword">if</span>(trie[root][id]==<span class="number">0</span>)</span><br><span class="line">			trie[root][id]=++cnt;</span><br><span class="line">		root = trie[root][id];</span><br><span class="line">	&#125;</span><br><span class="line">	ext[cnt]=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">trie_query</span><span class="params">(<span class="keyword">char</span>* str)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len = <span class="built_in">strlen</span>(str),root = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; len;++i)&#123;</span><br><span class="line">		<span class="keyword">int</span> id = str[i] - <span class="string">'a'</span>;</span><br><span class="line">		<span class="keyword">if</span>(!trie[root][id])<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		root = trie[root][id];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ext[root];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/01/%E6%9C%80%E5%B0%8F%E8%A1%A8%E7%A4%BA%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/01/%E6%9C%80%E5%B0%8F%E8%A1%A8%E7%A4%BA%E6%B3%95/" itemprop="url">最小表示法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-01T12:08:26+08:00">
+                2020-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/08/01/%E6%9C%80%E5%B0%8F%E8%A1%A8%E7%A4%BA%E6%B3%95/" class="leancloud_visitors" data-flag-title="最小表示法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  418
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>最小表示法其实就是找到位置i，从这个位置输出S，使得到的同构串字典序最小。</li>
+<li>思路：<br>  设S的长度为len</li>
+</ul>
+<ol>
+<li>利用两个指针i，j。初始化时i指向s[0]，j指向s[1]。<br>我们规定i和j在任意时刻都不能相等。</li>
+<li>匹配长度k=0开始，检验s[i+k]和s[j+k]是否相等，相等k++，一直下去，直到找到第一个不相同的字符</li>
+<li>如果长度不相等，那么修改i+k与j+k中较大的数组id，假设a[i+k]较大，那么令i=i+k+1，因为从i到i+k，j应该是更正确的选择</li>
+</ol>
+<p><a href="https://www.luogu.com.cn/problem/P1368" target="_blank" rel="noopener">传送门</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mkp(a,b) make_pair(a,b)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ipar pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(int i = a;i &lt;= b;++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> drp(i,a,b) for(int i = a;i &gt;= b;--i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rd</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res = <span class="number">0</span>,flag = <span class="number">1</span>;<span class="keyword">char</span> c = gc();</span><br><span class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123;flag=c==<span class="string">'-'</span>?<span class="number">-1</span>:<span class="number">1</span>;c=gc();&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(c))&#123;res=res*<span class="number">10</span>+(c^<span class="number">48</span>);c=gc();&#125;</span><br><span class="line">	<span class="keyword">return</span> res*flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e5</span>+<span class="number">5</span>,inf = <span class="number">0x3f3f3f3f</span>,md = <span class="number">1000000007</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ms</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>,j = <span class="number">1</span>,k = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(i &lt;= n &amp;&amp; j &lt;= n &amp;&amp; k &lt;= n)&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[(i+k)%n]==a[(j+k)%n])++k;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[(i+k)%n]&gt;a[(j+k)%n])i = i + k + <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> j = j + k + <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i==j)++i;</span><br><span class="line">			k=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">min</span>(i,j);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	rep(i,<span class="number">0</span>,n<span class="number">-1</span>)&#123;</span><br><span class="line">		a[i]=rd();</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">int</span> res = ms();</span><br><span class="line">	rep(i,<span class="number">0</span>,n<span class="number">-1</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d%c"</span>,a[(i+res)%n],i==n<span class="number">-1</span>?<span class="string">'\n'</span>:<span class="string">' '</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/31/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1773,495 +2154,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/21/Tomcat/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/21/Tomcat/" itemprop="url">Tomcat</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-21T20:03:59+08:00">
-                2020-06-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaweb/" itemprop="url" rel="index">
-                    <span itemprop="name">javaweb</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/06/21/Tomcat/" class="leancloud_visitors" data-flag-title="Tomcat">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  565
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><ol>
-<li>下载：<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">http://tomcat.apache.org/</a></li>
-<li>安装：解压压缩包即可。<ul>
-<li>注意：安装目录建议不要有中文和空格</li>
-</ul>
-</li>
-<li>卸载：删除目录就行了</li>
-<li><p>启动：</p>
-<ul>
-<li>bin/startup.bat ,双击运行该文件即可</li>
-<li><p>访问：浏览器输入：<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> 回车访问自己</p>
-<pre><code>              http://别人的ip:8080 访问别人
-</code></pre></li>
-<li><p>可能遇到的问题：</p>
-<ol>
-<li><p>黑窗口一闪而过：</p>
-<ul>
-<li>原因： 没有正确配置JAVA_HOME环境变量</li>
-<li>解决方案：正确配置JAVA_HOME环境变量</li>
-</ul>
-</li>
-<li><p>启动报错：</p>
-<ol>
-<li>暴力：找到占用的端口号，并且找到对应的进程，杀死该进程<ul>
-<li>netstat -ano</li>
-</ul>
-</li>
-<li>温柔：修改自身的端口号<ul>
-<li>conf/server.xml</li>
-<li><Connector port="8888" protocol="HTTP/1.1"
-  connectionTimeout="20000"
-  redirectPort="8445" /></li>
-<li>一般会将tomcat的默认端口号修改为80。80端口号是http协议的默认端口号。<ul>
-<li>好处：在访问时，就不用输入端口号</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>关闭：<ol>
-<li>正常关闭：<ul>
-<li>bin/shutdown.bat</li>
-<li>ctrl+c</li>
-</ul>
-</li>
-<li>强制关闭：<ul>
-<li>点击启动窗口的×</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>配置:</p>
-<ul>
-<li><p>部署项目的方式：</p>
-<ol>
-<li><p>直接将项目放到webapps目录下即可。</p>
-<ul>
-<li>/hello：项目的访问路径—&gt;虚拟目录</li>
-<li>简化部署：将项目打成一个war包，再将war包放置到webapps目录下。<ul>
-<li>war包会自动解压缩</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>配置conf/server.xml文件<br> 在<Host>标签体中配置<br> <Context docBase="D:\hello" path="/hehe" /></p>
-<ul>
-<li>docBase:项目存放的路径</li>
-<li>path：虚拟目录</li>
-</ul>
-</li>
-<li><p>在conf\Catalina\localhost创建任意名称的xml文件。在文件中编写<br> <Context docBase="D:\hello" /></p>
-<ul>
-<li>虚拟目录：xml文件的名称</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>静态项目和动态项目：</p>
-<ul>
-<li>目录结构<ul>
-<li>java动态项目的目录结构：<br>  — 项目的根目录<pre><code>  -- WEB-INF目录：
-      -- web.xml：web项目的核心配置文件
-      -- classes目录：放置字节码文件的目录
-      -- lib目录：放置依赖的jar包
-</code></pre></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<pre><code>* 将Tomcat集成到IDEA中，并且创建JavaEE的项目，部署项目。
-</code></pre><h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><h3 id="无法访问"><a href="#无法访问" class="headerlink" title="无法访问"></a>无法访问</h3><ul>
-<li>安装完firewalld后，会阻挡8080端口，重新开放即可<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --zone&#x3D;public --add-port&#x3D;8080&#x2F;tcp 添加端口</span><br><span class="line">firewall-cmd --reload 重启防火墙</span><br><span class="line">firewall-cmd --zone&#x3D;public --query-port&#x3D;8080&#x2F;tcp 查询端口状态</span><br></pre></td></tr></table></figure></li>
-<li>在servel.xml更改端口为80后无法访问可能是启动时为非root用户启动，所以更好的方法是使用iptables将80端口转发为8080端口即可直接用ip访问</li>
-</ul>
-<h3 id="配置idea远程部署与访问"><a href="#配置idea远程部署与访问" class="headerlink" title="配置idea远程部署与访问"></a>配置idea远程部署与访问</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/17/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/17/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/" itemprop="url">调度算法总结</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-17T17:48:14+08:00">
-                2020-06-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/06/17/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="调度算法总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  324
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>调度算法是操作系统调度处理器的算法，而系统分配资源的基本单位是进程，所以一般而言调度算法指的就是进程调度，但是在批处理系统中，调度算法也可以指作业调度</p>
-<h2 id="先来先服务算法FIFS"><a href="#先来先服务算法FIFS" class="headerlink" title="先来先服务算法FIFS"></a>先来先服务算法FIFS</h2><ul>
-<li>基本思想：按照进程进入就绪队列的先后次序分配处理器</li>
-<li>特点：<ul>
-<li>利于长进程，不利于短进程，因为长进程等待的时间更短</li>
-<li>对于分时系统和实时系统是致命的，因为这两种系统都要求很快的交互速度，尤其是实时系统</li>
-<li>常常不单独使用，而是结合其他系统一起使用，比如优先级调度算法中，如果优先级一致，那么先来先服务</li>
-</ul>
-</li>
-</ul>
-<h2 id="短作业优先调度算法SJF"><a href="#短作业优先调度算法SJF" class="headerlink" title="短作业优先调度算法SJF"></a>短作业优先调度算法SJF</h2><ul>
-<li>基本思想：把处理器分配给最快完成的作业或进程</li>
-<li>特点<ul>
-<li>在所有作业同时到达时，SJF的平均周转时间最短</li>
-<li>但是对长进程不利，很可能出现”饥饿”或者”饿死现象”</li>
-</ul>
-</li>
-</ul>
-<h2 id="优先级调度算法"><a href="#优先级调度算法" class="headerlink" title="优先级调度算法"></a>优先级调度算法</h2><ul>
-<li>基本思想：</li>
-</ul>
-<h2 id="时间片轮转调度算法"><a href="#时间片轮转调度算法" class="headerlink" title="时间片轮转调度算法"></a>时间片轮转调度算法</h2><h2 id="高响应比优先调度算法"><a href="#高响应比优先调度算法" class="headerlink" title="高响应比优先调度算法"></a>高响应比优先调度算法</h2><h2 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a>多级反馈队列调度算法</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2312,7 +2204,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">96</span>
+                <span class="site-state-item-count">98</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
