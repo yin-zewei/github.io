@@ -286,6 +286,220 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/Fence-Repair/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/06/Fence-Repair/" itemprop="url">Fence Repair</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T12:40:13+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98/" itemprop="url" rel="index">
+                    <span itemprop="name">题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/02/06/Fence-Repair/" class="leancloud_visitors" data-flag-title="Fence Repair">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  248
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://poj.org/problem?id=3253" target="_blank" rel="noopener">来源</a></p>
+<p>描述：栅栏修补，一共需要n个木条，长度不一，现要求从一个刚好够所有长度的木条上锯开，怎么锯划算，每次的花费是木条长度，如锯开21的木条，需要花费21，求最小花费。</p>
+<p>思路：使得较长的木条使用的次数最少即可，那么从短的开始锯，每次计算两根，然后他们的和入队，重新排列。</p>
+<p><strong>注意：答案可能溢出，所以用long long int存储。</strong><br>```c++</p>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn = 20005;
+int n,fence[maxn],t;
+long long sum = 0;
+int main(){
+    scanf(&quot;%d&quot;,&amp;n);
+    //优先队列的使用
+    priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt;&gt;q;
+    for(int i = 0;i &lt; n;++i){
+        scanf(&quot;%d&quot;,&amp;t);
+        q.push(t);
+    }
+    while(q.size() &gt; 1){
+        //每次将最短的两根拿出来算
+        int a = q.top();
+        q.pop();
+        int b = q.top();
+        q.pop();
+        sum += a + b;
+        q.push(a+b);
+    }
+    printf(&quot;%lld&quot;,sum);
+    return 0; 
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/best-cow-line/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2529,7 +2743,7 @@ leave类似于java中的break语句，跳出所在循环！！！
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">98</span>
+                <span class="site-state-item-count">99</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
