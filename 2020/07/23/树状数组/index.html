@@ -101,14 +101,14 @@
 
 
 
-<meta name="description" content="单点修改,区间查询,区间修改O(log2n)123456789int lowbit(int x)&amp;#123;    return x&amp;(-x);&amp;#125;&#x2F;&#x2F;x+lowbit[x]为父节点void add(int x,int k)&amp;#123;    for(;x&lt;cnt;x+&#x3D;lowbit(x))&amp;#123;    &amp;#125;&amp;#125;">
+<meta name="description" content="区间查询和单点修改1234567891011121314void add(int p,int x)&amp;#123;	while(p&lt;&#x3D;N)&amp;#123;		bit[p] +&#x3D; x;		p +&#x3D; p&amp;-p;	&amp;#125;&amp;#125;ll sum(int p)&amp;#123;	ll res &#x3D; 0;	while(p &gt; 0)&amp;#123;		res +&#x3D; bit[p];		p -&#x3D; p&amp;amp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树状数组">
 <meta property="og:url" content="http://yoursite.com/2020/07/23/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="单点修改,区间查询,区间修改O(log2n)123456789int lowbit(int x)&amp;#123;    return x&amp;(-x);&amp;#125;&#x2F;&#x2F;x+lowbit[x]为父节点void add(int x,int k)&amp;#123;    for(;x&lt;cnt;x+&#x3D;lowbit(x))&amp;#123;    &amp;#125;&amp;#125;">
+<meta property="og:description" content="区间查询和单点修改1234567891011121314void add(int p,int x)&amp;#123;	while(p&lt;&#x3D;N)&amp;#123;		bit[p] +&#x3D; x;		p +&#x3D; p&amp;-p;	&amp;#125;&amp;#125;ll sum(int p)&amp;#123;	ll res &#x3D; 0;	while(p &gt; 0)&amp;#123;		res +&#x3D; bit[p];		p -&#x3D; p&amp;amp">
 <meta property="article:published_time" content="2020-07-23T01:27:30.000Z">
-<meta property="article:modified_time" content="2020-07-23T02:15:08.648Z">
+<meta property="article:modified_time" content="2020-09-01T09:48:23.106Z">
 <meta property="article:author" content="殷泽伟">
 <meta name="twitter:card" content="summary">
 
@@ -416,7 +416,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  48
+                  416
                 </span>
               
 
@@ -432,7 +432,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -453,8 +453,12 @@
       
 
       
-        <p>单点修改,区间查询,区间修改O(log2n)<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//x+lowbit[x]为父节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(;x&lt;cnt;x+=lowbit(x))&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+        <h2 id="区间查询和单点修改"><a href="#区间查询和单点修改" class="headerlink" title="区间查询和单点修改"></a>区间查询和单点修改</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(p&lt;=N)&#123;</span><br><span class="line">		<span class="built_in">bit</span>[p] += x;</span><br><span class="line">		p += p&amp;-p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">sum</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(p &gt; <span class="number">0</span>)&#123;</span><br><span class="line">		res += <span class="built_in">bit</span>[p];</span><br><span class="line">		p -= p&amp;-p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="区间修改和单点查询"><a href="#区间修改和单点查询" class="headerlink" title="区间修改和单点查询"></a>区间修改和单点查询</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(p&lt;=N)&#123;</span><br><span class="line">		<span class="built_in">bit</span>[p] += x;</span><br><span class="line">		p += p&amp;-p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> q,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	add(p,x);</span><br><span class="line">	add(q+<span class="number">1</span>,-x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">bit</span>[i] = sum(i); <span class="comment">// 差分的思路</span></span><br></pre></td></tr></table></figure>
+<h2 id="区间修改和区间查询"><a href="#区间修改和区间查询" class="headerlink" title="区间修改和区间查询"></a>区间修改和区间查询</h2><p>区间修改同上<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> q = p;</span><br><span class="line">	<span class="keyword">while</span>(p&lt;=N)&#123;</span><br><span class="line">		<span class="built_in">bit</span>[p] += x;</span><br><span class="line">		bit_2[p] += x*q;	<span class="comment">// 添加的辅助数组，用于查询</span></span><br><span class="line">		p += p&amp;-p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> q,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	add(p,x),add(q+<span class="number">1</span>,-x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">sum</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	ll res = <span class="number">0</span>,x = p;</span><br><span class="line">	<span class="keyword">while</span>(p&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		res += (<span class="built_in">bit</span>[p]*(x+<span class="number">1</span>)-bit_2[p])	<span class="comment">// 不一样的地方</span></span><br><span class="line">		p -= p&amp;-p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> sum(y)-sum(x<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="二维空间的区间修改和单点查询"><a href="#二维空间的区间修改和单点查询" class="headerlink" title="二维空间的区间修改和单点查询"></a>二维空间的区间修改和单点查询</h2><p>与imos法类似<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t = y;</span><br><span class="line">	<span class="keyword">while</span>(x&lt;=n)&#123;</span><br><span class="line">		y = t;</span><br><span class="line">		<span class="keyword">while</span>(y&lt;=n)&#123;</span><br><span class="line">			<span class="built_in">bit</span>[x][y]+=v;</span><br><span class="line">			y+=y&amp;-y;</span><br><span class="line">		&#125;</span><br><span class="line">		x+=x&amp;-x;</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x1,<span class="keyword">int</span> y1,<span class="keyword">int</span> x2,<span class="keyword">int</span> y2,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	add(x1,y1,v),add(x1,y2+<span class="number">1</span>,-v),add(x2+<span class="number">1</span>,y1,-v),add(x2+<span class="number">1</span>,y2+<span class="number">1</span>,v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t = y,res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		y = t;</span><br><span class="line">		<span class="keyword">while</span>(y&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			res += <span class="built_in">bit</span>[x][y];</span><br><span class="line">			y-=y&amp;-y;</span><br><span class="line">		&#125;</span><br><span class="line">		x-=x&amp;-x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="二维空间的区间修改和区间查询"><a href="#二维空间的区间修改和区间查询" class="headerlink" title="二维空间的区间修改和区间查询"></a>二维空间的区间修改和区间查询</h2><p>涉及到区间查询，则必须考虑使用差分来求前缀和</p>
+<script type="math/tex; mode=display">sum(y,x)=bit_xy(y,x)*yx + bit_y(y,x)*y + bit_x(y,x)*x + bit(y,x)</script>
       
     </div>
     
@@ -560,8 +564,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -576,7 +589,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-count">101</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -623,6 +636,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#区间查询和单点修改"><span class="nav-number">1.</span> <span class="nav-text">区间查询和单点修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区间修改和单点查询"><span class="nav-number">2.</span> <span class="nav-text">区间修改和单点查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区间修改和区间查询"><span class="nav-number">3.</span> <span class="nav-text">区间修改和区间查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维空间的区间修改和单点查询"><span class="nav-number">4.</span> <span class="nav-text">二维空间的区间修改和单点查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维空间的区间修改和区间查询"><span class="nav-number">5.</span> <span class="nav-text">二维空间的区间修改和区间查询</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
