@@ -101,14 +101,14 @@
 
 
 
-<meta name="description" content="问题描述：在一个有向图中，从s到t有F单位的流量，使得通过这些流量花费的费用最小">
+<meta name="description" content="问题描述：在一个有向图中，从s到t有F单位的流量，使得通过这些流量花费的费用最小 思路： 建有反向边的网络流图 使用spfa寻找可行流 如果存在，则加上FLOW和对应的COST，并且更新图    123456789101112131415161718192021222324252627282930313233343536373839404142434445464748int spfa()&amp;#12">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最小费用流">
 <meta property="og:url" content="http://yoursite.com/2020/08/27/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%B5%81/index.html">
 <meta property="og:site_name" content="殷泽伟的博客">
-<meta property="og:description" content="问题描述：在一个有向图中，从s到t有F单位的流量，使得通过这些流量花费的费用最小">
+<meta property="og:description" content="问题描述：在一个有向图中，从s到t有F单位的流量，使得通过这些流量花费的费用最小 思路： 建有反向边的网络流图 使用spfa寻找可行流 如果存在，则加上FLOW和对应的COST，并且更新图    123456789101112131415161718192021222324252627282930313233343536373839404142434445464748int spfa()&amp;#12">
 <meta property="article:published_time" content="2020-08-27T06:59:40.000Z">
-<meta property="article:modified_time" content="2020-08-27T07:01:37.549Z">
+<meta property="article:modified_time" content="2020-09-02T00:11:16.106Z">
 <meta property="article:author" content="殷泽伟">
 <meta name="twitter:card" content="summary">
 
@@ -416,7 +416,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  35
+                  309
                 </span>
               
 
@@ -455,8 +455,14 @@
       
         <ul>
 <li>问题描述：在一个有向图中，从s到t有F单位的流量，使得通过这些流量花费的费用最小</li>
-<li></li>
+<li>思路：<ul>
+<li>建有反向边的网络流图</li>
+<li>使用spfa寻找可行流</li>
+<li>如果存在，则加上FLOW和对应的COST，并且更新图</li>
 </ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">spfa</span><span class="params">()</span></span>&#123;</span><br><span class="line">    rep(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        vis[i] = pre[i] = <span class="number">0</span>,flow[i] = dis[i] = inf;</span><br><span class="line">    &#125;</span><br><span class="line">    flow[s] = inf;</span><br><span class="line">    dis[s] = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">    q.push(s);</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> u = q.front();q.pop();vis[u] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = hd[u];i;i = e[i].nxt)&#123;</span><br><span class="line">            <span class="keyword">int</span> v = e[i].v,w = e[i].w;</span><br><span class="line">            <span class="keyword">if</span>(e[i].w &gt; <span class="number">0</span> &amp;&amp; dis[v] &gt; dis[u]+e[i].f)&#123;</span><br><span class="line">                dis[v] = dis[u] + e[i].f;</span><br><span class="line">                flow[v] = MIN(flow[u],w);</span><br><span class="line">                <span class="comment">// 记录前向边和点，方便进行处理</span></span><br><span class="line">                pre[v] = u;</span><br><span class="line">                last[v] = i;</span><br><span class="line">                <span class="keyword">if</span>(!vis[v])&#123;</span><br><span class="line">                    vis[v] = <span class="number">1</span>;</span><br><span class="line">                    q.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pre[t]!=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    freopen(<span class="string">"in.txt"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; s &gt;&gt; t;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> u,v,w,f,i = m;i;--i)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d %d"</span>,&amp;u,&amp;v,&amp;w,&amp;f);</span><br><span class="line">        add(u,v,w,f),add(v,u,<span class="number">0</span>,-f);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(spfa())&#123;</span><br><span class="line">        mf += flow[t];</span><br><span class="line">        mc += flow[t]*dis[t];   </span><br><span class="line">        <span class="keyword">int</span> now = t;</span><br><span class="line">        <span class="keyword">while</span>(now != s)&#123;</span><br><span class="line">            <span class="keyword">int</span> t2 = last[now];</span><br><span class="line">            e[t2].w -= flow[t],e[t2^<span class="number">1</span>].w += flow[t];</span><br><span class="line">            now = pre[now]; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,mf,mc);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
