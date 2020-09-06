@@ -4299,6 +4299,7 @@ a^{φ(m)}=1(mod m)</script><p>证明：</p>
 <li>x&amp;(-x)：求低位第一个1</li>
 <li>x&amp;(x-1)：求去掉低位第一个一之后的数</li>
 <li>x^1:如果x是奇数，减一，偶数，加一</li>
+<li>x&amp;~(1&lt;&lt;i)：x去掉第i个二进制的1</li>
 </ul>
 ]]></content>
       <categories>
