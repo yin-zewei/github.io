@@ -320,6 +320,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/09/%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99/" itemprop="url">快速幂取余</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-09T12:17:07+08:00">
+                2020-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/02/09/%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99/" class="leancloud_visitors" data-flag-title="快速幂取余">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  198
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>问题：a^b%c的答案是多少</p>
+<p>原理：<br>    如果b为偶数,a^b%c=(a*a%c)^(b/2)%c<br>    如果b为奇数,a^b%c=(a*a%c)^(b/2)*a%c</p>
+<p>算法：<br>    一步步迭代，每次更新a和b，如果b为奇数，那么分离奇数项，乘进ans取余</p>
+<p>c++代码(复杂度为log(b)，稳定快速)：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">solve</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a,<span class="keyword">long</span> <span class="keyword">long</span> b,<span class="keyword">long</span> <span class="keyword">long</span> c)</span></span>&#123;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b &amp; <span class="number">1</span>)&#123;</span><br><span class="line">			ans = ans * a % c;</span><br><span class="line">		&#125;</span><br><span class="line">		a = a * a % c;</span><br><span class="line">		b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="2020-1-21更新"><a href="#2020-1-21更新" class="headerlink" title="2020/1/21更新"></a>2020/1/21更新</h2><p>这是快速幂的模板，很多时候一些问题也可以转换到这个方向上求解，例如序列上涂偶数色问题，可以先将奇数色转变为偶数，然后是每位×颜色数的问题。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/Frogger/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2699,190 +2887,6 @@ leave类似于java中的break语句，跳出所在循环！！！
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/Maya%20Calendar/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/29/Maya%20Calendar/" itemprop="url">Maya Calendar</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-29T20:51:36+08:00">
-                2020-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A2%98/" itemprop="url" rel="index">
-                    <span itemprop="name">题</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/01/29/Maya%20Calendar/" class="leancloud_visitors" data-flag-title="Maya Calendar">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  268
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://poj.org/problem?id=1008" target="_blank" rel="noopener">Description</a><br>解题思路：<br>1.先把固有的数据放入char数组中并预定义其他要用的变量<br>2.用scanf和printf规范的输入，大大减小复杂度<br>3.注意每月和每年的最后一天，除余为0，那么实际上应该是最大值，如果是年份除余为0，还得减一。<br>下面是代码，16ms。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//预定义</span></span><br><span class="line"><span class="keyword">char</span> hname[<span class="number">19</span>][<span class="number">10</span>] = &#123;<span class="string">"pop"</span>, <span class="string">"no"</span>, <span class="string">"zip"</span>, <span class="string">"zotz"</span>, <span class="string">"tzec"</span>, <span class="string">"xul"</span>, <span class="string">"yoxkin"</span>, <span class="string">"mol"</span>, <span class="string">"chen"</span></span><br><span class="line">, <span class="string">"yax"</span>, <span class="string">"zac"</span>, <span class="string">"ceh"</span>, <span class="string">"mac"</span>,<span class="string">"kankin"</span>, <span class="string">"muan"</span>,<span class="string">"pax"</span>,<span class="string">"koyab"</span>, <span class="string">"cumhu"</span>,<span class="string">"uayet"</span>&#125;;<span class="comment">//月 </span></span><br><span class="line"><span class="keyword">char</span> tname[<span class="number">20</span>][<span class="number">10</span>] = &#123;<span class="string">"imix"</span>, <span class="string">"ik"</span>, <span class="string">"akbal"</span>, <span class="string">"kan"</span>, <span class="string">"chicchan"</span>, <span class="string">"cimi"</span>, <span class="string">"manik"</span>, <span class="string">"lamat"</span>, <span class="string">"muluk"</span>,</span><br><span class="line"> <span class="string">"ok"</span>, <span class="string">"chuen"</span>, <span class="string">"eb"</span>, <span class="string">"ben"</span>, <span class="string">"ix"</span>, <span class="string">"mem"</span>, <span class="string">"cib"</span>, <span class="string">"caban"</span>, <span class="string">"eznab"</span>, <span class="string">"canac"</span>, <span class="string">"ahau"</span> &#125;;<span class="comment">//日 </span></span><br><span class="line"><span class="keyword">int</span> yy,dd,n,pos,days,mon;</span><br><span class="line"><span class="keyword">char</span> mm[<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;++i)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d. %s %d"</span>,&amp;dd,mm,&amp;yy);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">19</span>;++j)&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">strcmp</span>(mm,hname[j]) == <span class="number">0</span>)&#123;</span><br><span class="line">				mon = j;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		days = dd + <span class="number">1</span> + yy*<span class="number">365</span> + mon * <span class="number">20</span>;</span><br><span class="line">		yy = days / <span class="number">260</span>;</span><br><span class="line">		days %= <span class="number">260</span>;</span><br><span class="line">		<span class="keyword">if</span>(days == <span class="number">0</span>)&#123;</span><br><span class="line">			yy--;</span><br><span class="line">			days = <span class="number">260</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		dd = days % <span class="number">13</span>;</span><br><span class="line">		<span class="keyword">if</span>(dd == <span class="number">0</span>)dd = <span class="number">13</span>;</span><br><span class="line">		mon = days % <span class="number">20</span>;</span><br><span class="line">		<span class="keyword">if</span>(mon == <span class="number">0</span>)mon = <span class="number">20</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d %s %d\n"</span>,dd,tname[mon - <span class="number">1</span>],yy);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2931,7 +2935,7 @@ leave类似于java中的break语句，跳出所在循环！！！
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">101</span>
+                <span class="site-state-item-count">102</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
