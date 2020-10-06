@@ -320,6 +320,264 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/11/BootStrap%E6%A1%86%E6%9E%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="殷泽伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="殷泽伟的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/11/BootStrap%E6%A1%86%E6%9E%B6/" itemprop="url">BootStrap框架</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-11T09:58:08+08:00">
+                2020-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaweb/" itemprop="url" rel="index">
+                    <span itemprop="name">javaweb</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/06/11/BootStrap%E6%A1%86%E6%9E%B6/" class="leancloud_visitors" data-flag-title="BootStrap框架">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  442
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>概念：前端开发框架，开发人员可在框架基础上进一步开发</li>
+<li>好处<ul>
+<li>定义了很多css样式和js插件，得到丰富的页面效果</li>
+<li>响应式布局，兼容不同分辨率的设备</li>
+</ul>
+</li>
+<li>快速入门<ul>
+<li>下载bootstrap</li>
+<li>项目中引入，复制到项目当前目录</li>
+<li>创建html页面，引入必要的资源文件</li>
+</ul>
+</li>
+<li>响应式布局<ul>
+<li>同一套页面可以兼容不同分辨率的设备</li>
+<li>实现：依赖于栅格系统，将一行分成12个格子,然后可以让元素占得格子数量进行改变</li>
+<li>步骤<ul>
+<li>定义容器，相当于table<ul>
+<li>container，比起container-fluid，会有留白</li>
+<li>container-fluid：每种设备都是100%宽度</li>
+</ul>
+</li>
+<li>定义行，想当于tr，row</li>
+<li>定义元素，指定该元素在不同的设备上所占的各自数目。样式：col-设备代号-格子数目<ul>
+<li>设备代号<ul>
+<li>xs：超小屏幕 手机 &lt;768px 例：col-xs-12</li>
+<li>sm：小屏幕 平板 &gt;=768px</li>
+<li>md：桌面显示器 &gt;=992px</li>
+<li>lg：大屏幕 &gt;=1200px</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注意<ul>
+<li>一行如果格子数目超过12，则超出部分自动换行</li>
+<li>栅格类属性可以向上兼容</li>
+<li>如果设备宽度小于设备代号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CSS样式和js插件<ul>
+<li>属于拿来就用，不要想太多，毕竟是前端的东西</li>
+<li>全局css样式<ul>
+<li>按钮：class=”btn btn-default”</li>
+<li>图片<ul>
+<li>class=”img-resopnsive”调成响应式图片</li>
+<li>图片形状：class = “img-rounded”…</li>
+</ul>
+</li>
+<li>表格：设置form的表格<ul>
+<li>.table-striped：条纹装表格</li>
+<li>.table-bordered：边框状表格</li>
+<li>.table-hover：鼠标悬停</li>
+<li>.table-condensed：紧缩表格</li>
+<li>状态类：可以通过状态类为行或单元格设置颜色</li>
+</ul>
+</li>
+<li>表单<ul>
+<li>form-control</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>组件<ul>
+<li>导航条:类似淘宝的下拉条幅</li>
+<li>分页条</li>
+</ul>
+</li>
+<li>轮播图</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/web/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2609,226 +2867,6 @@ div1.style.fontSize=&quot;10px&quot;;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/28/%E5%9F%BA%E7%A1%80%E7%9A%84ubuntu%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="殷泽伟">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="殷泽伟的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/28/%E5%9F%BA%E7%A1%80%E7%9A%84ubuntu%E5%91%BD%E4%BB%A4/" itemprop="url">基础的ubuntu命令</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-28T13:49:07+08:00">
-                2020-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2020/05/28/%E5%9F%BA%E7%A1%80%E7%9A%84ubuntu%E5%91%BD%E4%BB%A4/" class="leancloud_visitors" data-flag-title="基础的ubuntu命令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  355
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>sudo(SuperUser DO) 让你拥有管理员权限</li>
-<li>apt(Advanced Packaged Tool) 管理包的工具<ul>
-<li>apt update 更新源</li>
-<li>apt upgrade 更新软件</li>
-<li>apt install &lt; package &gt; 安装软件</li>
-<li>apt remove &lt; package &gt; 卸载软件</li>
-<li>apt purge &lt; package &gt; 卸载软件并且删掉个人配置</li>
-<li>apt autoremove 删除不需要的依赖文件</li>
-</ul>
-</li>
-<li>ls(list) 列出当前目录下的文件</li>
-<li>cd(change director) 修改目录 cd ~,cd /</li>
-<li>pwd(print working directory) 打印工作目录</li>
-<li>cp(copy) 复制文件到另一目录 cp x y</li>
-<li>mv(move) 移动文件到另一目录 mv x y</li>
-<li>rm(remove) 删除特定文件</li>
-<li>rmdir  删除文件夹</li>
-<li>mkdir(make directory) 创作文件夹</li>
-<li>history 历史命令</li>
-<li>df(display filesystem) 展示磁盘中空间的使用情况</li>
-<li>du(directory usage) 展示目录大小</li>
-<li>free 展示系统中空余的容量</li>
-<li>uname -a 展示系统的基本信息</li>
-<li>top 展示系统中使用最多系统资源的进程，按q结束</li>
-<li>man 展示命令使用手册<ul>
-<li>man man 展示man命令如何使用</li>
-<li>man intro 展示linux命令的一个简短的介绍</li>
-</ul>
-</li>
-<li>info 与man命令类似，但提供更详细的信息</li>
-<li>&lt; command &gt; -h 展示某个命令的使用帮助</li>
-<li>passwd 改密码 pwsswd &lt; user &gt;</li>
-<li>whatis 简短的展示某个命令的作用 whatis cp </li>
-<li>netstat  -anp  |grep 端口号 查看端口占用</li>
-<li>iptables -t nat -A PREROUTING -p tcp —dport 7777 -j REDIRECT —to-port 6666 端口从7777转发到6666</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2877,7 +2915,7 @@ div1.style.fontSize=&quot;10px&quot;;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">102</span>
+                <span class="site-state-item-count">103</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
